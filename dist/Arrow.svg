@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="202px" height="29px" viewBox="0 0 202 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arrow</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arrow">
+            <path d="M201,14 L201.263,14.9648 C201.698,14.8461 202,14.4509 202,14 C202,13.549 201.698,13.1539 201.263,13.0352 L201,14 Z M186.982,28.6888 C187.759,24.6507 190.703,17.8448 201.263,14.9648 L200.737,13.0352 C189.297,16.1552 185.908,23.6826 185.018,28.3112 L186.982,28.6888 Z M201.263,13.0352 C195.909,11.575 192.794,9.49279 190.799,7.32309 C188.788,5.13662 187.847,2.79813 186.921,0.610359 L185.079,1.38964 C185.987,3.5352 187.046,6.19671 189.326,8.67691 C191.623,11.1739 195.091,13.425 200.737,14.9648 L201.263,13.0352 Z" id="Shape" fill="#BBC734" fill-rule="nonzero"></path>
+            <line x1="99" y1="14" x2="199" y2="14" id="Path" stroke="#BBC734" stroke-width="2"></line>
+            <line x1="-4.37114025e-08" y1="14" x2="100" y2="14" id="Path" stroke="#BBC734" stroke-width="2"></line>
+        </g>
+    </g>
+</svg>
