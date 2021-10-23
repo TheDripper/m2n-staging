@@ -1,5 +1,5 @@
 <template>
-  <div id="root" class="">
+  <div id="root" class="test">
     <div :class="classes"></div>
     <div id="header" v-html="header.content.rendered" class=""></div>
     <div id="content" v-html="page.content.rendered" class=""></div>
