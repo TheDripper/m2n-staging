@@ -14,17 +14,6 @@ export default {
   methods: {
     ...mapActions(["getPage"]),
   },
-  async asyncData({$axios}) {
-    try {
-      // let data = await getPage(6);
-      const page = await $axios.$get("/api/pages/5");
-      return {
-        page
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  },
   created() {},
   mounted() {
     // $("a").each(function () {
@@ -44,9 +33,9 @@ export default {
     });
   },
   computed: {
-    // page() {
-    //   return this.$store.state.posts[0];
-    // },
+    page() {
+      return this.$store.state.home;
+    },
     header() {
       return this.$store.state.header;
     },
