@@ -63,7 +63,7 @@ export default {
   proxy: {
     "/api": {
       target: "https://dgs.nfshost.com/wp-json/wp/v2/",
-      changeOrigin: true,
+      // changeOrigin: true,
       pathRewrite: {
         "^/api/":"/"
       }
