@@ -2,7 +2,7 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div id="header" v-html="header.content.rendered" class=""></div>
-    <div id="content" v-html="page.content.rendered" class=""></div>
+    <div id="content" v-html="home.content.rendered" class=""></div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
@@ -11,8 +11,16 @@
 import { mapActions } from "vuex";
 import $ from "jquery";
 export default {
-  methods: {
-    ...mapActions(["getPage"]),
+  async asyncData({ $axios }) {
+    const header = await $axios.$get("/api/pages/7");
+    console.log(header);
+    const footer = await $axios.$get("/api/pages/9");
+    const home = await $axios.$get("/api/pages/5");
+    return {
+      header,
+      footer,
+      home
+    }
   },
   created() {},
   mounted() {
@@ -32,20 +40,20 @@ export default {
       instance.$slider($(this).find(".blocks-gallery-grid"));
     });
   },
-  computed: {
-    page() {
-      return this.$store.state.home;
-    },
-    header() {
-      return this.$store.state.header;
-    },
-    footer() {
-      return this.$store.state.footer;
-    },
-    classes() {
-      return this.$store.state.classes;
-    },
-  },
+  // computed: {
+  //   page() {
+  //     return this.$store.state.home;
+  //   },
+  //   header() {
+  //     return this.$store.state.header;
+  //   },
+  //   footer() {
+  //     return this.$store.state.footer;
+  //   },
+  //   classes() {
+  //     return this.$store.state.classes;
+  //   },
+  // },
 };
 </script>
 <style lang="scss">
