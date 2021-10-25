@@ -60,23 +60,23 @@ export default {
     "@nuxtjs/proxy",
     // "@nuxt/content"
   ],
-  proxy: {
-    "/api": {
-      target: "https://dgs.nfshost.com/wp-json/wp/v2/",
-      // changeOrigin: true,
-      pathRewrite: {
-        "^/api/":"/"
-      }
-    }
-  },
+  // proxy: {
+  //   '/api': 'https://dgs.nfshost.com/wp-json/wp/v2/'
+  //   // "/api": {
+  //   //   target: "https://dgs.nfshost.com/wp-json/wp/v2/",
+  //   //   // changeOrigin: true,
+  //   //   pathRewrite: {
+  //   //     "^/api/":"/"
+  //   //   }
+  //   // }
+  // },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    proxy: true
-  },
+  // axios: {
+  //   proxy: true
+  // },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  ssr: false,
   generate: {
     crawler: false
   }

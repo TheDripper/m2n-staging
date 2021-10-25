@@ -31,7 +31,8 @@ export const actions = {
   //    return page
   //  },
   async nuxtServerInit({ commit }) {
-    console.log('init');
+    const home = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/5");
+    commit("home",home);
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");
     //   commit("posts", posts);
