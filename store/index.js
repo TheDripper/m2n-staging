@@ -1,7 +1,7 @@
 import classes from "~/static/classes.json";
 export const state = () => ({
-  header: '',
-  footer: '',
+  header: null,
+  footer: null,
   posts: [],
   home: null,
   classes: "",
@@ -33,6 +33,10 @@ export const actions = {
   async nuxtServerInit({ commit }) {
     const home = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/5");
     commit("home",home);
+    const header = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/7");
+    commit("header",header);
+    const footer = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/9");
+    commit("footer",footer);
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");
     //   commit("posts", posts);
