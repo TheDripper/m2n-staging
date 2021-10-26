@@ -37,7 +37,7 @@ export default {
     });
     let instance = this;
     $(".slider").each(function () {
-      instance.$slider($(this).find(".blocks-gallery-grid"));
+      instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
   },
   computed: {
