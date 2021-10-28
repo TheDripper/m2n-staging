@@ -93,28 +93,28 @@ ul {
   list-style: circle;
   @apply pl-4;
 }
-.blocks-gallery-grid.slick-slider {
-  @apply w-full relative pt-12 mt-12;
-  height: 230px;
-  overflow: hidden;
-  figure {
-    height: 230px;
-    overflow: hidden;
-    @apply flex justify-center items-center;
-  }
-  .slick-prev {
-    @apply absolute rounded p-2;
-    top: 0;
-    left: 0;
-    color: white;
-  }
-  .slick-next {
-    @apply absolute rounded p-2;
-    top: 0;
-    right: 0;
-    color: white;
-  }
-}
+// .blocks-gallery-grid.slick-slider {
+//   @apply w-full relative pt-12 mt-12;
+//   height: 230px;
+//   overflow: hidden;
+//   figure {
+//     height: 230px;
+//     overflow: hidden;
+//     @apply flex justify-center items-center;
+//   }
+//   .slick-prev {
+//     @apply absolute rounded p-2;
+//     top: 0;
+//     left: 0;
+//     color: white;
+//   }
+//   .slick-next {
+//     @apply absolute rounded p-2;
+//     top: 0;
+//     right: 0;
+//     color: white;
+//   }
+// }
 .gallery-vertical {
   li {
     margin: 3rem 0 !important;
@@ -171,6 +171,39 @@ ul {
 .wp-block-image {
   img {
     height: auto;
+  }
+}
+#header {
+  position: absolute;
+  z-index: 99;
+  width: 100vw;
+  margin-bottom: 80px;
+  .logo {
+    width: 77px;
+  }
+}
+.slider {
+  @apply relative;
+  .prev {
+  }
+  .next {
+  }
+}
+.slick-slide {
+  .wp-block-columns {
+    display: flex !important;
+    .wp-block-column {
+      &:first-child {
+        @apply relative z-10 bg-white p-4;
+      }
+    }
+  }
+}
+.arrows {
+  @apply flex justify-end;
+  cursor: pointer;
+  .wp-block-column {
+    max-width: 70px;
   }
 }
 </style>
