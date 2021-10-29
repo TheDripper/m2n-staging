@@ -4,6 +4,7 @@ export const state = () => ({
   footer: null,
   posts: [],
   home: null,
+  whatWeveDone: null,
   classes: "",
 });
 
@@ -22,6 +23,9 @@ export const mutations = {
   },
   home(state, home) {
     state.home = home;
+  },
+  whatWeveDone(state, whatWeveDone) {
+    state.whatWeveDone = whatWeveDone;
   }
 };
 export const actions = {
@@ -32,7 +36,9 @@ export const actions = {
   //  },
   async nuxtServerInit({ commit }) {
     const home = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/5");
+    const whatWeveDone = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages?slug=what-weve-done");
     commit("home",home);
+    commit("whatWeveDone",whatWeveDone);
     const header = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/7");
     commit("header",header);
     const footer = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/9");
