@@ -33,7 +33,7 @@ export default {
     {
       src: "~/plugins/slider.js",
       mode: "client"
-    }
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
