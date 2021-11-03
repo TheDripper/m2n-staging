@@ -43,7 +43,9 @@ export const actions = {
     const home = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/5");
     const whatWeveDone = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages?slug=what-weve-done");
     const whoWeAre = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages?slug=who-we-are");
+    const posts = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/posts");
     commit("home",home);
+    commit("posts",posts);
     commit("whatWeveDone",whatWeveDone);
     commit("whoWeAre",whoWeAre);
     const header = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/7");
