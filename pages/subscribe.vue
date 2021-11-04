@@ -1,8 +1,10 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div id="header" v-html="header.content.rendered" class=""></div>
-    <div id="content" v-html="page.content.rendered" class=""></div>
+    <div class="w-full flex relative justify-end">
+    <div id="header" v-html="header.content.rendered" class="w-1/5"></div>
+    <div id="content" v-html="page.content.rendered" class="w-4/5"></div>
+    </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
@@ -174,13 +176,9 @@ ul {
   }
 }
 #header {
-  position: absolute;
-  z-index: 99;
-  width: 100vw;
-  margin-bottom: 80px;
-  .logo {
-    width: 77px;
-  }
+  @apply fixed; 
+  top: 0;
+  left: 0;
 }
 .slider {
   @apply relative;
