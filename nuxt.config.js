@@ -10,7 +10,7 @@ export default {
   //   { path: "/server-middleware", handler: "~/server-middleware/rest.js" },
   // ],
   head: {
-    title: "heydevan",
+    title: "eathereindy",
     htmlAttrs: {
       lang: "en"
     },
