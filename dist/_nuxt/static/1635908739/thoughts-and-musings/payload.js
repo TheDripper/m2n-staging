@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/thoughts-and-musings", {data:[{}],fetch:{},mutations:[]});

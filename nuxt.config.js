@@ -61,9 +61,9 @@ export default {
     // "@nuxt/content"
   ],
   // proxy: {
-  //   '/api': 'https://dgs.nfshost.com/wp-json/wp/v2/'
+  //   '/api': 'https://eathereindy.nfshost.com/wp-json/wp/v2/'
   //   // "/api": {
-  //   //   target: "https://dgs.nfshost.com/wp-json/wp/v2/",
+  //   //   target: "https://eathereindy.nfshost.com/wp-json/wp/v2/",
   //   //   // changeOrigin: true,
   //   //   pathRewrite: {
   //   //     "^/api/":"/"

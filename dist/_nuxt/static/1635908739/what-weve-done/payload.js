@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/what-weve-done", {data:[{}],fetch:{},mutations:[]});

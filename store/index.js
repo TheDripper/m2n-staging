@@ -40,17 +40,17 @@ export const actions = {
   //    return page
   //  },
   async nuxtServerInit({ commit }) {
-    const home = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/5");
-    const whatWeveDone = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages?slug=what-weve-done");
-    const whoWeAre = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages?slug=who-we-are");
-    const posts = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/posts");
+    const home = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/pages/8");
+    // const whatWeveDone = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/pages?slug=what-weve-done");
+    // const whoWeAre = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/pages?slug=who-we-are");
+    const posts = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/posts");
     commit("home",home);
     commit("posts",posts);
-    commit("whatWeveDone",whatWeveDone);
-    commit("whoWeAre",whoWeAre);
-    const header = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/7");
+    // commit("whatWeveDone",whatWeveDone);
+    // commit("whoWeAre",whoWeAre);
+    const header = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/pages/140");
     commit("header",header);
-    const footer = await this.$axios.$get("https://dgs.nfshost.com/wp-json/wp/v2/pages/9");
+    const footer = await this.$axios.$get("https://eathereindy.nfshost.com/wp-json/wp/v2/pages/142");
     commit("footer",footer);
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");

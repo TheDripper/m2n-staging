@@ -6,7 +6,7 @@ const cheerio = require('cheerio');
 export default async function asyncModule() {
   try {
     const { data } = await axios(
-      "https://dgs.nfshost.com/wp-json/wp/v2/pages/5"
+      "https://eathereindy.nfshost.com/wp-json/wp/v2/pages/8"
     );
     const $ = cheerio.load(data);
     let classes = ['hidden'];
