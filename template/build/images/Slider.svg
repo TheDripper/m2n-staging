@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="6px" viewBox="0 0 14 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon/Slider</title>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Public_Home" transform="translate(-1012.000000, -1207.000000)" fill="#36393A">
+            <g id="B&amp;A" transform="translate(120.000000, 1020.000000)">
+                <g id="r" transform="translate(600.000000, 0.000000)">
+                    <g id="SlideBar" transform="translate(281.500000, 0.000000)">
+                        <g id="Group-2" transform="translate(0.000000, 172.000000)">
+                            <g id="Icon/Slider" transform="translate(10.500000, 15.000000)">
+                                <polygon id="Triangle" transform="translate(2.000000, 3.000000) rotate(90.000000) translate(-2.000000, -3.000000) " points="2 5 -1 1 5 1"></polygon>
+                                <polygon id="Triangle" transform="translate(12.000000, 3.000000) rotate(-90.000000) translate(-12.000000, -3.000000) " points="12 5 9 1 15 1"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

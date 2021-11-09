@@ -1,0 +1,1 @@
+rsync -avL --progress -e "ssh -i clear.pem" . ec2-user@ec2-54-67-33-38.us-west-1.compute.amazonaws.com:~/clearcorrect/
