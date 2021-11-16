@@ -64,7 +64,6 @@ export default {
     });
     $("#gform_1").on("submit", async function (e) {
       e.preventDefault();
-      let formData = $(this).serializeArray();
       // window.location.href = "/restaurant-created";
       console.log("argh");
       // let postRes = await ax.$post("/api/wp/v2/users", {
@@ -73,10 +72,21 @@ export default {
       //   email: "tylerehill@gmail.com",
       // });
       // let posts = await wp.posts().get();
-      let posts = await wp.users().create({
-        username: 'pablo',
-        password: 'pablo',
-        email: 'pablo@pablo.pablo'
+      // let formData = $(this).serializeArray();
+      let formData = new FormData(e.target);
+      let send = [];
+      let title = formData.get('input_1');
+      for (let entry of formData.entries()) {
+        send.push({
+          key: entry[0],
+          value: entry[1]
+        });
+      }
+      console.log(send);
+      send = JSON.stringify(send);
+      let posts = await wp.pages().create({
+        title: title,
+        content: send 
       });
       console.log(posts);
       // let postRes = await ax.$post("/oauth/request",{
