@@ -6,8 +6,8 @@
         <!-- article -->
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <div class="login-fork bg-white my-12 max-w-6xl mx-auto">
-          <a href="/restaurant-register" class="text-white bg-pink text-head font-head">I'm a restaurant</a>
-          <a href="/contributor-register" class="text-pink bg-white text-head font-head">I'm a contributor</a>
+          <a href="/restaurant-register" class="text-white bg-pink text-head ">I'm a restaurant</a>
+          <a href="/contributor-register" class="text-pink bg-white text-head ">I'm a contributor</a>
           </div>
 
 

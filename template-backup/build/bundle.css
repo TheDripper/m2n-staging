@@ -3973,19 +3973,19 @@ h4 {
   clear: none !important;
 }
 
-.font-head {
+. {
   font-family: Geomanist-bold !important;
 }
 
-.font-body {
+. {
   font-family: Thesans-reg !important;
 }
 
-.font-body-bold {
+.-bold {
   font-family: Avenir-bold !important;
 }
 
-.font-body-medium {
+.-medium {
   font-family: Thesans-medium !important;
 }
 
@@ -22746,19 +22746,19 @@ header .logo-cont {
     clear: none !important;
   }
 
-  .sm\:font-head {
+  .sm\: {
     font-family: Geomanist-bold !important;
   }
 
-  .sm\:font-body {
+  .sm\: {
     font-family: Thesans-reg !important;
   }
 
-  .sm\:font-body-bold {
+  .sm\:-bold {
     font-family: Avenir-bold !important;
   }
 
-  .sm\:font-body-medium {
+  .sm\:-medium {
     font-family: Thesans-medium !important;
   }
 
@@ -39783,19 +39783,19 @@ header .logo-cont {
     clear: none !important;
   }
 
-  .md\:font-head {
+  .md\: {
     font-family: Geomanist-bold !important;
   }
 
-  .md\:font-body {
+  .md\: {
     font-family: Thesans-reg !important;
   }
 
-  .md\:font-body-bold {
+  .md\:-bold {
     font-family: Avenir-bold !important;
   }
 
-  .md\:font-body-medium {
+  .md\:-medium {
     font-family: Thesans-medium !important;
   }
 
@@ -56820,19 +56820,19 @@ header .logo-cont {
     clear: none !important;
   }
 
-  .lg\:font-head {
+  .lg\: {
     font-family: Geomanist-bold !important;
   }
 
-  .lg\:font-body {
+  .lg\: {
     font-family: Thesans-reg !important;
   }
 
-  .lg\:font-body-bold {
+  .lg\:-bold {
     font-family: Avenir-bold !important;
   }
 
-  .lg\:font-body-medium {
+  .lg\:-medium {
     font-family: Thesans-medium !important;
   }
 
@@ -73857,19 +73857,19 @@ header .logo-cont {
     clear: none !important;
   }
 
-  .xl\:font-head {
+  .xl\: {
     font-family: Geomanist-bold !important;
   }
 
-  .xl\:font-body {
+  .xl\: {
     font-family: Thesans-reg !important;
   }
 
-  .xl\:font-body-bold {
+  .xl\:-bold {
     font-family: Avenir-bold !important;
   }
 
-  .xl\:font-body-medium {
+  .xl\:-medium {
     font-family: Thesans-medium !important;
   }
 
@@ -90894,19 +90894,19 @@ header .logo-cont {
     clear: none !important;
   }
 
-  .\32xl\:font-head {
+  .\32xl\: {
     font-family: Geomanist-bold !important;
   }
 
-  .\32xl\:font-body {
+  .\32xl\: {
     font-family: Thesans-reg !important;
   }
 
-  .\32xl\:font-body-bold {
+  .\32xl\:-bold {
     font-family: Avenir-bold !important;
   }
 
-  .\32xl\:font-body-medium {
+  .\32xl\:-medium {
     font-family: Thesans-medium !important;
   }
 

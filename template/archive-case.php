@@ -12,7 +12,7 @@
   <div class="wp-block-columns max-w-6xl mx-auto">
     <div class="wp-block-column bg-white rounded" style="flex:25%;">
       <aside class="facets">
-        <h2 class="p-4 font-body-bold text-2xl">Filters</h2>
+        <h2 class="p-4 -bold text-2xl">Filters</h2>
         <p class="facet-arrow py-2 border-t border-border-grey">
           Classification
         </p>

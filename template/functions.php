@@ -1033,46 +1033,46 @@ function admin_filter_cases()
   );
   $cases = get_posts($args); ?>
   <?php if ($_POST['tab_slug'] == 'contributor-posts') : ?>
-  <div class="table-wrap">
-    <table class="datatable w-full contributor-posts">
-      <thead>
-        <tr>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Submission ID</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Date Submitted</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Email</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">contributor ID</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Region</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Status</th>
-          <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($cases as $case) : ?>
-          <?php $id = $case->ID; ?>
-          <?php $contributor = wp_get_post_terms($id, 'gender')[0]->name . get_field('age', $id); ?>
-          <tr class="border-b border-border-grey">
-            <td class="py-4"><?php echo $id; ?></td>
-            <td class="py-4"><?php echo wp_date('m/d/Y', get_post_timestamp($id)); ?></td>
-            <td class="py-4"><?php echo $current_user->user_email; ?></td>
-            <td class="py-4"><?php echo $case->post_title; ?></td>
-            <td class="py-4"><?php echo wp_get_post_terms($id, 'region')[0]->name; ?></td>
-            <td class="py-4"><?php echo $case->post_status; ?></td>
-            <td class="py-4"><a class="text-sm mx-2" href="/submission-edit?id=<?php echo $id; ?>">EDIT</a>|<a class="text-sm mx-2 delete" href="/submission-delete?id=<?php echo $id; ?>">DELETE</a>
-              <div class="modal message p-8">
-                <div class="flex flex-col justify-center text-center">
-                  <p class="text-xl">Are you sure you want to delete the following submission?</p>
-                  <h1 class="text-pink my-12"><?php echo $case->ID; ?></h1>
-                  <p class="w-full max-w-lg mx-auto mb-6">Once deleted there is no way to recover this submission from our system. If it was previously published to the ClearCorrect case gallery it will be removed within 24 hours. </p>
-                  <a class="button py-2 w-full max-w-md mx-auto mb-2" href="/submission-delete?id=<?php echo $id; ?>">Delete Submission</a>
-                  <a class="button py-2 w-full max-w-md mx-auto invert" href="/submission-delete">Cancel</a>
-                </div>
-              </div>
-            </td>
+    <div class="table-wrap">
+      <table class="datatable w-full contributor-posts">
+        <thead>
+          <tr>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Submission ID</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Date Submitted</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Email</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">contributor ID</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Region</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Status</th>
+            <th class="text-h5-grey uppercase text-xs font-bold cursor-pointer">Action</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <?php foreach ($cases as $case) : ?>
+            <?php $id = $case->ID; ?>
+            <?php $contributor = wp_get_post_terms($id, 'gender')[0]->name . get_field('age', $id); ?>
+            <tr class="border-b border-border-grey">
+              <td class="py-4"><?php echo $id; ?></td>
+              <td class="py-4"><?php echo wp_date('m/d/Y', get_post_timestamp($id)); ?></td>
+              <td class="py-4"><?php echo $current_user->user_email; ?></td>
+              <td class="py-4"><?php echo $case->post_title; ?></td>
+              <td class="py-4"><?php echo wp_get_post_terms($id, 'region')[0]->name; ?></td>
+              <td class="py-4"><?php echo $case->post_status; ?></td>
+              <td class="py-4"><a class="text-sm mx-2" href="/submission-edit?id=<?php echo $id; ?>">EDIT</a>|<a class="text-sm mx-2 delete" href="/submission-delete?id=<?php echo $id; ?>">DELETE</a>
+                <div class="modal message p-8">
+                  <div class="flex flex-col justify-center text-center">
+                    <p class="text-xl">Are you sure you want to delete the following submission?</p>
+                    <h1 class="text-pink my-12"><?php echo $case->ID; ?></h1>
+                    <p class="w-full max-w-lg mx-auto mb-6">Once deleted there is no way to recover this submission from our system. If it was previously published to the ClearCorrect case gallery it will be removed within 24 hours. </p>
+                    <a class="button py-2 w-full max-w-md mx-auto mb-2" href="/submission-delete?id=<?php echo $id; ?>">Delete Submission</a>
+                    <a class="button py-2 w-full max-w-md mx-auto invert" href="/submission-delete">Cancel</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   <?php else : ?>
     <table class="datatable w-full submissions-table">
       <thead>
@@ -1132,11 +1132,52 @@ function restaurant_contributor_admin()
   $user = $_POST['user'];
   $role = $_POST['role'];
   $old_role = $_POST['old_role'];
-  $u = get_user_by('id',$user);
+  $u = get_user_by('id', $user);
   echo $role;
   wp_update_user(array(
-    'ID'=>$user,
-    'role'=>$role
+    'ID' => $user,
+    'role' => $role
   ));
   wp_die();
+}
+add_action('rest_api_init', function () {
+  $namespace = 'presspack/v1';
+  register_rest_route($namespace, '/restaurant-register', array(
+    'methods' => 'POST',
+    'callback' => 'register_rest',
+  ));
+});
+
+function register_rest()
+{
+  $display_name = $_POST['first_name'] . $_POST['last_name'];
+  $args = array(
+    'user_login' => $_POST['email'],
+    'user_email' => $_POST['email'],
+    'user_pass' => $_POST['password'],
+    // 'user_number'=>$_POST['user-number'],
+    'first_name' => $_POST['first_name'],
+    'last_name' => $_POST['last_name'],
+    'role' => 'author',
+    'display_name' => $display_name
+  );
+  $new_doc = wp_insert_user($args);
+  $args = array(
+    'post_type' => 'restaurant',
+    'post_author' => $new_doc,
+    'post_title' => $display_name
+  );
+  $restaurant = wp_insert_post($args);
+  unset($_POST['first_name']);
+  unset($_POST['last_name']);
+  unset($_POST['email']);
+  unset($_POST['user_number']);
+  unset($_POST['user_email']);
+  foreach ($_POST as $key => $value) {
+    if (strpos($key, 'term_') === 0) {
+      wp_set_object_terms($restaurant, $value, substr($key, 5));
+    } else {
+      update_field($key, $value, $restaurant);
+    }
+  }
 }

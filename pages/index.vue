@@ -70,7 +70,8 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-head leading-snug;
+  @apply  leading-snug;
+  font-family: "Nunito";
 }
 h1 {
   @apply text-6xl font-bold;
@@ -87,7 +88,7 @@ h4 {
 p,
 a,
 li {
-  @apply font-body font-light;
+  @apply  font-light;
 }
 ul {
   list-style: circle;
@@ -132,7 +133,7 @@ ul {
   background: none;
   border: 2px solid black;
   color: black;
-  @apply font-footer;
+  
 }
 .wp-block-buttons {
   @apply mt-8;

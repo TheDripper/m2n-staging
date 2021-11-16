@@ -22,7 +22,7 @@ module.exports = {
       colors: {
         blue: "#0f66ff",
         white: "#fff",
-        pink: "#FB5373",
+        pink: "#ef4300",
         yellow: "#B8C734",
         "div-grey": "#979797",
         "burnt": "#ef4300",
@@ -46,13 +46,16 @@ module.exports = {
         "blog-head": "64px",
         body: "18px",
       },
-      fontFamily: {
-        head: ["freight-big-pro"],
-        body: ["europa"],
-        footer: ["futura-pt"]
-      },
+      // fontFamily: {
+      //   // head: ["freight-big-pro"],
+      //   // body: ["europa"],
+      //   // footer: ["futura-pt"]
+      //   head: ["Nunito"],
+      //   body: ["Nunito"],
+      //   footer: ["Nunito"]
+      // },
       textColor: {
-        pink: "#FB5373",
+        pink: "#ef4300",
         white: "#FFFFFF",
         grey: "#2B3034",
         "h5-grey": "#979797",
@@ -63,7 +66,7 @@ module.exports = {
         ...theme("colors"),
         grey: "#2B3034",
         "quote-grey": "#f2f2f2",
-        pink: "#FB5373",
+        pink: "#ef4300",
         "back-grey": "#F4F4F5",
       }),
       borderColor: (theme) => ({

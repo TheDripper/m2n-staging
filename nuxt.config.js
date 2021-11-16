@@ -3,9 +3,9 @@ export default {
   target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
-  // server: {
-  //   host: "0.0.0.0"
-  // },
+  server: {
+    host: "0.0.0.0"
+  },
   // serverMiddleware: [
   //   { path: "/server-middleware", handler: "~/server-middleware/rest.js" },
   // ],
@@ -48,8 +48,7 @@ export default {
   ],
   googleFonts: {
     families: {
-      Merriweather: true,
-      "Open+Sans": true
+      Nunito: true
     }
   },
 
@@ -60,20 +59,27 @@ export default {
     "@nuxtjs/proxy",
     // "@nuxt/content"
   ],
-  // proxy: {
-  //   '/api': 'https://eathereindy.nfshost.com/wp-json/wp/v2/'
-  //   // "/api": {
-  //   //   target: "https://eathereindy.nfshost.com/wp-json/wp/v2/",
-  //   //   // changeOrigin: true,
-  //   //   pathRewrite: {
-  //   //     "^/api/":"/"
-  //   //   }
-  //   // }
-  // },
+  proxy: {
+    // '/api': 'https://eathereindy.nfshost.com/'
+    "/api": {
+      target: "https://eathereindy.nfshost.com/",
+      changeOrigin: true,
+      pathRewrite: {
+        "^/api/":"/wp-json/"
+      }
+    },
+    // "/oauth": {
+    //   target: "http://eathereindy.nfshost.com/",
+    //   changeOrigin: true,
+    //   pathRewrite: {
+    //     "^/oauth/":"/oauth1/"
+    //   }
+    // }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  // axios: {
-  //   proxy: true
-  // },
+  axios: {
+    proxy: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

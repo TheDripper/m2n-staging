@@ -21,7 +21,7 @@ if (!function_exists('wp_handle_upload')) {
             <div class="max-w-xl mx-auto w-full flex justify-center">
               <form id="contributor-edit" class="flex flex-col items-start" enctype="multipart/form-data" action="/contributor-saved?id=<?php echo $edit->ID; ?>" method="POST">
                 <label class="text-h5-grey uppercase text-xs font-bold flex justify-between mb-2">ClearCorrect contributor #
-                  <a href="#" class="modal-link text-xs font-body">What is this?</a></label>
+                  <a href="#" class="modal-link text-xs ">What is this?</a></label>
                 <div class="modal">
                   <div class="text-center p-12">
                     <p>Your ClearCorrect contributor number can be found on the side of your ClearCorrect aligner box, or on the aligner itself.</p>
@@ -47,7 +47,7 @@ if (!function_exists('wp_handle_upload')) {
                     <img src="<?php echo $photo; ?>" />
                   </div>
                   <div class="flex flex-col">
-                    <label class="text-h5-grey uppercase text-xs font-bold flex justify-between">Before / After Image<a href="#" class="modal-link text-xs font-body">What is this?</a></label>
+                    <label class="text-h5-grey uppercase text-xs font-bold flex justify-between">Before / After Image<a href="#" class="modal-link text-xs ">What is this?</a></label>
                     <div class="modal">
                       <div class="text-center p-12 flex flex-col items-center">
                         <img src="<?php echo get_template_directory_uri() . '/build/images/layout.jpg' ?>" <p>Precompose before and after photos into a single image before uploading. An easy way to do this is by using the mobile app Layout by Instagram that is available for free on the Apple App Store and on Google play.

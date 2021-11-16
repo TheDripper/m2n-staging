@@ -545,7 +545,7 @@
                   </video>
                 </div>
                 <div class="flex flex-col">
-                  <label class="text-h5-grey uppercase text-xs font-bold flex justify-between mb-2">Treatment Setup Share Link<a href="#" class="modal-link text-xs font-body">What is this?</a></label>
+                  <label class="text-h5-grey uppercase text-xs font-bold flex justify-between mb-2">Treatment Setup Share Link<a href="#" class="modal-link text-xs ">What is this?</a></label>
                   <div class="modal">
                     <div class="text-center p-12 flex flex-col items-center">
                       <p class="mb-4">To find the treatment setup share link, sign into your restaurant Portal account at dr.clearcorrect.com. Once signed in, on the “Manage Orders” page, click on the name of the contributor to open the “Case details” page.</p>

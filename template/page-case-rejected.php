@@ -12,7 +12,7 @@
         <div class="max-w-4xl w-full mx-auto">
           <h1 class="text-pink text-center mb-6"><?php echo $_POST['id']; ?></h1>
           <div class="max-w-4xl mx-auto mb-4">
-          <p class="font-body-bold">Reason for rejection:</p>
+          <p class="-bold">Reason for rejection:</p>
           <p class="mb-6"><?php echo $_POST['reason_for_rejection']; ?></p>
           </div>
         </div>
