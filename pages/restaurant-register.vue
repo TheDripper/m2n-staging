@@ -64,7 +64,6 @@ export default {
     });
     $("#gform_1").on("submit", async function (e) {
       e.preventDefault();
-      // window.location.href = "/restaurant-created";
       console.log("argh");
       // let postRes = await ax.$post("/api/wp/v2/users", {
       //   username: "testy",
@@ -88,7 +87,7 @@ export default {
         title: title,
         content: send 
       });
-      console.log(posts);
+      window.location.href = "/restaurant-created";
       // let postRes = await ax.$post("/oauth/request",{
       //   oauth_consumer_key: 'CCSXk8EYPiAd',
       //   oauth_consumer_secret: 'kUdeoqHd4eVNeXkvBXd8IQmupddJOWGu73iedSsZgJ2pEVEH'
@@ -102,6 +101,9 @@ export default {
     },
     page() {
       return this.$store.state.restReg;
+    },
+    pages() {
+      return this.$store.state.pages;
     },
     header() {
       return this.$store.state.header;

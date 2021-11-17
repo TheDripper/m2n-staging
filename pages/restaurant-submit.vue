@@ -2,8 +2,16 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
-      <div id="header" v-html="header.content.rendered" class="w-1/4 bg-white"></div>
-      <div id="page" v-html="page.content.rendered" class="overflow-scroll w-3/4 bg-back-grey p-8"></div>
+      <div
+        id="header"
+        v-html="header.content.rendered"
+        class="w-1/4 bg-white"
+      ></div>
+      <div
+        id="page"
+        v-html="page.content.rendered"
+        class="overflow-scroll w-3/4 bg-back-grey p-8"
+      ></div>
     </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
@@ -15,6 +23,7 @@ import $ from "jquery";
 import jQuery from "jquery";
 // import $axios from "@nuxtjs/axios";
 import axios from "axios";
+import wpapi from "wpapi";
 export default {
   // async asyncData({ $axios }) {
   //   const header = await $axios.$get("/api/pages/7");
@@ -29,13 +38,37 @@ export default {
   // },
   created() {},
   mounted() {
+    let wp = new wpapi({
+      endpoint: "https://eathereindy.nfshost.com/wp-json",
+      username: "tylerhillwebdev",
+      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+      auth: true,
+    });
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
     let ax = this.$axios;
+    let vue = this;
+    console.log(vue);
     console.log(ax);
-    $("#rest-register").on("submit", function (e) {
+    $("#gform_2").on("submit", async function (e) {
       e.preventDefault();
+      let formData = new FormData(e.target);
+      let send = [];
+      let title = formData.get('input_1');
+      for (let entry of formData.entries()) {
+        send.push({
+          key: entry[0],
+          value: entry[1]
+        });
+      }
+      let posts = await wp.posts().create({
+        title: title,
+        content: send
+      });
+      console.log(posts);
+      vue.$router.go('/restaurant-dashboard');
+
     });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
@@ -49,23 +82,6 @@ export default {
     $(".slider").each(function () {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
-    $("#gform_1").on("submit", async function (e) {
-      e.preventDefault();
-      let formData = $(this).serializeArray();
-      // $.ajax({
-      //   type: "POST",
-      //   dataType: "json",
-      //   url: this.ajax,
-      //   data: formData,
-      //   success: function (msg) {
-      //     console.log(msg);
-      //   },
-      // });
-      window.location.href = "/restaurant-created";
-      // let postRes = await ax.$post("/api/presspack/v1/restaurant-register", {
-      //   test: "test",
-      // });
-    });
   },
   computed: {
     ajax() {
@@ -73,6 +89,9 @@ export default {
     },
     page() {
       return this.$store.state.restSubmit;
+    },
+    pages() {
+      return this.$store.state.pages;
     },
     header() {
       return this.$store.state.header;

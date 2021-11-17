@@ -7,27 +7,7 @@
         v-html="header.content.rendered"
         class="w-1/4 bg-white"
       ></div>
-      <div class="restaurant-login bg-white my-12 max-w-6xl mx-auto py-12">
-        <h2 class="text-pink text-center mb-16">restaurant Login</h2>
-        <input type="email" />
-        <input type="password" />
-        <input id="submit" type="submit" />
-        <ul class="text-center mx-auto">
-          <li class="mb-4">
-            <a href="<?php echo wp_lostpassword_url(get_site_url()); ?>"
-              >I forgot my password</a
-            >
-          </li>
-          <li class="mb-4">
-            <a href="/restaurant-register">Create an account</a>
-          </li>
-          <li class="mb-4">
-            <a href="/contributor-login">Switch to contributor login</a>
-          </li>
-        </ul>
-      </div>
       <div
-        v-if="false"
         id="page"
         v-html="page.content.rendered"
         class="overflow-scroll w-3/4 bg-back-grey p-8"
@@ -62,6 +42,9 @@ export default {
     // });
     let ax = this.$axios;
     console.log(ax);
+    $("#rest-register").on("submit", function (e) {
+      e.preventDefault();
+    });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
       const hash = $(this).attr("href");
@@ -74,17 +57,30 @@ export default {
     $(".slider").each(function () {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
-    $('#submit').on('click',function(e){
-      window.location.href = "/restaurant-dashboard";
+    $("#gform_1").on("submit", async function (e) {
+      e.preventDefault();
+      let formData = $(this).serializeArray();
+      // $.ajax({
+      //   type: "POST",
+      //   dataType: "json",
+      //   url: this.ajax,
+      //   data: formData,
+      //   success: function (msg) {
+      //     console.log(msg);
+      //   },
+      // });
+      window.location.href = "/restaurant-created";
+      // let postRes = await ax.$post("/api/presspack/v1/restaurant-register", {
+      //   test: "test",
+      // });
     });
-    
   },
   computed: {
     ajax() {
       return this.$store.state.ajax;
     },
     page() {
-      return this.$store.state.restLog;
+      return this.$store.state.restDash;
     },
     header() {
       return this.$store.state.header;

@@ -11,7 +11,7 @@
         <h2 class="text-pink text-center mb-16">restaurant Login</h2>
         <input type="email" />
         <input type="password" />
-        <input id="submit" type="submit" />
+        <input type="submit" />
         <ul class="text-center mx-auto">
           <li class="mb-4">
             <a href="<?php echo wp_lostpassword_url(get_site_url()); ?>"
@@ -62,6 +62,9 @@ export default {
     // });
     let ax = this.$axios;
     console.log(ax);
+    $("#rest-register").on("submit", function (e) {
+      e.preventDefault();
+    });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
       const hash = $(this).attr("href");
@@ -74,17 +77,32 @@ export default {
     $(".slider").each(function () {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
-    $('#submit').on('click',function(e){
-      window.location.href = "/restaurant-dashboard";
+    $("#gform_1").on("submit", async function (e) {
+      e.preventDefault();
+      let formData = $(this).serializeArray();
+      // $.ajax({
+      //   type: "POST",
+      //   dataType: "json",
+      //   url: this.ajax,
+      //   data: formData,
+      //   success: function (msg) {
+      //     console.log(msg);
+      //   },
+      // });
+      window.location.href = "/restaurant-created";
+      // let postRes = await ax.$post("/api/presspack/v1/restaurant-register", {
+      //   test: "test",
+      // });
     });
-    
   },
   computed: {
     ajax() {
       return this.$store.state.ajax;
     },
     page() {
-      return this.$store.state.restLog;
+      let slug = this.$route.params.page;
+      console.log(slug);
+      return this.$store.state[slug];
     },
     header() {
       return this.$store.state.header;

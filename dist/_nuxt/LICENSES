@@ -35,6 +35,21 @@
  * Released under the MIT License.
  */
 
+/**
+ * A WP REST API client for Node.js
+ *
+ * @example
+ *     var wp = new WPAPI({ endpoint: 'http://src.wordpress-develop.dev/wp-json' });
+ *     wp.posts().then(function( posts ) {
+ *         console.log( posts );
+ *     }).catch(function( err ) {
+ *         console.error( err );
+ *     });
+ *
+ * @license MIT
+ })
+ */
+
 
 /*!
   * vue-router v3.5.3

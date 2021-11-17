@@ -4,13 +4,16 @@ export const state = () => ({
   header: null,
   footer: null,
   posts: [],
+  pages: [],
   home: null,
+  subscribe: null,
   whatWeveDone: null,
   whoWeAre: null,
   restLog: null,
   restReg: null,
   restCreate: null,
   restSubmit: null,
+  restDash: null,
   classes: "",
   ajax: "",
 });
@@ -24,6 +27,9 @@ export const mutations = {
   },
   posts(state, posts) {
     state.posts = posts;
+  },
+  pages(state, pages) {
+    state.pages = pages;
   },
   classes(state, classes) {
     state.classes = classes;
@@ -42,6 +48,9 @@ export const mutations = {
   },
   restSubmit(state, restSubmit) {
     state.restSubmit = restSubmit;
+  },
+  restDash(state, restDash) {
+    state.restDash = restDash;
   },
   whatWeveDone(state, whatWeveDone) {
     state.whatWeveDone = whatWeveDone;
@@ -83,10 +92,23 @@ export const actions = {
     // commit("whatWeveDone",whatWeveDone);
     // commit("whoWeAre",whoWeAre);
 
+    const home = await wp.pages().id(5).get();
+    commit("home", home);
+    const subscribe = await wp.pages().id(1013).get();
+    commit("subscribe", subscribe);
     const header = await wp.pages().id(1015).get();
     commit("header", header);
     const footer = await wp.pages().id(1017).get();
     commit("footer", footer);
+    const pages = await wp.pages().get();
+    let slugs = [];
+    for (let page of pages) {
+      slugs.push({
+        slug: page.slug,
+        content: page.content
+      });
+    }
+    commit("pages", slugs);
     // const restLog = await this.$axios.$get(
     //   "https://eathereindy.nfshost.com/wp-json/wp/v2/pages/405"
     // );
@@ -97,6 +119,8 @@ export const actions = {
     commit("restCreate", restCreate);
     const restSubmit = await wp.pages().id(461).get();
     commit("restSubmit", restSubmit);
+    const restDash = await wp.pages().id(546).get();
+    commit("restDash", restDash)
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");
     //   commit("posts", posts);
