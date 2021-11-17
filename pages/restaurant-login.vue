@@ -9,9 +9,14 @@
       ></div>
       <div class="restaurant-login bg-white my-12 max-w-6xl mx-auto py-12">
         <h2 class="text-pink text-center mb-16">restaurant Login</h2>
-        <input type="email" />
-        <input type="password" />
-        <input id="submit" type="submit" />
+        <input id="username" type="text" name="username" v-model="username" />
+        <input
+          id="password"
+          type="password"
+          name="password"
+          v-model="password"
+        />
+        <input id="submit" type="submit" @click="senduser" />
         <ul class="text-center mx-auto">
           <li class="mb-4">
             <a href="<?php echo wp_lostpassword_url(get_site_url()); ?>"
@@ -43,6 +48,7 @@ import $ from "jquery";
 import jQuery from "jquery";
 // import $axios from "@nuxtjs/axios";
 import axios from "axios";
+import wpapi from "wpapi";
 export default {
   // async asyncData({ $axios }) {
   //   const header = await $axios.$get("/api/pages/7");
@@ -61,6 +67,8 @@ export default {
     //   $(this).attr("target", "_blank");
     // });
     let ax = this.$axios;
+    let wpusers = this.users;
+    let setUserCall = this.setUser;
     console.log(ax);
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
@@ -74,12 +82,31 @@ export default {
     $(".slider").each(function () {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
-    $('#submit').on('click',function(e){
-      window.location.href = "/restaurant-dashboard";
-    });
-    
+  },
+  methods: {
+    senduser() {
+      let logged = "";
+      for (let user of this.users) {
+        console.log(user.username);
+        if (user.username == this.username) {
+          logged = user.id;
+        }
+      }
+      this.setUser(logged);
+      return;
+    },
+    ...mapActions(["setUser"]),
+  },
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
   },
   computed: {
+    users() {
+      return this.$store.state.users;
+    },
     ajax() {
       return this.$store.state.ajax;
     },

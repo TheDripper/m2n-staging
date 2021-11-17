@@ -5,6 +5,8 @@ export const state = () => ({
   footer: null,
   posts: [],
   pages: [],
+  users: [],
+  loggedin: [],
   home: null,
   subscribe: null,
   whatWeveDone: null,
@@ -30,6 +32,15 @@ export const mutations = {
   },
   pages(state, pages) {
     state.pages = pages;
+  },
+  users(state, users) {
+    state.users = users;
+  },
+  loggedin(state, loggedin) {
+    state.loggedin = loggedin;
+  },
+  subscribe(state, subscribe) {
+    state.subscribe = subscribe;
   },
   classes(state, classes) {
     state.classes = classes;
@@ -68,6 +79,9 @@ export const actions = {
   //   //  const page = await this.$axios.$get("/wp-json/wp/v2/pages/"+id);
   //    return page
   //  },
+  setUser({commit},loggedin) {
+    commit("loggedin",loggedin); 
+  },
   async nuxtServerInit({ commit }) {
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json/",
@@ -108,7 +122,15 @@ export const actions = {
         content: page.content
       });
     }
-    commit("pages", slugs);
+    const users = await wp.users().get();
+    let ids = [];
+    for (let user of users) {
+      ids.push({
+        id: user.id,
+        username: user.name
+      });
+    }
+    commit("users", ids);
     // const restLog = await this.$axios.$get(
     //   "https://eathereindy.nfshost.com/wp-json/wp/v2/pages/405"
     // );
