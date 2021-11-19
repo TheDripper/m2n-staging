@@ -7,7 +7,11 @@
         v-html="header.content.rendered"
         class="w-1/4 bg-white"
       ></div>
+      <input type="text" name="title" v-model="title" />
+      <input type="text" name="body" v-model="body" />
+      <input type="submit" name="submit" id="submit" @click="sendSub" />
       <div
+        v-if="false"
         id="page"
         v-html="page.content.rendered"
         class="overflow-scroll w-3/4 bg-back-grey p-8"
@@ -38,12 +42,6 @@ export default {
   // },
   created() {},
   mounted() {
-    let wp = new wpapi({
-      endpoint: "https://eathereindy.nfshost.com/wp-json",
-      username: "tylerhillwebdev",
-      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
-      auth: true,
-    });
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
@@ -55,20 +53,18 @@ export default {
       e.preventDefault();
       let formData = new FormData(e.target);
       let send = [];
-      let title = formData.get('input_1');
+      let title = formData.get("input_1");
+      let author = this.loggedin;
       for (let entry of formData.entries()) {
         send.push({
           key: entry[0],
-          value: entry[1]
+          value: entry[1],
         });
       }
-      let posts = await wp.posts().create({
-        title: title,
-        content: send
-      });
-      console.log(posts);
-      vue.$router.go('/restaurant-dashboard');
 
+      console.log(author);
+      console.log(posts);
+      // vue.$router.go('/restaurant-dashboard');
     });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
@@ -83,9 +79,35 @@ export default {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
   },
+  data() {
+    return {
+      title: "",
+      body: "",
+    };
+  },
+  methods: {
+    async sendSub() {
+      let wp = new wpapi({
+        endpoint: "https://eathereindy.nfshost.com/wp-json",
+        username: "tylerhillwebdev",
+        password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+        auth: true,
+      });
+      let posts = await wp.posts().create({
+        title: this.title,
+        content: this.body,
+        author: this.loggedin,
+        status: "publish",
+      });
+      console.log(posts);
+    },
+  },
   computed: {
     ajax() {
       return this.$store.state.ajax;
+    },
+    loggedin() {
+      return this.$store.state.loggedin;
     },
     page() {
       return this.$store.state.restSubmit;

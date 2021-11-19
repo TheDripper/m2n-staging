@@ -143,6 +143,8 @@ export const actions = {
     commit("restSubmit", restSubmit);
     const restDash = await wp.pages().id(546).get();
     commit("restDash", restDash)
+    const posts = await wp.posts().get();
+    commit("posts", posts);
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");
     //   commit("posts", posts);

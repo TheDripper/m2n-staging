@@ -1,20 +1,19 @@
 <template>
   <div>
+    <ul class="flex">
+      <NuxtLink :to="{path:'restaurant-dashboard'}">Dashboard</NuxtLink>
+      <NuxtLink :to="{path:'restaurant-submit'}">Submit</NuxtLink>
+      <NuxtLink :to="{path:'restaurant-login'}">Login</NuxtLink>
+
+      </ul>
     <Nuxt />
   </div>
 </template>
 
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

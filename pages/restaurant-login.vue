@@ -93,6 +93,7 @@ export default {
         }
       }
       this.setUser(logged);
+      this.$router.push('/restaurant-dashboard');
       return;
     },
     ...mapActions(["setUser"]),

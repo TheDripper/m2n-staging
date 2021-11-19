@@ -7,11 +7,11 @@
         v-html="header.content.rendered"
         class="w-1/4 bg-white"
       ></div>
-      <div
-        id="page"
-        v-html="page.content.rendered"
-        class="overflow-scroll w-3/4 bg-back-grey p-8"
-      ></div>
+      <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8">
+        <ul>
+          <li v-for="post in posts">{{ post.title.rendered }} | {{ post.status }}</li>
+        </ul>
+      </div>
     </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
@@ -78,6 +78,20 @@ export default {
   computed: {
     ajax() {
       return this.$store.state.ajax;
+    },
+    loggedin() {
+      return this.$store.state.loggedin;
+    },
+    posts() {
+      let allPosts = this.$store.state.posts;
+      let myPosts = [];
+      for (let post of allPosts) {
+        console.log(post.title, post.author);
+        if (post.author == this.loggedin) {
+          myPosts.push(post);
+        }
+      }
+      return myPosts;
     },
     page() {
       return this.$store.state.restDash;
