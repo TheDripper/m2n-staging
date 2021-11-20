@@ -79,8 +79,28 @@ export const actions = {
   //   //  const page = await this.$axios.$get("/wp-json/wp/v2/pages/"+id);
   //    return page
   //  },
-  setUser({commit},loggedin) {
-    commit("loggedin",loggedin); 
+  setUser({ commit, state }, loggedin) {
+    commit("loggedin", loggedin);
+    // set posts
+    let wp = new wpapi({
+      endpoint: "https://eathereindy.nfshost.com/wp-json",
+      username: "tylerhillwebdev",
+      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+      auth: true,
+    });
+    let allPosts = state.posts;
+    let myPosts = [];
+    for (let post of allPosts) {
+      console.log(post.title, post.author);
+      if (post.author == state.loggedin) {
+        if (post.featured_media) {
+          let feat = wp.media().id(post.featured_media).get();
+          post.feat = feat;
+        }
+        myPosts.push(post);
+      }
+    }
+    commit("posts",myPosts);
   },
   async nuxtServerInit({ commit }) {
     let wp = new wpapi({
@@ -119,7 +139,7 @@ export const actions = {
     for (let page of pages) {
       slugs.push({
         slug: page.slug,
-        content: page.content
+        content: page.content,
       });
     }
     const users = await wp.users().get();
@@ -127,7 +147,7 @@ export const actions = {
     for (let user of users) {
       ids.push({
         id: user.id,
-        username: user.name
+        username: user.name,
       });
     }
     commit("users", ids);
@@ -142,7 +162,7 @@ export const actions = {
     const restSubmit = await wp.pages().id(461).get();
     commit("restSubmit", restSubmit);
     const restDash = await wp.pages().id(546).get();
-    commit("restDash", restDash)
+    commit("restDash", restDash);
     const posts = await wp.posts().get();
     commit("posts", posts);
     // if (process.env.NODE_ENV == "development") {

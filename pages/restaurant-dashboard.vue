@@ -70,29 +70,6 @@ export default {
       // });
     });
   },
-  async fetch() {
-    let wp = new wpapi({
-      endpoint: "https://eathereindy.nfshost.com/wp-json",
-      username: "tylerhillwebdev",
-      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
-      auth: true,
-    });
-    let allPosts = this.$store.state.posts;
-    let myPosts = [];
-    for (let post of allPosts) {
-      console.log(post.title, post.author);
-      if (post.author == this.loggedin) {
-        if (post.featured_media) {
-          let feat = await wp.media().id(post.featured_media).get();
-          post.feat = feat;
-        }
-        myPosts.push(post);
-      }
-    }
-    return {
-      posts: myPosts
-    }
-  },
   computed: {
     ajax() {
       return this.$store.state.ajax;
@@ -100,7 +77,27 @@ export default {
     loggedin() {
       return this.$store.state.loggedin;
     },
-
+    posts() {
+      let wp = new wpapi({
+        endpoint: "https://eathereindy.nfshost.com/wp-json",
+        username: "tylerhillwebdev",
+        password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+        auth: true,
+      });
+      let allPosts = this.$store.state.posts;
+      let myPosts = [];
+      for (let post of allPosts) {
+        console.log(post.title, post.author);
+        if (post.author == this.loggedin) {
+          if (post.featured_media) {
+            let feat = wp.media().id(post.featured_media).get();
+          post.feat = feat;
+          }
+          myPosts.push(post);
+        }
+      }
+      return myPosts;
+    },
     page() {
       return this.$store.state.restDash;
     },
