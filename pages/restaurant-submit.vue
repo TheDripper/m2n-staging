@@ -148,7 +148,10 @@ export default {
         title: this.title,
         post: posts.id,
       });
-      console.log(logo);
+      let feat = await wp.posts().id(posts.id).update({
+        featured_media: logo.id
+      });
+      console.log(feat);
     },
   },
   computed: {
