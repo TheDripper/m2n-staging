@@ -9,6 +9,22 @@
       ></div>
       <input type="text" name="title" v-model="title" />
       <input type="text" name="body" v-model="body" />
+      <div class="container">
+        <h2>Single Image Preview</h2>
+        <hr />
+        <div class="large-12 medium-12 small-12 cell">
+          <label
+            >File Preview
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              @change="handleFileUpload($event)"
+            />
+          </label>
+          <img v-bind:src="imagePreview" v-show="showPreview" />
+        </div>
+      </div>
       <input type="submit" name="submit" id="submit" @click="sendSub" />
       <div
         v-if="false"
@@ -83,9 +99,34 @@ export default {
     return {
       title: "",
       body: "",
+      file: "",
+      showPreview: false,
+      imagePreview: "",
     };
   },
   methods: {
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+      let reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        function () {
+          this.showPreview = true;
+          this.imagePreview = reader.result;
+        }.bind(this),
+        false
+      );
+      if (this.file) {
+        if (/\.(jpe?g|png|gif)$/i.test(this.file.name)) {
+          /*
+							Fire the readAsDataURL method which will read the file in and
+							upon completion fire a 'load' event which we will listen to and
+							display the image in the preview.
+						*/
+          reader.readAsDataURL(this.file);
+        }
+      }
+    },
     async sendSub() {
       let wp = new wpapi({
         endpoint: "https://eathereindy.nfshost.com/wp-json",
@@ -99,7 +140,15 @@ export default {
         author: this.loggedin,
         status: "publish",
       });
-      console.log(posts);
+      console.log(posts,posts.id);
+      // let formData = new FormData();
+      // formData.append("file", this.file);
+      // var filePath = "/path/to/the/image/to/upload.jpg";
+      let logo = await wp.media().file(this.file).create({
+        title: this.title,
+        post: posts.id,
+      });
+      console.log(logo);
     },
   },
   computed: {

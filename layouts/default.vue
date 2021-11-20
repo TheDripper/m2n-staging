@@ -1,12 +1,15 @@
 <template>
   <div>
-    <ul class="flex">
-      <NuxtLink :to="{path:'restaurant-dashboard'}">Dashboard</NuxtLink>
-      <NuxtLink :to="{path:'restaurant-submit'}">Submit</NuxtLink>
-      <NuxtLink :to="{path:'restaurant-login'}">Login</NuxtLink>
-
+    <div class="flex h-screen v-screen">
+      <ul class="flex flex-col w-1/4">
+        <NuxtLink :to="{ path: 'restaurant-dashboard' }">Dashboard</NuxtLink>
+        <NuxtLink :to="{ path: 'restaurant-submit' }">Submit</NuxtLink>
+        <NuxtLink :to="{ path: 'restaurant-login' }">Login</NuxtLink>
       </ul>
-    <Nuxt />
+      <div class="overflow-scroll w-3/4 bg-back-grey p-8">
+        <Nuxt />
+      </div>
+    </div>
   </div>
 </template>
 

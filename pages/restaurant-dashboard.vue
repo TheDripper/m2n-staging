@@ -1,19 +1,13 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div class="flex h-screen v-screen">
-      <div
-        id="header"
-        v-html="header.content.rendered"
-        class="w-1/4 bg-white"
-      ></div>
-      <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8">
-        <ul>
-          <li v-for="post in posts">{{ post.title.rendered }} | {{ post.status }}</li>
-        </ul>
-      </div>
+    <div id="page" class="">
+      <ul>
+        <li v-for="post in posts">
+          {{ post.title.rendered }} | {{ post.status }}
+        </li>
+      </ul>
     </div>
-    <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
 
