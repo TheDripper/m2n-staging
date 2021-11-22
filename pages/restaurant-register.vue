@@ -69,6 +69,7 @@ export default {
       let formData = new FormData(e.target);
       let send = [];
       let title = formData.get('input_1');
+      let email = formData.get('input_3');
       for (let entry of formData.entries()) {
         send.push({
           key: entry[0],
@@ -81,6 +82,12 @@ export default {
         title: title,
         content: send 
       });
+      let newUse = await wp.users().create({
+        username: title,
+        email: email,
+        password: 'password'
+      });
+      console.log(newUse);
       window.location.href = "/restaurant-created";
       // let postRes = await ax.$post("/oauth/request",{
       //   oauth_consumer_key: 'CCSXk8EYPiAd',

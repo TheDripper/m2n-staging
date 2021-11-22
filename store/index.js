@@ -6,7 +6,7 @@ export const state = () => ({
   posts: [],
   pages: [],
   users: [],
-  loggedin: [],
+  loggedin: 0,
   home: null,
   subscribe: null,
   whatWeveDone: null,
