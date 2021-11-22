@@ -3,31 +3,6 @@
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
       <div
-        id="header"
-        v-html="header.content.rendered"
-        class="w-1/4 bg-white"
-      ></div>
-      <div class="restaurant-login bg-white my-12 max-w-6xl mx-auto py-12">
-        <h2 class="text-pink text-center mb-16">restaurant Login</h2>
-        <input type="email" />
-        <input type="password" />
-        <input type="submit" />
-        <ul class="text-center mx-auto">
-          <li class="mb-4">
-            <a href="<?php echo wp_lostpassword_url(get_site_url()); ?>"
-              >I forgot my password</a
-            >
-          </li>
-          <li class="mb-4">
-            <a href="/restaurant-register">Create an account</a>
-          </li>
-          <li class="mb-4">
-            <a href="/contributor-login">Switch to contributor login</a>
-          </li>
-        </ul>
-      </div>
-      <div
-        v-if="false"
         id="page"
         v-html="page.content.rendered"
         class="overflow-scroll w-3/4 bg-back-grey p-8"
@@ -102,7 +77,8 @@ export default {
     page() {
       let slug = this.$route.params.page;
       console.log(slug);
-      return this.$store.state[slug];
+      console.log(this.$store.state.slug);
+      return this.$store.state.pages[slug];
     },
     header() {
       return this.$store.state.header;

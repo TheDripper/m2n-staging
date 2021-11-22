@@ -2,7 +2,7 @@
   <div>
     <div class="flex h-screen v-screen">
       <ul class="flex flex-col w-1/4">
-        <p class="text-md">You are logged in as: {{ loggedin }}</p>
+        <p v-if="loggedin" class="text-md">You are logged in as: {{ loggedin }}</p>
         <NuxtLink :to="{ path: '/restaurant-dashboard' }">Dashboard</NuxtLink>
         <NuxtLink :to="{ path: '/restaurant-submit' }">Submit</NuxtLink>
         <NuxtLink :to="{ path: '/restaurant-login' }">Login</NuxtLink>
@@ -69,6 +69,9 @@ export default {
   computed: {
     loggedin() {
       return this.$store.state.loggedin;
+    },
+    username(){
+
     }
   }
 }

@@ -55,6 +55,7 @@ module.exports = {
       //   footer: ["Nunito"]
       // },
       textColor: {
+        "burnt": "#ef4300",
         pink: "#ef4300",
         white: "#FFFFFF",
         grey: "#2B3034",

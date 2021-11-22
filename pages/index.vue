@@ -1,6 +1,38 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
+    <div>
+      <ul class="flex flex-wrap h-screen v-screen">
+        <NuxtLink
+          :to="{ path: '/restaurant-login' }"
+          class="
+            bg-burnt
+            w-1/2
+            h-full
+            flex
+            items-center
+            justify-center
+            text-xl text-white
+            uppercase
+          "
+          >Login</NuxtLink
+        >
+        <NuxtLink
+          :to="{ path: '/restaurant-register' }"
+          class="
+            bg-white
+            w-1/2
+            h-full
+            flex
+            items-center
+            justify-center
+            text-xl text-burnt
+            uppercase
+          "
+          >Create Account</NuxtLink
+        >
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -67,7 +99,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply  leading-snug;
+  @apply leading-snug;
   font-family: "Nunito";
 }
 h1 {
@@ -85,7 +117,7 @@ h4 {
 p,
 a,
 li {
-  @apply  font-light;
+  @apply font-light;
 }
 ul {
   list-style: circle;
@@ -130,7 +162,6 @@ ul {
   background: none;
   border: 2px solid black;
   color: black;
-  
 }
 .wp-block-buttons {
   @apply mt-8;
