@@ -1,9 +1,6 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div id="header" v-html="header.content.rendered" class=""></div>
-    <div id="content" v-html="page.content.rendered" class=""></div>
-    <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
 

@@ -3,17 +3,11 @@
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
       <div
-        id="header"
-        v-html="header.content.rendered"
-        class="w-1/4 bg-white"
-      ></div>
-      <div
         id="page"
         v-html="page.content.rendered"
         class="overflow-scroll w-3/4 bg-back-grey p-8"
       ></div>
     </div>
-    <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
 
