@@ -70,6 +70,7 @@ export default {
       let send = [];
       let title = formData.get('input_1');
       let email = formData.get('input_3');
+      let password = formData.get('input_19');
       for (let entry of formData.entries()) {
         send.push({
           key: entry[0],
@@ -85,7 +86,7 @@ export default {
       let newUse = await wp.users().create({
         username: title,
         email: email,
-        password: 'password'
+        password: password 
       });
       console.log(newUse);
       window.location.href = "/restaurant-created";
