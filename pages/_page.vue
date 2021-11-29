@@ -2,11 +2,9 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
-      <div
-        id="page"
-        v-html="page.content.rendered"
-        class="overflow-scroll w-3/4 bg-back-grey p-8"
-      ></div>
+      <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8">
+        <h1>{{ page[1].value }}</h1>
+      </div>
     </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
@@ -36,14 +34,12 @@ export default {
     //   $(this).attr("target", "_blank");
     // });
     let ax = this.$axios;
-    console.log(ax);
     $("#rest-register").on("submit", function (e) {
       e.preventDefault();
     });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
       const hash = $(this).attr("href");
-      console.log(hash);
       // const headerHeight = $header.outerHeight() + 500;
       const offset = $(hash).offset().top;
       $("html,body").animate({ scrollTop: offset }, 500);
@@ -76,8 +72,6 @@ export default {
     },
     page() {
       let slug = this.$route.params.page;
-      console.log(slug);
-      console.log(this.$store.state.slug);
       return this.$store.state.pages[slug];
     },
     header() {

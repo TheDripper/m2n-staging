@@ -1,5 +1,7 @@
 import classes from "~/static/classes.json";
 import wpapi from "wpapi";
+import { decode } from "html-entities";
+import $ from "cheerio";
 export const state = () => ({
   header: null,
   footer: null,
@@ -91,7 +93,6 @@ export const actions = {
     let allPosts = state.posts;
     let myPosts = [];
     for (let post of allPosts) {
-      console.log(post.title, post.author);
       if (post.author == state.loggedin) {
         if (post.featured_media) {
           let feat = wp.media().id(post.featured_media).get();
@@ -100,7 +101,7 @@ export const actions = {
         myPosts.push(post);
       }
     }
-    commit("posts",myPosts);
+    commit("posts", myPosts);
   },
   async nuxtServerInit({ commit }) {
     let wp = new wpapi({
@@ -120,9 +121,14 @@ export const actions = {
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     for (let page of pages) {
-      slugs[page.slug] = page.content
+      if (page.slug == "doctor") {
+        var jstr = $("<div/>").html(page.content.rendered).text();
+        var obj = JSON.parse(jstr);
+        console.log(obj);
+      }
+      slugs[page.slug] = obj;
     }
-    commit("pages",slugs);
+    commit("pages", slugs);
     const users = await wp.users().get();
     let ids = [];
     for (let user of users) {
