@@ -3,8 +3,7 @@
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
       <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8">
-      <h1>{{ page[1].value }}</h1>
-      <h2>{{ page[14].value }}</h2>
+      {{ page }}
       </div>
     </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>

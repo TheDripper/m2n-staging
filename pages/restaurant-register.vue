@@ -48,6 +48,7 @@
           <img v-bind:src="imagePreview" v-show="showPreview" />
         </div>
       </div>
+      <input type="submit" value="Register" @click="sendSub" />
     </div>
   </div>
 </template>
@@ -195,6 +196,44 @@ export default {
           reader.readAsDataURL(this.file);
         }
       }
+    },
+    async sendSub() {
+      let wp = new wpapi({
+        endpoint: "https://eathereindy.nfshost.com/wp-json",
+        username: "tylerhillwebdev",
+        password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+        auth: true,
+      });
+      let restData = {
+        name: this.restName,
+        address: this.restAddress,
+        address2: this.restAdress2,
+        city: this.restCity,
+        state: this.restState,
+        zip: this.restZip,
+        category: this.foodType,
+        hours: this.hours
+      }
+      let title = this.restName;
+      let restSend = JSON.stringify(restData);
+      let posts = await wp.pages().create({
+        title: title,
+        content: restSend,
+        author: this.loggedin,
+        status: "publish",
+      });
+      console.log(posts, posts.id);
+      // let formData = new FormData();
+      // formData.append("file", this.file);
+      // var filePath = "/path/to/the/image/to/upload.jpg";
+      let logo = await wp.media().file(this.file).create({
+        title: this.title,
+        post: posts.id,
+      });
+      let feat = await wp.pages().id(posts.id).update({
+        featured_media: logo.id,
+      });
+      console.log(feat);
     },
   },
   computed: {
