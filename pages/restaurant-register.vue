@@ -1,12 +1,53 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div class="flex h-screen v-screen">
-      <div
-        id="page"
-        v-html="page.content.rendered"
-        class="overflow-scroll w-3/4 bg-back-grey p-8"
-      ></div>
+    <div class="flex flex-col h-screen v-screen">
+      <label>Restaurant Email</label>
+      <input type="text" name="restEmail" v-model="restEmail" />
+      <label>Restaurant Password</label>
+      <input type="password" name="restPass" v-model="restPass" />
+      <label>Restaurant Name</label>
+      <input type="text" name="restName" v-model="restName" />
+      <label>Restaurant Address</label>
+      <input type="text" name="restAddress" v-model="restAddress" />
+      <label>Address Line 2</label>
+      <input type="text" name="restAddress2" v-model="restAddress2" />
+      <label>City</label>
+      <input type="text" name="restCity" v-model="restCity" />
+      <label>State</label>
+      <input type="text" name="restState" v-model="restState" />
+      <label>Zip</label>
+      <input type="text" name="restZip" v-model="restZip" />
+      <label>Category</label>
+      <select name="foodType" v-model="foodType">
+        <option>Indian</option>
+        <option>Vietnamese</option>
+        <option>BBQ</option>
+      </select>
+      <input type="text" name="hours" v-model="hours" />
+      <input type="checkbox" name="Sunday" v-model="Sunday" />
+      <input type="checkbox" name="Monday" v-model="Monday" />
+      <input type="checkbox" name="Tuesday" v-model="Tuesday" />
+      <input type="checkbox" name="Wednesday" v-model="Wednesday" />
+      <input type="checkbox" name="Thursday" v-model="Thursday" />
+      <input type="checkbox" name="Friday" v-model="Friday" />
+      <input type="checkbox" name="Saturday" v-model="Saturday" />
+      <div class="container">
+        <h2>Logo</h2>
+        <hr />
+        <div class="large-12 medium-12 small-12 cell">
+          <label
+            >File Preview
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              @change="handleFileUpload($event)"
+            />
+          </label>
+          <img v-bind:src="imagePreview" v-show="showPreview" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,9 +76,9 @@ export default {
   mounted() {
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json",
-      username: 'tylerhillwebdev',
-      password: '0MH4 CK5W 2Fm8 GUjP T4GG lHvw',
-      auth: true
+      username: "tylerhillwebdev",
+      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+      auth: true,
     });
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
@@ -53,49 +94,108 @@ export default {
       $("html,body").animate({ scrollTop: offset }, 500);
     });
     let instance = this;
+    let logoFile = this.file;
     $(".slider").each(function () {
       instance.$slider($(this).find(".wp-block-group__inner-container"));
     });
-    $("#gform_1").on("submit", async function (e) {
-      e.preventDefault();
-      console.log("argh");
-      // let postRes = await ax.$post("/api/wp/v2/users", {
-      //   username: "testy",
-      //   password: "testy",
-      //   email: "tylerehill@gmail.com",
-      // });
-      // let posts = await wp.posts().get();
-      // let formData = $(this).serializeArray();
-      let formData = new FormData(e.target);
-      let send = [];
-      let title = formData.get('input_1');
-      let email = formData.get('input_3');
-      let password = formData.get('input_19');
-      for (let entry of formData.entries()) {
-        send.push({
-          key: entry[0],
-          value: entry[1]
-        });
+    // $("#gform_1").on("submit", async function (e) {
+    //   e.preventDefault();
+    //   console.log("argh");
+    //   // let postRes = await ax.$post("/api/wp/v2/users", {
+    //   //   username: "testy",
+    //   //   password: "testy",
+    //   //   email: "tylerehill@gmail.com",
+    //   // });
+    //   // let posts = await wp.posts().get();
+    //   // let formData = $(this).serializeArray();
+    //   let formData = new FormData(e.target);
+    //   let send = [];
+    //   let title = formData.get("input_1");
+    //   let email = formData.get("input_3");
+    //   let password = formData.get("input_19");
+    //   for (let entry of formData.entries()) {
+    //     send.push({
+    //       key: entry[0],
+    //       value: entry[1],
+    //     });
+    //   }
+    //   console.log(send);
+    //   send = JSON.stringify(send);
+    //   let posts = await wp.pages().create({
+    //     title: title,
+    //     content: send,
+    //   });
+    //   let newUse = await wp.users().create({
+    //     username: title,
+    //     email: email,
+    //     password: password,
+    //   });
+    //   console.log(newUse);
+    //   let logo = await wp.media().file(logoFile).create({
+    //     title: title,
+    //     post: posts.id,
+    //   });
+    //   let feat = await wp.posts().id(posts.id).update({
+    //     featured_media: logo.id,
+    //   });
+    //   console.log(feat);
+    //   window.location.href = "/restaurant-created";
+    //   // let postRes = await ax.$post("/oauth/request",{
+    //   //   oauth_consumer_key: 'CCSXk8EYPiAd',
+    //   //   oauth_consumer_secret: 'kUdeoqHd4eVNeXkvBXd8IQmupddJOWGu73iedSsZgJ2pEVEH'
+    //   // });
+    //   // console.log(postRes);
+    // });
+  },
+  data() {
+    return {
+      restEmail: "",
+      restPass: "",
+      restName: "",
+      restAddress: "",
+      restAddress2: "",
+      restCity: "",
+      restState: "",
+      restZip: "",
+      foodType: "",
+      hours: "",
+      Sunday: false,
+      Monday: false,
+      Tuesday: false,
+      Wednesday: false,
+      Thursday: false,
+      Friday: false,
+      Saturday: false,
+      title: "",
+      body: "",
+      file: "",
+      showPreview: false,
+      imagePreview: "",
+    };
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+      let reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        function () {
+          this.showPreview = true;
+          this.imagePreview = reader.result;
+        }.bind(this),
+        false
+      );
+      if (this.file) {
+        if (/\.(jpe?g|png|gif)$/i.test(this.file.name)) {
+          /*
+							Fire the readAsDataURL method which will read the file in and
+							upon completion fire a 'load' event which we will listen to and
+							display the image in the preview.
+						*/
+          reader.readAsDataURL(this.file);
+        }
       }
-      console.log(send);
-      send = JSON.stringify(send);
-      let posts = await wp.pages().create({
-        title: title,
-        content: send 
-      });
-      let newUse = await wp.users().create({
-        username: title,
-        email: email,
-        password: password 
-      });
-      console.log(newUse);
-      window.location.href = "/restaurant-created";
-      // let postRes = await ax.$post("/oauth/request",{
-      //   oauth_consumer_key: 'CCSXk8EYPiAd',
-      //   oauth_consumer_secret: 'kUdeoqHd4eVNeXkvBXd8IQmupddJOWGu73iedSsZgJ2pEVEH'
-      // });
-      // console.log(postRes);
-    });
+    },
   },
   computed: {
     ajax() {

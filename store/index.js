@@ -121,12 +121,14 @@ export const actions = {
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     for (let page of pages) {
-      if (page.slug == "doctor") {
+      if (page.slug == "doctor" || page.slug == "nomad-cafe") {
         var jstr = $("<div/>").html(page.content.rendered).text();
         var obj = JSON.parse(jstr);
         console.log(obj);
+        slugs[page.slug] = obj;
+      } else {
+        slugs[page.slug] = page.content;
       }
-      slugs[page.slug] = obj;
     }
     commit("pages", slugs);
     const users = await wp.users().get();
