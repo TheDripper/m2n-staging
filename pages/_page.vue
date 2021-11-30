@@ -3,7 +3,12 @@
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
       <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8">
-      {{ page }}
+      <h1>{{ page.name }}</h1>
+      <h2>{{ page.category }}</h2>
+      <p>{{ page.address }}</p>
+      <p>{{ page.city }}, {{ page.state }}</p>
+      <p>{{ page.hours }}</p>
+      <img :src="page.media" class="feat" />
       </div>
     </div>
     <div id="footer" v-html="footer.content.rendered" class=""></div>

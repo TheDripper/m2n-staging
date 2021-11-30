@@ -227,13 +227,22 @@ export default {
       // formData.append("file", this.file);
       // var filePath = "/path/to/the/image/to/upload.jpg";
       let logo = await wp.media().file(this.file).create({
-        title: this.title,
+        title: title,
         post: posts.id,
       });
       let feat = await wp.pages().id(posts.id).update({
         featured_media: logo.id,
       });
-      console.log(feat);
+      let logoSrc = await wp.media().id(logo.id).get();
+      console.log('logoid',logo.id);
+      console.log('logosrc',logoSrc);
+      restData['media'] = logoSrc.guid.rendered; 
+      restSend = JSON.stringify(restData);
+      console.log(restSend);
+      let addImg = await wp.pages().id(posts.id).update({
+        content: restSend,
+      });
+      console.log('addImg',addImg);
     },
   },
   computed: {
