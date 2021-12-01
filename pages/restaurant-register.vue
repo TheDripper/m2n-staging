@@ -248,6 +248,9 @@ export default {
         content: restSend,
       });
       console.log("addImg", addImg);
+      this.$router.push({
+        path: '/restaurant-created'
+      });
     },
   },
   computed: {
