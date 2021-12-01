@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/contributor-dashboard", {data:[{}],fetch:{},mutations:[]});

@@ -128,15 +128,20 @@ export const actions = {
     commit("footer", footer);
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
+    let urls = [];
     for (let page of pages) {
       var jstr = $("<div/>").html(page.content.rendered).text();
-      if(IsJsonString(page.content.rendered)) {
+      if (IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
         slugs[page.slug] = obj;
       } else {
         slugs[page.slug] = jstr;
       }
+      let slugLink = '/'+page.slug;
+      urls.push({ link: slugLink, title: page.title });
+      console.log(page);
     }
+    slugs["urls"] = urls;
     commit("pages", slugs);
     const users = await wp.users().perPage(100).get();
     let ids = [];

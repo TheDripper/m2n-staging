@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/nomad-cafe", {data:[{}],fetch:{},mutations:[]});
