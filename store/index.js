@@ -104,6 +104,14 @@ export const actions = {
     commit("posts", myPosts);
   },
   async nuxtServerInit({ commit }) {
+    function IsJsonString(str) {
+      try {
+        JSON.parse(str);
+      } catch (e) {
+        return false;
+      }
+      return true;
+    }
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json/",
       username: "tylerhillwebdev",
@@ -121,17 +129,16 @@ export const actions = {
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     for (let page of pages) {
-      if (page.slug == "doctor" || page.slug == "nomad-cafe") {
-        var jstr = $("<div/>").html(page.content.rendered).text();
+      var jstr = $("<div/>").html(page.content.rendered).text();
+      if(IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
-        console.log(obj);
         slugs[page.slug] = obj;
       } else {
-        slugs[page.slug] = page.content;
+        slugs[page.slug] = jstr;
       }
     }
     commit("pages", slugs);
-    const users = await wp.users().get();
+    const users = await wp.users().perPage(100).get();
     let ids = [];
     for (let user of users) {
       ids.push({

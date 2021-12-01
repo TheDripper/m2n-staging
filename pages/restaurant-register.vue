@@ -212,8 +212,8 @@ export default {
         state: this.restState,
         zip: this.restZip,
         category: this.foodType,
-        hours: this.hours
-      }
+        hours: this.hours,
+      };
       let title = this.restName;
       let restSend = JSON.stringify(restData);
       let posts = await wp.pages().create({
@@ -221,6 +221,11 @@ export default {
         content: restSend,
         author: this.loggedin,
         status: "publish",
+      });
+      let newUse = await wp.users().create({
+        username: this.restEmail,
+        email: this.restEmail,
+        password: this.restPass,
       });
       console.log(posts, posts.id);
       // let formData = new FormData();
@@ -234,15 +239,15 @@ export default {
         featured_media: logo.id,
       });
       let logoSrc = await wp.media().id(logo.id).get();
-      console.log('logoid',logo.id);
-      console.log('logosrc',logoSrc);
-      restData['media'] = logoSrc.guid.rendered; 
+      console.log("logoid", logo.id);
+      console.log("logosrc", logoSrc);
+      restData["media"] = logoSrc.guid.rendered;
       restSend = JSON.stringify(restData);
       console.log(restSend);
       let addImg = await wp.pages().id(posts.id).update({
         content: restSend,
       });
-      console.log('addImg',addImg);
+      console.log("addImg", addImg);
     },
   },
   computed: {
