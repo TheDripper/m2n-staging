@@ -11,7 +11,6 @@
       <img :src="page.media" class="feat" />
       </div>
     </div>
-    <div id="footer" v-html="footer.content.rendered" class=""></div>
   </div>
 </template>
 

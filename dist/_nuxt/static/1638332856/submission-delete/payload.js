@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/submission-delete", {data:[{}],fetch:{},mutations:[]});

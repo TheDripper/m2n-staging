@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/submission-saved", {data:[{}],fetch:{},mutations:[]});

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/contributor-messages", {data:[{}],fetch:{},mutations:[]});

@@ -104,6 +104,7 @@ export const actions = {
     commit("posts", myPosts);
   },
   async nuxtServerInit({ commit }) {
+    console.log('init');
     function IsJsonString(str) {
       try {
         JSON.parse(str);
@@ -112,20 +113,26 @@ export const actions = {
       }
       return true;
     }
+    console.log('wp');
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json/",
       username: "tylerhillwebdev",
       password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
       auth: true,
     });
-    const home = await wp.pages().id(5).get();
+    // const home = await wp.pages().id(5).get();
+    let home = '';
     commit("home", home);
-    const subscribe = await wp.pages().id(1013).get();
+    // const subscribe = await wp.pages().id(1013).get();
+    let subscribe = '';
     commit("subscribe", subscribe);
-    const header = await wp.pages().id(1015).get();
+    // const header = await wp.pages().id(1015).get();
+    let header = '';
     commit("header", header);
-    const footer = await wp.pages().id(1017).get();
+    // const footer = await wp.pages().id(1017).get();
+    let footer = '';
     commit("footer", footer);
+    console.log('pages');
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     let urls = [];
@@ -156,13 +163,17 @@ export const actions = {
     //   "https://eathereindy.nfshost.com/wp-json/wp/v2/pages/405"
     // );
     // commit("restLog", restLog);
-    const restReg = await wp.pages().id(244).get();
+    // const restReg = await wp.pages().id(244).get();
+    let restReg = '';
     commit("restReg", restReg);
-    const restCreate = await wp.pages().id(708).get();
+    // const restCreate = await wp.pages().id(708).get();
+    let restCreate = '';
     commit("restCreate", restCreate);
-    const restSubmit = await wp.pages().id(461).get();
+    // const restSubmit = await wp.pages().id(461).get();
+    let restSubmit = '';
     commit("restSubmit", restSubmit);
-    const restDash = await wp.pages().id(546).get();
+    // const restDash = await wp.pages().id(546).get();
+    let restDash = '';
     commit("restDash", restDash);
     const posts = await wp.posts().get();
     commit("posts", posts);

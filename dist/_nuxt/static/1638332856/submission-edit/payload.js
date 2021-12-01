@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/submission-edit", {data:[{}],fetch:{},mutations:[]});
