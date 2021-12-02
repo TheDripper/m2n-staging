@@ -2,6 +2,7 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div class="flex flex-col h-screen v-screen">
+      <h3>Restaurant Info</h3>
       <label>Restaurant Email</label>
       <input type="text" name="restEmail" v-model="restEmail" />
       <label>Restaurant Password</label>
@@ -24,16 +25,11 @@
         <option>Vietnamese</option>
         <option>BBQ</option>
       </select>
+      <label>Hours</label>
+      <p class="opacity-50">(e.g. 7am - 4pm M-F, 8-12 Sat/Sun)</p>
       <input type="text" name="hours" v-model="hours" />
-      <input type="checkbox" name="Sunday" v-model="Sunday" />
-      <input type="checkbox" name="Monday" v-model="Monday" />
-      <input type="checkbox" name="Tuesday" v-model="Tuesday" />
-      <input type="checkbox" name="Wednesday" v-model="Wednesday" />
-      <input type="checkbox" name="Thursday" v-model="Thursday" />
-      <input type="checkbox" name="Friday" v-model="Friday" />
-      <input type="checkbox" name="Saturday" v-model="Saturday" />
-      <div class="container">
-        <h2>Logo</h2>
+      <h3>Logo</h3>
+      <div class="container flex">
         <hr />
         <div class="large-12 medium-12 small-12 cell">
           <label
@@ -45,7 +41,7 @@
               @change="handleFileUpload($event)"
             />
           </label>
-          <img v-bind:src="imagePreview" v-show="showPreview" />
+          <img class="w-1/3" v-bind:src="imagePreview" v-show="showPreview" />
         </div>
       </div>
       <input type="submit" value="Register" @click="sendSub" />
