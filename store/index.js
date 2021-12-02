@@ -104,7 +104,7 @@ export const actions = {
     commit("posts", myPosts);
   },
   async nuxtServerInit({ commit }) {
-    console.log('init');
+    console.log("init");
     function IsJsonString(str) {
       try {
         JSON.parse(str);
@@ -113,43 +113,49 @@ export const actions = {
       }
       return true;
     }
-    console.log('wp');
+    console.log("wp");
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json/",
       username: "tylerhillwebdev",
       password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
       auth: true,
     });
-    // const home = await wp.pages().id(5).get();
-    let home = '';
-    commit("home", home);
-    // const subscribe = await wp.pages().id(1013).get();
-    let subscribe = '';
-    commit("subscribe", subscribe);
-    // const header = await wp.pages().id(1015).get();
-    let header = '';
-    commit("header", header);
-    // const footer = await wp.pages().id(1017).get();
-    let footer = '';
-    commit("footer", footer);
-    console.log('pages');
+
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     let urls = [];
     for (let page of pages) {
       var jstr = $("<div/>").html(page.content.rendered).text();
+      let slugfix = page.slug.replace('-','');
       if (IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
-        slugs[page.slug] = obj;
+        slugs[slugfix] = obj;
       } else {
-        slugs[page.slug] = jstr;
+        slugs[slugfix] = jstr;
       }
-      let slugLink = '/'+page.slug;
-      urls.push({ link: slugLink, title: page.title });
-      console.log(page);
+      if (page.author == 48) {
+        let slugLink = "/spots/" + page.slug;
+        urls.push({ link: slugLink, title: page.title.rendered });
+      } else {
+        let slugLink = "/" + page.slug;
+        urls.push({ link: slugLink, title: page.title.rendered });
+      }
     }
     slugs["urls"] = urls;
     commit("pages", slugs);
+
+    // const home = await wp.pages().id(5).get();
+    let home = "";
+    commit("home", home);
+    let subscribe = '';
+    commit("subscribe", subscribe);
+    // const header = await wp.pages().id(1015).get();
+    console.log('slugs',slugs.header);
+    let header = slugs.header;
+    commit("header", header);
+    // const footer = await wp.pages().id(1017).get();
+    let footer = slugs.footer;
+    commit("footer", footer);
     const users = await wp.users().perPage(100).get();
     let ids = [];
     for (let user of users) {
@@ -164,16 +170,15 @@ export const actions = {
     // );
     // commit("restLog", restLog);
     // const restReg = await wp.pages().id(244).get();
-    let restReg = '';
+    let restReg = "";
     commit("restReg", restReg);
-    // const restCreate = await wp.pages().id(708).get();
-    let restCreate = '';
+    const restCreate = slugs.restaurantcreated;
     commit("restCreate", restCreate);
     // const restSubmit = await wp.pages().id(461).get();
-    let restSubmit = '';
+    let restSubmit = "";
     commit("restSubmit", restSubmit);
     // const restDash = await wp.pages().id(546).get();
-    let restDash = '';
+    let restDash = "";
     commit("restDash", restDash);
     const posts = await wp.posts().get();
     commit("posts", posts);

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/spots/restaurant-dashboard", {data:[{}],fetch:{},mutations:[]});

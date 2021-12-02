@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/restaurant-submit", {data:[{}],fetch:{},mutations:[]});
