@@ -8,6 +8,7 @@
       <p>{{ page.address }}</p>
       <p>{{ page.city }}, {{ page.state }}</p>
       <p>{{ page.hours }}</p>
+      <p>{{ page.blurb }}</p>
       <img :src="page.media" class="feat" />
       </div>
     </div>

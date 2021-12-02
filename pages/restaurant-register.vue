@@ -28,6 +28,9 @@
       <label>Hours</label>
       <p class="opacity-50">(e.g. 7am - 4pm M-F, 8-12 Sat/Sun)</p>
       <input type="text" name="hours" v-model="hours" />
+      <textarea class="blurb" v-model="blurb">
+Quick blurb abour your spot...</textarea
+      >
       <h3>Logo</h3>
       <div class="container flex">
         <hr />
@@ -45,6 +48,7 @@
         </div>
       </div>
       <input type="submit" value="Register" @click="sendSub" />
+      <Multifile />
     </div>
   </div>
 </template>
@@ -164,7 +168,7 @@ export default {
       Friday: false,
       Saturday: false,
       title: "",
-      body: "",
+      blurb: "",
       file: "",
       showPreview: false,
       imagePreview: "",
@@ -209,6 +213,7 @@ export default {
         zip: this.restZip,
         category: this.foodType,
         hours: this.hours,
+        blurb: this.blurb,
       };
       let title = this.restName;
       let restSend = JSON.stringify(restData);
@@ -421,5 +426,9 @@ select {
 }
 .ginput_complex {
   @apply flex flex-col;
+}
+.blurb {
+  height: 30vh;
+  width: 30vw;
 }
 </style>

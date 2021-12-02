@@ -2,6 +2,7 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div id="page" class="">
+      <h1>{{ page.name }}</h1>
       <ul>
         <li v-for="post in posts">
           {{ post.title.rendered }} | {{ post.status }}
@@ -99,7 +100,7 @@ export default {
       return myPosts;
     },
     page() {
-      return this.$store.state.restDash;
+      return this.$store.state.myPage;
     },
     header() {
       return this.$store.state.header;

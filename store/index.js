@@ -5,6 +5,8 @@ import $ from "cheerio";
 export const state = () => ({
   header: null,
   footer: null,
+  myPosts: [],
+  myPage: null,
   posts: [],
   pages: null,
   users: [],
@@ -28,6 +30,12 @@ export const mutations = {
   },
   footer(state, footer) {
     state.footer = footer;
+  },
+  myPosts(state, myPosts) {
+    state.myPosts = myPosts;
+  },
+  myPage(state, myPage) {
+    state.myPage = myPage;
   },
   posts(state, posts) {
     state.posts = posts;
@@ -83,7 +91,7 @@ export const actions = {
   //  },
   setUser({ commit, state }, loggedin) {
     commit("loggedin", loggedin);
-    // set posts
+    // set myPosts
     let wp = new wpapi({
       endpoint: "https://eathereindy.nfshost.com/wp-json",
       username: "tylerhillwebdev",
@@ -101,7 +109,11 @@ export const actions = {
         myPosts.push(post);
       }
     }
-    commit("posts", myPosts);
+    let mySlug = state.pages.authors[loggedin];
+    let myPage = state.pages[mySlug];
+    console.log(myPage);
+    commit("myPosts", myPosts);
+    commit("myPage", myPage);
   },
   async nuxtServerInit({ commit }) {
     console.log("init");
@@ -124,12 +136,16 @@ export const actions = {
     const pages = await wp.pages().perPage(100).get();
     let slugs = {};
     let urls = [];
+    let authors = {};
     for (let page of pages) {
       var jstr = $("<div/>").html(page.content.rendered).text();
-      let slugfix = page.slug.replace('-','');
+      let slugfix = page.slug.replace("-", "");
       if (IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
         slugs[slugfix] = obj;
+        if (page.author !== 1) {
+          authors[page.author] = slugfix;
+        }
       } else {
         slugs[slugfix] = jstr;
       }
@@ -142,15 +158,16 @@ export const actions = {
       }
     }
     slugs["urls"] = urls;
+    slugs["authors"] = authors;
     commit("pages", slugs);
 
     // const home = await wp.pages().id(5).get();
     let home = "";
     commit("home", home);
-    let subscribe = '';
+    let subscribe = "";
     commit("subscribe", subscribe);
     // const header = await wp.pages().id(1015).get();
-    console.log('slugs',slugs.header);
+    console.log("slugs", slugs.header);
     let header = slugs.header;
     commit("header", header);
     // const footer = await wp.pages().id(1017).get();
