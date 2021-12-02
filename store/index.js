@@ -133,7 +133,7 @@ export const actions = {
       } else {
         slugs[slugfix] = jstr;
       }
-      if (page.author == 48) {
+      if (page.author !== 1) {
         let slugLink = "/spots/" + page.slug;
         urls.push({ link: slugLink, title: page.title.rendered });
       } else {
