@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/spots/easy-creole", {data:[{}],fetch:{},mutations:[]});

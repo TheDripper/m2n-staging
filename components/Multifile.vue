@@ -82,7 +82,7 @@ export default {
 			*/
     async submitFiles() {
 //       let wp = new wpapi({
-//         endpoint: "https://eathereindy.nfshost.com/wp-json",
+//         endpoint: "https://m2n.nfshost.com/wp-json",
 //         username: "tylerhillwebdev",
 //         password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
 //         auth: true,

@@ -10,7 +10,7 @@ export default {
   //   { path: "/server-middleware", handler: "~/server-middleware/rest.js" },
   // ],
   head: {
-    title: "eathereindy",
+    title: "m2n",
     htmlAttrs: {
       lang: "en"
     },
@@ -44,11 +44,12 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
-    "~/modules/class-purge.js"
+    // "~/modules/class-purge.js"
   ],
   googleFonts: {
     families: {
-      Nunito: true
+      Nunito: true,
+      Roboto: true
     }
   },
 
@@ -60,16 +61,16 @@ export default {
     // "@nuxt/content"
   ],
   proxy: {
-    // '/api': 'https://eathereindy.nfshost.com/'
+    // '/api': 'https://m2n.nfshost.com/'
     "/api": {
-      target: "https://eathereindy.nfshost.com/",
+      target: "https://m2n.nfshost.com/",
       changeOrigin: true,
       pathRewrite: {
         "^/api/":"/wp-json/"
       }
     },
     // "/oauth": {
-    //   target: "http://eathereindy.nfshost.com/",
+    //   target: "http://m2n.nfshost.com/",
     //   changeOrigin: true,
     //   pathRewrite: {
     //     "^/oauth/":"/oauth1/"

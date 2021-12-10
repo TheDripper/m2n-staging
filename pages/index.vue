@@ -1,37 +1,57 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div>
-      <ul class="flex flex-wrap h-screen v-screen">
-        <NuxtLink
-          :to="{ path: '/restaurant-login' }"
-          class="
-            bg-burnt
-            w-1/2
-            h-full
-            flex
-            items-center
-            justify-center
-            text-xl text-white
-            uppercase
-          "
-          >Login</NuxtLink
+    <div class="h-screen v-screen fixed" v-html="page.content"></div>
+    <div
+      class="
+        flex flex-col
+        items-center
+        justify-center
+        h-screen
+        v-screen
+        z-20
+        relative
+        splash
+      "
+    >
+      <img src="/m2n-logo.svg" class="mb-8" />
+      <h1 class="uppercase font-bold text-white mb-4">
+        revolutionizing how we approach Diversity & inclusion in the workplace
+      </h1>
+      <p class="text-white mb-12">
+        Sign up now for your exclusive invite to the
+        <span class="font-bold">MPOWER APP</span> when we launch in
+        <span class="font-bold">2022.</span>
+      </p>
+      <input type="text" name="First Name" value="FIRST NAME" />
+      <input type="text" name="Last Name" value="LAST NAME" />
+      <input type="email" name="Email" value="EMAIL" />
+      <button id="submit" @click="submit">SIGN UP</button>
+    </div>
+    <div
+      id="footer"
+      class="
+        uppercase
+        p-2
+        z-20
+        absolute
+        bottom-0
+        left-0
+        w-full
+        flex
+        items-center
+        justify-between
+      "
+    >
+      <p>©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
+      <div class="flex items-center justify-center icons">
+        <a href="/" class="mr-8"
+          >contact us | Terms & Conditions | Privacy Policy</a
         >
-        <NuxtLink
-          :to="{ path: '/restaurant-register' }"
-          class="
-            bg-white
-            w-1/2
-            h-full
-            flex
-            items-center
-            justify-center
-            text-xl text-burnt
-            uppercase
-          "
-          >Create Account</NuxtLink
-        >
-      </ul>
+        <img src="/linked.png" />
+        <img src="/twitter.png" />
+        <img src="/insta.png" />
+      </div>
     </div>
   </div>
 </template>
@@ -70,6 +90,9 @@ export default {
     });
   },
   computed: {
+    pages() {
+      return this.$store.state.pages;
+    },
     page() {
       return this.$store.state.home;
     },
@@ -86,6 +109,51 @@ export default {
 };
 </script>
 <style lang="scss">
+#footer {
+  color: #716960;
+}
+.icons {
+  color: #716960;
+  img {
+    @apply mx-2;
+  }
+}
+.splash {
+  h1 {
+    font-size: 32px;
+    line-height: 120%;
+    max-width: 787px;
+    @apply text-center;
+  }
+  input {
+    background: none !important;
+    appearance: none !important;
+    border-bottom: 2px solid #716960;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 2px;
+    @apply mb-6 py-2;
+    width: 400px;
+    max-width: 100%;
+  }
+  button {
+    width: 400px;
+    max-width: 100%;
+    height: 44px;
+    background: #716960;
+    border-radius: 30px;
+    color: white;
+  }
+}
+.full-screen {
+  @apply h-screen w-screen p-0;
+  background: #181818;
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+}
 #content {
   overflow-x: hidden;
   width: 100vw;
@@ -98,9 +166,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+input {
   @apply leading-snug;
-  font-family: "Nunito";
+  font-family: "Roboto";
 }
 h1 {
   @apply text-6xl font-bold;

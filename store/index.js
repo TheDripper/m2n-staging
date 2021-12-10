@@ -93,7 +93,7 @@ export const actions = {
     commit("loggedin", loggedin);
     // set myPosts
     let wp = new wpapi({
-      endpoint: "https://eathereindy.nfshost.com/wp-json",
+      endpoint: "https://m2n.nfshost.com/wp-json",
       username: "tylerhillwebdev",
       password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
       auth: true,
@@ -127,9 +127,9 @@ export const actions = {
     }
     console.log("wp");
     let wp = new wpapi({
-      endpoint: "https://eathereindy.nfshost.com/wp-json/",
-      username: "tylerhillwebdev",
-      password: "0MH4 CK5W 2Fm8 GUjP T4GG lHvw",
+      endpoint: "https://m2n.nfshost.com/wp-json/",
+      username: "tylerhillwebdev@gmail.com",
+      password: "RpQ5 QwLw jbp1 GkZK S4Aw xrIy",
       auth: true,
     });
 
@@ -138,31 +138,40 @@ export const actions = {
     let urls = [];
     let authors = {};
     for (let page of pages) {
-      var jstr = $("<div/>").html(page.content.rendered).text();
       let slugfix = page.slug.replace("-", "");
-      if (IsJsonString(page.content.rendered)) {
-        var obj = JSON.parse(jstr);
-        slugs[slugfix] = obj;
-        if (page.author !== 1) {
-          authors[page.author] = slugfix;
-        }
+      let feat = page.featured_media;
+      console.log(feat);
+      if (feat) {
+        let featSrc = await wp.media().id(feat).get();
+        featSrc = featSrc.guid;
+        slugs[slugfix] = { content: page.content.rendered, media: featSrc };
       } else {
-        slugs[slugfix] = jstr;
+        slugs[slugfix] = {content: page.content.rendered, media: '' };
       }
-      if (page.author !== 1) {
-        let slugLink = "/spots/" + page.slug;
-        urls.push({ link: slugLink, title: page.title.rendered });
-      } else {
-        let slugLink = "/" + page.slug;
-        urls.push({ link: slugLink, title: page.title.rendered });
-      }
+      // var jstr = $("<div/>").html(page.content.rendered).text();
+      // if (IsJsonString(page.content.rendered)) {
+      //   var obj = JSON.parse(jstr);
+      //   slugs[slugfix] = obj;
+      //   if (page.author !== 1) {
+      //     authors[page.author] = slugfix;
+      //   }
+      // } else {
+      //   slugs[slugfix] = jstr;
+      // }
+      // if (page.author !== 1) {
+      //   let slugLink = "/spots/" + page.slug;
+      //   urls.push({ link: slugLink, title: page.title.rendered });
+      // } else {
+      //   let slugLink = "/" + page.slug;
+      //   urls.push({ link: slugLink, title: page.title.rendered });
+      // }
     }
     slugs["urls"] = urls;
     slugs["authors"] = authors;
-    commit("pages", slugs);
+    commit("pages", pages);
 
     // const home = await wp.pages().id(5).get();
-    let home = "";
+    let home = slugs.home;
     commit("home", home);
     let subscribe = "";
     commit("subscribe", subscribe);
@@ -183,7 +192,7 @@ export const actions = {
     }
     commit("users", ids);
     // const restLog = await this.$axios.$get(
-    //   "https://eathereindy.nfshost.com/wp-json/wp/v2/pages/405"
+    //   "https://m2n.nfshost.com/wp-json/wp/v2/pages/405"
     // );
     // commit("restLog", restLog);
     // const restReg = await wp.pages().id(244).get();
