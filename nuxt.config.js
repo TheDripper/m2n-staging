@@ -49,7 +49,8 @@ export default {
   googleFonts: {
     families: {
       Nunito: true,
-      Roboto: true
+      Roboto: true,
+      "Open Sans": true
     }
   },
 

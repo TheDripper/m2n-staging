@@ -6,7 +6,10 @@
       class="
         flex flex-col
         items-center
-        justify-center
+        justify-start
+        p-4
+        pt-8
+        md:pt-4 md:justify-center
         h-screen
         v-screen
         z-20
@@ -18,27 +21,46 @@
       <h1 class="uppercase font-bold text-white mb-4">
         revolutionizing how we approach Diversity & inclusion in the workplace
       </h1>
-      <p class="text-white mb-12">
+      <p class="text-white mb-12 text-center">
         Sign up now for your exclusive invite to the
         <span class="font-bold">MPOWER APP</span> when we launch in
         <span class="font-bold">2022.</span>
       </p>
-      <input type="text" name="First Name" value="FIRST NAME" />
-      <input type="text" name="Last Name" value="LAST NAME" />
-      <input type="email" name="Email" value="EMAIL" />
+      <input
+        type="text"
+        name="First Name"
+        value="FIRST NAME"
+        @click="clear($event)"
+        data-clicked="false"
+      />
+      <input
+        type="text"
+        name="Last Name"
+        value="LAST NAME"
+        @click="clear($event)"
+        data-clicked="false"
+      />
+      <input
+        type="email"
+        name="Email"
+        value="EMAIL"
+        @click="clear($event)"
+        data-clicked="false"
+      />
       <button id="submit" @click="submit">SIGN UP</button>
     </div>
     <div
       id="footer"
       class="
         uppercase
-        p-2
+        p-4
         z-20
         absolute
         bottom-0
         left-0
         w-full
-        flex
+        flex flex-col
+        lg:flex-row
         items-center
         justify-between
       "
@@ -60,17 +82,16 @@
 import { mapActions } from "vuex";
 import $ from "jquery";
 export default {
-  // async asyncData({ $axios }) {
-  //   const header = await $axios.$get("/api/pages/7");
-  //   console.log(header);
-  //   const footer = await $axios.$get("/api/pages/9");
-  //   const home = await $axios.$get("/api/pages/5");
-  //   return {
-  //     header,
-  //     footer,
-  //     home
-  //   }
-  // },
+  methods: {
+    clear(event) {
+      let clicked = event.target.dataset.clicked;
+      console.log(clicked);
+      if (clicked=='false') {
+        event.target.value = "";
+        event.target.dataset.clicked = "true";
+      }
+    },
+  },
   created() {},
   mounted() {
     // $("a").each(function () {
@@ -169,7 +190,7 @@ h5,
 h6,
 input {
   @apply leading-snug;
-  font-family: "Roboto";
+  font-family: "Open Sans";
 }
 h1 {
   @apply text-6xl font-bold;
@@ -187,6 +208,7 @@ p,
 a,
 li {
   @apply font-light;
+  font-family: "Open Sans";
 }
 ul {
   list-style: circle;
