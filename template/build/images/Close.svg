@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Icon/Close</title>
-    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
-        <g id="restaurant_Onboard" transform="translate(-1148.000000, -256.000000)" stroke="#13C9B1" stroke-width="2">
-            <path d="M1161.31066,253.25 L1161.31066,283.25 M1145.25,267.896447 L1175.25,267.896447" id="Icon/Close" transform="translate(1160.250000, 268.250000) rotate(45.000000) translate(-1160.250000, -268.250000) "></path>
-        </g>
-    </g>
-</svg>

@@ -26,28 +26,30 @@
         <span class="font-bold">MPOWER APP</span> when we launch in
         <span class="font-bold">2022.</span>
       </p>
-      <input
-        type="text"
-        name="First Name"
-        value="FIRST NAME"
-        @click="clear($event)"
-        data-clicked="false"
-      />
-      <input
-        type="text"
-        name="Last Name"
-        value="LAST NAME"
-        @click="clear($event)"
-        data-clicked="false"
-      />
-      <input
-        type="email"
-        name="Email"
-        value="EMAIL"
-        @click="clear($event)"
-        data-clicked="false"
-      />
-      <button id="submit" @click="submit">SIGN UP</button>
+      <form id="splashform">
+        <input
+          type="text"
+          name="First Name"
+          value="FIRST NAME"
+          @click="clear($event)"
+          data-clicked="false"
+        />
+        <input
+          type="text"
+          name="Last Name"
+          value="LAST NAME"
+          @click="clear($event)"
+          data-clicked="false"
+        />
+        <input
+          type="email"
+          name="Email"
+          value="EMAIL"
+          @click="clear($event)"
+          data-clicked="false"
+        />
+        <button id="submit" @click="send">SIGN UP</button>
+      </form>
     </div>
     <div
       id="footer"
@@ -86,10 +88,32 @@ export default {
     clear(event) {
       let clicked = event.target.dataset.clicked;
       console.log(clicked);
-      if (clicked=='false') {
+      if (clicked == "false") {
         event.target.value = "";
         event.target.dataset.clicked = "true";
       }
+    },
+    async send() {
+      console.log("send");
+      let form = document.getElementById("splashform");
+      let formData = new FormData(form);
+      let contact = {
+        properties: [
+          { property: "firstname", value: "tyler" },
+          { property: "lastname", value: "hill" },
+          { property: "email", value: "admin@tylerhillweb.dev" },
+        ],
+      };
+      contact = JSON.stringify(contact);
+      this.$axios.setHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded"
+      );
+      let posted = await this.$axios.$post(
+        "https://forms.hubspot.com/uploads/form/v2/20008151/f379a28f-402a-46d3-b660-e86a8d1e19cb",
+        formData 
+      );
+      console.log("contact", posted);
     },
   },
   created() {},
