@@ -26,7 +26,7 @@
         <span class="font-bold">MPOWER APP</span> when we launch in
         <span class="font-bold">2022.</span>
       </p>
-      <form id="splashform">
+      <form id="splashform" class="flex flex-col">
         <input
           type="text"
           name="First Name"
