@@ -2,7 +2,7 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div class="flex h-screen v-screen">
-      <div id="page" class="overflow-scroll w-3/4 bg-back-grey p-8" v-html="page">
+      <div id="page" class="overflow-scroll bg-back-grey p-8 flex flex-col items-center justify-center text-white" v-html="page">
       </div>
     </div>
   </div>
