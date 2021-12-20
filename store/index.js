@@ -138,7 +138,7 @@ export const actions = {
     let urls = [];
     let authors = {};
     for (let page of pages) {
-      let slugfix = page.slug.replace("-", "");
+      let slugfix = page.slug.replace(/-/g, "");
       let feat = page.featured_media;
       console.log(feat);
       if (feat) {
@@ -148,27 +148,27 @@ export const actions = {
       } else {
         slugs[slugfix] = {content: page.content.rendered, media: '' };
       }
-      // var jstr = $("<div/>").html(page.content.rendered).text();
-      // if (IsJsonString(page.content.rendered)) {
-      //   var obj = JSON.parse(jstr);
-      //   slugs[slugfix] = obj;
-      //   if (page.author !== 1) {
-      //     authors[page.author] = slugfix;
-      //   }
-      // } else {
-      //   slugs[slugfix] = jstr;
-      // }
-      // if (page.author !== 1) {
-      //   let slugLink = "/spots/" + page.slug;
-      //   urls.push({ link: slugLink, title: page.title.rendered });
-      // } else {
-      //   let slugLink = "/" + page.slug;
-      //   urls.push({ link: slugLink, title: page.title.rendered });
-      // }
+      var jstr = $("<div/>").html(page.content.rendered).text();
+      if (IsJsonString(page.content.rendered)) {
+        var obj = JSON.parse(jstr);
+        slugs[slugfix] = obj;
+        if (page.author !== 1) {
+          authors[page.author] = slugfix;
+        }
+      } else {
+        slugs[slugfix] = jstr;
+      }
+      if (page.author !== 1) {
+        let slugLink = "/spots/" + page.slug;
+        urls.push({ link: slugLink, title: page.title.rendered });
+      } else {
+        let slugLink = "/" + page.slug;
+        urls.push({ link: slugLink, title: page.title.rendered });
+      }
     }
     slugs["urls"] = urls;
     slugs["authors"] = authors;
-    commit("pages", pages);
+    commit("pages", slugs);
 
     // const home = await wp.pages().id(5).get();
     let home = slugs.home;
@@ -176,12 +176,12 @@ export const actions = {
     let subscribe = "";
     commit("subscribe", subscribe);
     // const header = await wp.pages().id(1015).get();
-    console.log("slugs", slugs.header);
-    let header = slugs.header;
-    commit("header", header);
+    console.log("slugs", slugs);
+    // let header = slugs.header;
+    // commit("header", header);
     // const footer = await wp.pages().id(1017).get();
-    let footer = slugs.footer;
-    commit("footer", footer);
+    // let footer = slugs.footer;
+    // commit("footer", footer);
     const users = await wp.users().perPage(100).get();
     let ids = [];
     for (let user of users) {
