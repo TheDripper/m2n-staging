@@ -202,6 +202,9 @@ export default {
 #content {
   overflow-x: hidden;
   width: 100vw;
+  p {
+    @apply mb-4;
+  }
 }
 html,
 body {

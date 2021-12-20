@@ -111,7 +111,6 @@ export const actions = {
     }
     let mySlug = state.pages.authors[loggedin];
     let myPage = state.pages[mySlug];
-    console.log(myPage);
     commit("myPosts", myPosts);
     commit("myPage", myPage);
   },
@@ -140,7 +139,6 @@ export const actions = {
     for (let page of pages) {
       let slugfix = page.slug.replace(/-/g, "");
       let feat = page.featured_media;
-      console.log(feat);
       if (feat) {
         let featSrc = await wp.media().id(feat).get();
         featSrc = featSrc.guid;
@@ -148,6 +146,7 @@ export const actions = {
       } else {
         slugs[slugfix] = {content: page.content.rendered, media: '' };
       }
+      console.log('page content',page.content);
       var jstr = $("<div/>").html(page.content.rendered).text();
       if (IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
@@ -156,7 +155,7 @@ export const actions = {
           authors[page.author] = slugfix;
         }
       } else {
-        slugs[slugfix] = jstr;
+        slugs[slugfix] = page.content.rendered;
       }
       if (page.author !== 1) {
         let slugLink = "/spots/" + page.slug;
@@ -176,7 +175,6 @@ export const actions = {
     let subscribe = "";
     commit("subscribe", subscribe);
     // const header = await wp.pages().id(1015).get();
-    console.log("slugs", slugs);
     // let header = slugs.header;
     // commit("header", header);
     // const footer = await wp.pages().id(1017).get();

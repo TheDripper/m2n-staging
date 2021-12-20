@@ -1,8 +1,11 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div class="flex h-screen v-screen">
-      <div id="page" class="overflow-scroll bg-back-grey p-8 flex flex-col items-center justify-center text-white" v-html="page">
+    <div class="flex bg-back-grey">
+      <div id="page" class="w-full p-8 text-white">
+        <div class="frame">
+          <div id="content" v-html="page" class="max-w-5xl mx-auto"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -128,9 +131,14 @@ export default {
     object-fit: contain;
   }
 }
+.frame {
+}
+
 #content {
-  overflow-x: hidden;
-  width: 100vw;
+  padding-top: 25vh;
+  p {
+    @apply mb-4;
+  }
 }
 html,
 body {

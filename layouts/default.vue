@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex h-screen w-screen">
-      <div class="overflow-scroll h-screen w-screen bg-back-grey">
+      <div class="h-screen w-screen bg-back-grey">
         <Nuxt />
       </div>
     </div>
