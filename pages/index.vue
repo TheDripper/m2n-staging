@@ -1,7 +1,7 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div class="h-screen v-screen fixed" v-html="page.content"></div>
+    <div class="h-screen v-screen fixed" v-html="page"></div>
     <div
       class="
         flex flex-col
