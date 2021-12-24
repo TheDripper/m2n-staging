@@ -1,7 +1,7 @@
 <template>
   <div id="root" class="testtttt">
     <div :class="classes"></div>
-    <div class="h-screen v-screen fixed" v-html="page"></div>
+    <div class="w-screen fixed" v-html="page"></div>
     <div
       class="
         flex flex-col
@@ -10,8 +10,7 @@
         p-4
         pt-8
         md:pt-4 md:justify-center
-        h-screen
-        v-screen
+        w-screen
         z-20
         relative
         splash
@@ -26,7 +25,7 @@
         <span class="font-bold">MPOWER APP</span> when we launch in
         <span class="font-bold">2022.</span>
       </p>
-      <form id="splashform" class="flex flex-col">
+      <form id="splashform" class="flex flex-col w-full">
         <input
           type="text"
           name="First Name"
@@ -57,7 +56,7 @@
         uppercase
         p-4
         z-20
-        absolute
+        relative
         bottom-0
         left-0
         w-full
@@ -67,15 +66,19 @@
         justify-between
       "
     >
-      <p>©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
-      <div class="flex items-center justify-center icons">
-        <a href="/" class="mr-8"
-          >contact us | Terms & Conditions | Privacy Policy</a
-        >
-        <img src="/linked.png" />
-        <img src="/twitter.png" />
-        <img src="/insta.png" />
+      <div class="flex flex-col items-center justify-center icons">
+        <div class="flex py-8">
+          <img src="/insta.png" />
+          <img src="/twitter.png" />
+          <img src="/linked.png" />
+        </div>
+        <div class="flex flex-col items-center justify-center mb-8 text-xs">
+          <a href="/" class="my-2">contact us</a>
+          <a href="/" class="my-2">Terms & Conditions</a>
+          <a href="/" class="my-2">Privacy Policy</a>
+        </div>
       </div>
+      <p class="text-center text-xs mb-6">©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
     </div>
   </div>
 </template>
@@ -111,7 +114,7 @@ export default {
       );
       let posted = await this.$axios.$post(
         "https://forms.hubspot.com/uploads/form/v2/20008151/f379a28f-402a-46d3-b660-e86a8d1e19cb",
-        formData 
+        formData
       );
       console.log("contact", posted);
     },
@@ -156,6 +159,9 @@ export default {
 <style lang="scss">
 #footer {
   color: #716960;
+  p, a {
+    letter-spacing: 1px;
+  }
 }
 .icons {
   color: #716960;
@@ -165,10 +171,13 @@ export default {
 }
 .splash {
   h1 {
-    font-size: 32px;
+    font-size: 25px;
     line-height: 120%;
     max-width: 787px;
     @apply text-center;
+    @screen md {
+      font-size: 32px;
+    }
   }
   input {
     background: none !important;
@@ -178,16 +187,19 @@ export default {
     font-size: 14px;
     letter-spacing: 2px;
     @apply mb-6 py-2;
-    width: 400px;
-    max-width: 100%;
   }
   button {
-    width: 400px;
-    max-width: 100%;
     height: 44px;
     background: #716960;
     border-radius: 30px;
     color: white;
+  }
+}
+.mobile {
+  width: 320px;
+  max-width: 100%;
+  @screen md {
+    width: 400px;
   }
 }
 .full-screen {
@@ -251,13 +263,13 @@ ul {
 //     @apply flex justify-center items-center;
 //   }
 //   .slick-prev {
-//     @apply absolute rounded p-2;
+//     @apply absolute rounded p-4;
 //     top: 0;
 //     left: 0;
 //     color: white;
 //   }
 //   .slick-next {
-//     @apply absolute rounded p-2;
+//     @apply absolute rounded p-4;
 //     top: 0;
 //     right: 0;
 //     color: white;
