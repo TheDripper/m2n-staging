@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div class="flex h-screen w-screen">
-      <div class="h-screen w-screen bg-back-grey">
         <Nuxt />
-      </div>
-    </div>
   </div>
 </template>
 

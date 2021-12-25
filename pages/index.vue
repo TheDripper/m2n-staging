@@ -1,7 +1,7 @@
 <template>
-  <div id="root" class="testtttt">
+  <div id="root" class="h-screen w-screen bg-back-grey flex flex-col justify-between">
     <div :class="classes"></div>
-    <div class="w-screen fixed" v-html="page"></div>
+    <div class="w-full fixed" v-html="page"></div>
     <div
       class="
         flex flex-col
@@ -16,16 +16,16 @@
         splash
       "
     >
-      <img src="/m2n-logo.svg" class="mb-8" />
-      <h1 class="uppercase font-bold text-white mb-4">
+      <img src="/m2n-logo.svg" class="mb-8 mt-24" />
+      <h1 class="uppercase font-bold text-white mb-4 max-w-lg">
         revolutionizing how we approach Diversity & inclusion in the workplace
       </h1>
-      <p class="text-white mb-12 text-center">
+      <p class="text-white mb-12 text-center max-w-lg">
         Sign up now for your exclusive invite to the
         <span class="font-bold">MPOWER APP</span> when we launch in
         <span class="font-bold">2022.</span>
       </p>
-      <form id="splashform" class="flex flex-col w-full">
+      <form id="splashform" class="flex flex-col w-full md:max-w-md mb-24">
         <input
           type="text"
           name="First Name"
@@ -47,7 +47,7 @@
           @click="clear($event)"
           data-clicked="false"
         />
-        <button id="submit" @click="send">SIGN UP</button>
+        <button id="submit" class="mt-6" @click="send">SIGN UP</button>
       </form>
     </div>
     <div
@@ -61,24 +61,24 @@
         left-0
         w-full
         flex flex-col
-        lg:flex-row
+        xl:flex-row
         items-center
         justify-between
       "
     >
-      <div class="flex flex-col items-center justify-center icons">
-        <div class="flex py-8">
+      <div class="flex flex-col xl:flex-row items-center justify-center icons xl:order-2">
+        <div class="flex items-center py-8 xl:py-0 xl:order-2 lg:ml-4 xl:ml-6">
           <img src="/insta.png" />
           <img src="/twitter.png" />
           <img src="/linked.png" />
         </div>
-        <div class="flex flex-col items-center justify-center mb-8 text-xs">
-          <a href="/" class="my-2">contact us</a>
-          <a href="/" class="my-2">Terms & Conditions</a>
-          <a href="/" class="my-2">Privacy Policy</a>
+        <div class="flex flex-col xl:flex-row xl:order-1 items-center justify-center mb-8 xl:mb-0 text-xs xl:order-1">
+          <a href="/" class="my-2 xl:border-r pr-2">contact us</a>
+          <a href="/terms-of-use" class="my-2 xl:border-r px-2">Terms & Conditions</a>
+          <a href="/privacy-policy" class="my-2 xl:pl-2">Privacy Policy</a>
         </div>
       </div>
-      <p class="text-center text-xs mb-6">©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
+      <p class="text-center text-xs mb-6 xl:mb-0">©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
     </div>
   </div>
 </template>
@@ -227,7 +227,8 @@ h3,
 h4,
 h5,
 h6,
-input {
+input,
+button {
   @apply leading-snug;
   font-family: "Open Sans";
 }
