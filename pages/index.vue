@@ -1,5 +1,8 @@
 <template>
-  <div id="root" class="h-screen w-screen bg-back-grey flex flex-col justify-between">
+  <div
+    id="root"
+    class="h-screen w-screen bg-back-grey flex flex-col lg:justify-between"
+  >
     <div :class="classes"></div>
     <div class="w-full fixed" v-html="page"></div>
     <div
@@ -7,48 +10,51 @@
         flex flex-col
         items-center
         justify-start
-        p-4
-        pt-8
-        md:pt-4 md:justify-center
+        p-8
+        xl:pb-0
+        lg:justify-center
         w-screen
         z-20
         relative
         splash
       "
     >
-      <img src="/m2n-logo.svg" class="mb-8 mt-24" />
-      <h1 class="uppercase font-bold text-white mb-4 max-w-lg">
-        revolutionizing how we approach Diversity & inclusion in the workplace
-      </h1>
-      <p class="text-white mb-12 text-center max-w-lg">
-        Sign up now for your exclusive invite to the
-        <span class="font-bold">MPOWER APP</span> when we launch in
-        <span class="font-bold">2022.</span>
-      </p>
-      <form id="splashform" class="flex flex-col w-full md:max-w-md mb-24">
-        <input
-          type="text"
-          name="First Name"
-          value="FIRST NAME"
-          @click="clear($event)"
-          data-clicked="false"
-        />
-        <input
-          type="text"
-          name="Last Name"
-          value="LAST NAME"
-          @click="clear($event)"
-          data-clicked="false"
-        />
-        <input
-          type="email"
-          name="Email"
-          value="EMAIL"
-          @click="clear($event)"
-          data-clicked="false"
-        />
-        <button id="submit" class="mt-6" @click="send">SIGN UP</button>
-      </form>
+      <div class="lg:max-w-lg xl:max-w-4xl flex flex-col items-center justify-start lg:justify-center trans">
+        <img src="/m2n-logo.svg" id="logo" class="mb-4" />
+        <h1 class="uppercase font-bold text-white mb-4 xl:px-2">
+          revolutionizing how we approach Diversity & inclusion in the workplace
+        </h1>
+        <p class="text-white mb-12 text-center xl:w-5/6 px-10">
+          Get on the list for your invitation to Join
+          <span class="font-bold">MPOWER</span>, a community of diverse
+          professionals raising their hands to say...
+          <span class="font-bold">HERE WE ARE.</span>
+        </p>
+        <form id="splashform" class="flex flex-col w-full lg:w-1/2">
+          <input
+            type="text"
+            name="First Name"
+            value="FIRST NAME"
+            @click="clear($event)"
+            data-clicked="false"
+          />
+          <input
+            type="text"
+            name="Last Name"
+            value="LAST NAME"
+            @click="clear($event)"
+            data-clicked="false"
+          />
+          <input
+            type="email"
+            name="Email"
+            value="EMAIL"
+            @click="clear($event)"
+            data-clicked="false"
+          />
+          <button id="submit" class="mt-6" @click="send">SIGN UP</button>
+        </form>
+      </div>
     </div>
     <div
       id="footer"
@@ -66,19 +72,43 @@
         justify-between
       "
     >
-      <div class="flex flex-col xl:flex-row items-center justify-center icons xl:order-2">
-        <div class="flex items-center py-8 xl:py-0 xl:order-2 lg:ml-4 xl:ml-6">
+      <div
+        class="
+          flex flex-col
+          xl:flex-row
+          items-center
+          justify-center
+          icons
+          xl:order-2
+        "
+      >
+        <div class="flex items-center pb-8 xl:pb-0 xl:order-2 lg:ml-4 xl:ml-6">
           <img src="/insta.png" />
           <img src="/twitter.png" />
           <img src="/linked.png" />
         </div>
-        <div class="flex flex-col xl:flex-row xl:order-1 items-center justify-center mb-8 xl:mb-0 text-xs xl:order-1">
+        <div
+          class="
+            flex flex-col
+            xl:flex-row xl:order-1
+            items-center
+            justify-center
+            mb-8
+            xl:mb-0
+            text-xs
+            xl:order-1
+          "
+        >
           <a href="/" class="my-2 xl:border-r pr-2">contact us</a>
-          <a href="/terms-of-use" class="my-2 xl:border-r px-2">Terms & Conditions</a>
+          <a href="/terms-of-use" class="my-2 xl:border-r px-2"
+            >Terms & Conditions</a
+          >
           <a href="/privacy-policy" class="my-2 xl:pl-2">Privacy Policy</a>
         </div>
       </div>
-      <p class="text-center text-xs mb-6 xl:mb-0">©2021 M2N | Minority Moves Network Inc. • All rights reserved.</p>
+      <p class="text-center text-xs mb-6 xl:mb-0">
+        ©2021 M2N | Minority Moves Network Inc. • All rights reserved.
+      </p>
     </div>
   </div>
 </template>
@@ -157,9 +187,21 @@ export default {
 };
 </script>
 <style lang="scss">
+.trans {
+  @screen xl {
+    @apply fixed w-full;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+#logo {
+  width: 51px;
+}
 #footer {
   color: #716960;
-  p, a {
+  p,
+  a {
     letter-spacing: 1px;
   }
 }
@@ -170,11 +212,19 @@ export default {
   }
 }
 .splash {
+  p {
+    font-size: 10px;
+    letter-spacing: 1px;
+    @screen lg {
+      font-size: 14px;
+    }
+  }
   h1 {
-    font-size: 25px;
+    font-size: 21px;
     line-height: 120%;
     max-width: 787px;
-    @apply text-center;
+    letter-spacing: 0.5px;
+    @apply text-center font-bold;
     @screen md {
       font-size: 32px;
     }
@@ -194,6 +244,10 @@ export default {
     border-radius: 30px;
     color: white;
   }
+}
+button {
+  letter-spacing: 1px;
+  @apply font-bold;
 }
 .mobile {
   width: 320px;
