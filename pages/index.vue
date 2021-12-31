@@ -31,7 +31,7 @@
         "
       >
         <img src="/m2n-logo.svg" id="logo" class="mb-4" />
-        <div v-if="notSent">
+        <div v-if="notSent" class="flex flex-col items-center justify-center">
           <h1 class="uppercase font-bold text-white mb-4 xl:px-2">
             revolutionizing how we approach Diversity & inclusion in the
             workplace
