@@ -44,7 +44,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
-    // "~/modules/class-purge.js"
+    "~/modules/class-purge.js"
   ],
   googleFonts: {
     families: {
