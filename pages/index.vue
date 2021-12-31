@@ -74,7 +74,7 @@
           </form>
         </div>
         <div class="confirm flex flex-col items-center justify-center" v-else>
-          <h1 class="text-white text-4xl uppercase font-bold mb-4">
+          <h1 class="text-white uppercase font-bold mb-4">
             Thank you for signing up!
           </h1>
           <p class="text-center text-white mb-4">
@@ -117,7 +117,7 @@
           xl:order-2
         "
       >
-        <div class="flex items-center pb-8 xl:pb-0 xl:order-2 lg:ml-4 xl:ml-6">
+        <div class="flex items-center pb-8 xl:pb-0 xl:order-2 lg:ml-4 xl:ml-6 hidden">
           <img src="/insta.png" />
           <img src="/twitter.png" />
           <img src="/linked.png" />
@@ -134,7 +134,7 @@
             xl:order-1
           "
         >
-          <a href="/" class="my-2 xl:border-r pr-2">contact us</a>
+          <a href="mailto:estanley@m2n.us" class="my-2 xl:border-r pr-2">contact us</a>
           <a href="/terms-of-use" class="my-2 xl:border-r px-2"
             >Terms & Conditions</a
           >
