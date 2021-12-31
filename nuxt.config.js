@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   server: {
-    host: "0.0.0.0"
+    host: "0.0.0.0",
   },
   // serverMiddleware: [
   //   { path: "/server-middleware", handler: "~/server-middleware/rest.js" },
@@ -12,17 +12,17 @@ export default {
   head: {
     title: "m2n",
     htmlAttrs: {
-      lang: "en"
+      lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" }
+      { hid: "description", name: "description", content: "" },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "https://use.typekit.net/izu0ugl.css"}
-    ]
+      { rel: "stylesheet", href: "https://use.typekit.net/izu0ugl.css" },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -32,7 +32,7 @@ export default {
   plugins: [
     {
       src: "~/plugins/slider.js",
-      mode: "client"
+      mode: "client",
     },
   ],
 
@@ -44,14 +44,14 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
-    "~/modules/class-purge.js"
+    "~/modules/class-purge.js",
   ],
   googleFonts: {
     families: {
       Nunito: true,
       Roboto: true,
-      "Open Sans": true
-    }
+      "Open Sans": true,
+    },
   },
 
   // modules: https://go.nuxtjs.dev/config-modules
@@ -67,8 +67,8 @@ export default {
       target: "https://m2n.nfshost.com/",
       changeOrigin: true,
       pathRewrite: {
-        "^/api/":"/wp-json/"
-      }
+        "^/api/": "/wp-json/",
+      },
     },
     // "/oauth": {
     //   target: "http://m2n.nfshost.com/",
@@ -80,9 +80,12 @@ export default {
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    proxy: true
+    proxy: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+  purgeCSS: {
+    paths: ["components/**/*.vue", "layouts/**/*.vue", "pages/**/*.vue"],
+  },
 };
