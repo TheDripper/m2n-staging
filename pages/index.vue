@@ -42,7 +42,11 @@
             professionals raising their hands to say...
             <span class="font-bold">HERE WE ARE.</span>
           </p>
-          <form id="splashform" class="flex flex-col w-full lg:w-1/2">
+          <form
+            id="splashform"
+            class="flex flex-col w-full lg:w-1/2"
+            @submit="send($event)"
+          >
             <input
               type="text"
               name="First Name"
@@ -64,7 +68,9 @@
               @click="clear($event)"
               data-clicked="false"
             />
-            <button id="submit" class="mt-6" @click="send">SIGN UP</button>
+            <button id="submit" class="mt-6" @click="send($event)">
+              SIGN UP
+            </button>
           </form>
         </div>
         <div class="confirm flex flex-col items-center justify-center" v-else>
@@ -77,10 +83,11 @@
             workforce. We will send your invitation to join MPOWER as we
             approach our launch date in early 2022.
           </p>
-          <p class="text-center text-white">
+          <p class="text-center text-white mb-4">
             If you have family, friends or colleagues that you’d like to invite
             to MPower, please share via this link.
           </p>
+          <p class="copy font-bold cursor-pointer" @click="copy($event)">COPY LINK</p>
         </div>
       </div>
     </div>
@@ -151,6 +158,17 @@ export default {
     };
   },
   methods: {
+    copy($event) {
+      console.log('copy');
+      var dummy = document.createElement("input"),
+        text = window.location.href;
+      document.body.appendChild(dummy);
+      dummy.value = text;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      $($event.target).text('Copied!');
+    },
     clear(event) {
       let clicked = event.target.dataset.clicked;
       console.log(clicked);
@@ -159,7 +177,8 @@ export default {
         event.target.dataset.clicked = "true";
       }
     },
-    async send() {
+    async send($event) {
+      $event.preventDefault();
       console.log("send");
       let form = document.getElementById("splashform");
       let formData = new FormData(form);
@@ -181,6 +200,7 @@ export default {
       );
       console.log("contact", posted);
       this.notSent = false;
+      return false;
     },
   },
   created() {},
@@ -221,6 +241,10 @@ export default {
 };
 </script>
 <style lang="scss">
+.copy {
+  color: #716960;
+  letter-spacing: 1px;
+}
 .trans {
   @screen xl {
     @apply fixed w-full;
