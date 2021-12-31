@@ -19,41 +19,69 @@
         splash
       "
     >
-      <div class="lg:max-w-lg xl:max-w-4xl flex flex-col items-center justify-start lg:justify-center trans">
+      <div
+        class="
+          lg:max-w-lg
+          xl:max-w-4xl
+          flex flex-col
+          items-center
+          justify-start
+          lg:justify-center
+          trans
+        "
+      >
         <img src="/m2n-logo.svg" id="logo" class="mb-4" />
-        <h1 class="uppercase font-bold text-white mb-4 xl:px-2">
-          revolutionizing how we approach Diversity & inclusion in the workplace
-        </h1>
-        <p class="text-white mb-12 text-center xl:w-5/6 px-10">
-          Get on the list for your invitation to Join
-          <span class="font-bold">MPOWER</span>, a community of diverse
-          professionals raising their hands to say...
-          <span class="font-bold">HERE WE ARE.</span>
-        </p>
-        <form id="splashform" class="flex flex-col w-full lg:w-1/2">
-          <input
-            type="text"
-            name="First Name"
-            value="FIRST NAME"
-            @click="clear($event)"
-            data-clicked="false"
-          />
-          <input
-            type="text"
-            name="Last Name"
-            value="LAST NAME"
-            @click="clear($event)"
-            data-clicked="false"
-          />
-          <input
-            type="email"
-            name="Email"
-            value="EMAIL"
-            @click="clear($event)"
-            data-clicked="false"
-          />
-          <button id="submit" class="mt-6" @click="send">SIGN UP</button>
-        </form>
+        <div v-if="notSent">
+          <h1 class="uppercase font-bold text-white mb-4 xl:px-2">
+            revolutionizing how we approach Diversity & inclusion in the
+            workplace
+          </h1>
+          <p class="text-white mb-12 text-center xl:w-5/6 px-10">
+            Get on the list for your invitation to Join
+            <span class="font-bold">MPOWER</span>, a community of diverse
+            professionals raising their hands to say...
+            <span class="font-bold">HERE WE ARE.</span>
+          </p>
+          <form id="splashform" class="flex flex-col w-full lg:w-1/2">
+            <input
+              type="text"
+              name="First Name"
+              value="FIRST NAME"
+              @click="clear($event)"
+              data-clicked="false"
+            />
+            <input
+              type="text"
+              name="Last Name"
+              value="LAST NAME"
+              @click="clear($event)"
+              data-clicked="false"
+            />
+            <input
+              type="email"
+              name="Email"
+              value="EMAIL"
+              @click="clear($event)"
+              data-clicked="false"
+            />
+            <button id="submit" class="mt-6" @click="send">SIGN UP</button>
+          </form>
+        </div>
+        <div class="confirm flex flex-col items-center justify-center" v-else>
+          <h1 class="text-white text-4xl uppercase font-bold mb-4">
+            Thank you for signing up!
+          </h1>
+          <p class="text-center text-white mb-4">
+            Thank you for your interest in being one of the first to experience
+            a revolutionary approach to diversity and inclusion in the
+            workforce. We will send your invitation to join MPOWER as we
+            approach our launch date in early 2022.
+          </p>
+          <p class="text-center text-white">
+            If you have family, friends or colleagues that you’d like to invite
+            to MPower, please share via this link.
+          </p>
+        </div>
       </div>
     </div>
     <div
@@ -117,6 +145,11 @@
 import { mapActions } from "vuex";
 import $ from "jquery";
 export default {
+  data() {
+    return {
+      notSent: true,
+    };
+  },
   methods: {
     clear(event) {
       let clicked = event.target.dataset.clicked;
@@ -147,6 +180,7 @@ export default {
         formData
       );
       console.log("contact", posted);
+      this.notSent = false;
     },
   },
   created() {},
