@@ -1,11 +1,17 @@
 <template>
   <div>
-        <Nuxt />
+    <Nuxt />
+    <script
+      type="text/javascript"
+      id="hs-script-loader"
+      async
+      defer
+      src="//js.hs-scripts.com/20008151.js"
+    ></script>
   </div>
 </template>
 
 <style lang="scss">
-
 html {
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -60,10 +66,8 @@ export default {
     loggedin() {
       return this.$store.state.loggedin;
     },
-    username(){
-
-    }
-  }
-}
+    username() {},
+  },
+};
 </script>
 
