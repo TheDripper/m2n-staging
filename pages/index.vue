@@ -134,7 +134,7 @@
             xl:order-1
           "
         >
-          <a href="mailto:estanley@m2n.us" class="my-2 xl:border-r pr-2">contact us</a>
+          <a href="mailto:info@m2n.us" class="my-2 xl:border-r pr-2">contact us</a>
           <a href="/terms-of-use" class="my-2 xl:border-r px-2"
             >Terms & Conditions</a
           >
