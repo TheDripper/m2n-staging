@@ -166,11 +166,18 @@ export default {
 .wp-block-button {
   letter-spacing: 1px;
   height: 44px;
-  @apply font-bold;
+  .wp-block-button__link {
+    @apply text-white rounded-full;
+  }
   &.slate {
     .wp-block-button__link {
       background: #728694;
-      @apply text-white rounded-full;
+    }
+  }
+  &.hollow {
+    .wp-block-button__link {
+      background: none;
+      border: 2px solid white;
     }
   }
 }
