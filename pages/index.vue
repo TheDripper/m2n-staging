@@ -1,10 +1,10 @@
 <template>
   <div
     id="root"
-    class="h-screen w-screen bg-back-grey flex flex-col lg:justify-between"
+    class="bg-back-grey"
   >
     <div :class="classes"></div>
-    <div class="w-full fixed" v-html="page"></div>
+    <div class="w-full" v-html="page"></div>
   </div>
 </template>
 
