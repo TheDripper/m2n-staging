@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/terms-of-use", {data:[{}],fetch:{},mutations:[]});

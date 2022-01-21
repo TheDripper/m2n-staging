@@ -5,146 +5,6 @@
   >
     <div :class="classes"></div>
     <div class="w-full fixed" v-html="page"></div>
-    <div
-      class="
-        flex flex-col
-        items-center
-        justify-start
-        p-8
-        xl:pb-0
-        lg:justify-center
-        w-screen
-        z-20
-        relative
-        splash
-      "
-    >
-      <div
-        class="
-          lg:max-w-lg
-          xl:max-w-4xl
-          flex flex-col
-          items-center
-          justify-start
-          lg:justify-center
-          trans
-        "
-      >
-        <img src="/m2n-logo.svg" id="logo" class="mb-4" />
-        <div v-if="notSent" class="flex flex-col items-center justify-center">
-          <h1 class="uppercase font-bold text-white mb-4 xl:px-2">
-            revolutionizing how we approach Diversity & inclusion in the
-            workplace
-          </h1>
-          <p class="text-white mb-12 text-center xl:w-5/6 px-10">
-            Get on the list for your invitation to Join
-            <span class="font-bold">MPOWER</span>, a community of diverse
-            professionals raising their hands to say...
-            <span class="font-bold">HERE WE ARE.</span>
-          </p>
-          <form
-            id="splashform"
-            class="flex flex-col w-full lg:w-1/2"
-            @submit="send($event)"
-          >
-            <input
-              type="text"
-              name="First Name"
-              value="FIRST NAME"
-              @click="clear($event)"
-              data-clicked="false"
-            />
-            <input
-              type="text"
-              name="Last Name"
-              value="LAST NAME"
-              @click="clear($event)"
-              data-clicked="false"
-            />
-            <input
-              type="email"
-              name="Email"
-              value="EMAIL"
-              @click="clear($event)"
-              data-clicked="false"
-            />
-            <button id="submit" class="mt-6" @click="send($event)">
-              SIGN UP
-            </button>
-          </form>
-        </div>
-        <div class="confirm flex flex-col items-center justify-center" v-else>
-          <h1 class="text-white uppercase font-bold mb-4">
-            Thank you for signing up!
-          </h1>
-          <p class="text-center text-white mb-4">
-            Thank you for your interest in being one of the first to experience
-            a revolutionary approach to diversity and inclusion in the
-            workforce. We will send your invitation to join MPOWER as we
-            approach our launch date in early 2022.
-          </p>
-          <p class="text-center text-white mb-4">
-            If you have family, friends or colleagues that you’d like to invite
-            to MPower, please share via this link.
-          </p>
-          <p class="copy font-bold cursor-pointer" @click="copy($event)">COPY LINK</p>
-        </div>
-      </div>
-    </div>
-    <div
-      id="footer"
-      class="
-        uppercase
-        p-4
-        z-20
-        relative
-        bottom-0
-        left-0
-        w-full
-        flex flex-col
-        xl:flex-row
-        items-center
-        justify-between
-      "
-    >
-      <div
-        class="
-          flex flex-col
-          xl:flex-row
-          items-center
-          justify-center
-          icons
-          xl:order-2
-        "
-      >
-        <div class="flex items-center pb-8 xl:pb-0 xl:order-2 lg:ml-4 xl:ml-6 hidden">
-          <img src="/insta.png" />
-          <img src="/twitter.png" />
-          <img src="/linked.png" />
-        </div>
-        <div
-          class="
-            flex flex-col
-            xl:flex-row xl:order-1
-            items-center
-            justify-center
-            mb-8
-            xl:mb-0
-            text-xs
-            xl:order-1
-          "
-        >
-          <a href="mailto:info@m2n.us" class="my-2 xl:border-r pr-2">contact us</a>
-          <a href="/terms-of-use" class="my-2 xl:border-r px-2"
-            >Terms & Conditions</a
-          >
-          <a href="/privacy-policy" class="my-2 xl:pl-2">Privacy Policy</a>
-        </div>
-      </div>
-      <p class="text-center text-xs mb-6 xl:mb-0">
-        ©2021 M2N | Minority Moves Network Inc. • All rights reserved.
-      </p>
-    </div>
   </div>
 </template>
 
@@ -159,7 +19,7 @@ export default {
   },
   methods: {
     copy($event) {
-      console.log('copy');
+      console.log("copy");
       var dummy = document.createElement("input"),
         text = window.location.href;
       document.body.appendChild(dummy);
@@ -167,7 +27,7 @@ export default {
       dummy.select();
       document.execCommand("copy");
       document.body.removeChild(dummy);
-      $($event.target).text('Copied!');
+      $($event.target).text("Copied!");
     },
     clear(event) {
       let clicked = event.target.dataset.clicked;
@@ -303,9 +163,16 @@ export default {
     color: white;
   }
 }
-button {
+.wp-block-button {
   letter-spacing: 1px;
+  height: 44px;
   @apply font-bold;
+  &.slate {
+    .wp-block-button__link {
+      background: #728694;
+      @apply text-white rounded-full;
+    }
+  }
 }
 .mobile {
   width: 320px;

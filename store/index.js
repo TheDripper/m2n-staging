@@ -169,9 +169,9 @@ export const actions = {
     slugs["authors"] = authors;
     commit("pages", slugs);
 
-    // const home = await wp.pages().id(5).get();
-    let home = slugs.home;
-    commit("home", home);
+    const home = await wp.pages().id(38).get();
+    // let home = slugs.home;
+    commit("home", home.content.rendered);
     let subscribe = "";
     commit("subscribe", subscribe);
     // const header = await wp.pages().id(1015).get();
