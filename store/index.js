@@ -3,6 +3,8 @@ import wpapi from "wpapi";
 import { decode } from "html-entities";
 import $ from "cheerio";
 export const state = () => ({
+  news: null,
+  featNews: [],
   header: null,
   footer: null,
   myPosts: [],
@@ -25,6 +27,12 @@ export const state = () => ({
 });
 
 export const mutations = {
+  news(state, news) {
+    state.news = news;
+  },
+  featNews(state, featNews) {
+    state.featNews = featNews;
+  },
   header(state, header) {
     state.header = header;
   },
@@ -144,9 +152,9 @@ export const actions = {
         featSrc = featSrc.guid;
         slugs[slugfix] = { content: page.content.rendered, media: featSrc };
       } else {
-        slugs[slugfix] = {content: page.content.rendered, media: '' };
+        slugs[slugfix] = { content: page.content.rendered, media: "" };
       }
-      console.log('page content',page.content);
+      // console.log("page content", page.content);
       var jstr = $("<div/>").html(page.content.rendered).text();
       if (IsJsonString(page.content.rendered)) {
         var obj = JSON.parse(jstr);
@@ -170,6 +178,34 @@ export const actions = {
     commit("pages", slugs);
 
     const home = await wp.pages().id(38).get();
+    const news = await wp.posts().perPage(100).get();
+    let newsSearch = [];
+    let featNews = [];
+    for (let post of news) {
+      var jstr = $("<div/>").html(post.content.rendered).text();
+      let slugfix = post.slug.replace("-", "");
+      console.log("newspost", post);
+      if (IsJsonString(post.content.rendered)) {
+        var obj = JSON.parse(jstr);
+        let slugLink = "/posts/" + post.slug;
+        obj.link = slugLink;
+        newsSearch.push(obj);
+        if (post.categories.includes(227)) {
+          featNews.push(obj);
+        }
+        slugs[slugfix] = obj;
+        if (post.author !== 1) {
+          authors[post.author] = slugfix;
+        }
+      } else {
+        slugs[slugfix] = jstr;
+      }
+      let slugLink = "/posts/" + post.slug;
+      urls.push({ link: slugLink, title: post.title.rendered });
+    }
+
+    commit("featNews", featNews);
+    commit("news", newsSearch);
     // let home = slugs.home;
     commit("home", home.content.rendered);
     let subscribe = "";
