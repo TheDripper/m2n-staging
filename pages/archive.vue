@@ -79,7 +79,7 @@ export default {
       return this.$store.state.facets;
     },
     search() {
-      return this.$store.state.news;
+      return this.$store.state.posts;
     },
     pages() {
       return this.$store.state.pages.urls;

@@ -78,7 +78,7 @@ export default {
     });
     let instance = this;
     $(".slider").each(function () {
-      instance.$slider($(this).find(".wp-block-group__inner-container"));
+      instance.$slider($(this));
     });
   },
   computed: {
