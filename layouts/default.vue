@@ -1,6 +1,8 @@
 <template>
   <div>
+    <div id="header" v-html="header"></div>
     <Nuxt />
+    <div id="footer" v-html="footer"></div>
     <script
       type="text/javascript"
       id="hs-script-loader"
@@ -12,52 +14,36 @@
 </template>
 
 <style lang="scss">
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+#header {
+  background: #181818;
+  @apply flex items-center justify-between p-6 w-full;
+  .nav {
+    figure {
+      @apply m-0;
+    }
+    .wp-block-group__inner-container {
+      @apply flex items-center justify-center;
+    }
+  }
+  ul {
+    @apply flex text-white list-none;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+    li {
+      @apply mx-6;
+    }
+  }
+  .user {
+    color: 99b4c7;
+    li {
+      @apply m-0;
+    }
+    li:first-child {
+      @apply border-r pr-2;
+    }
+    li:last-child {
+      @apply pl-2;
+    }
+  }
 }
 </style>
 <script>
@@ -65,6 +51,12 @@ export default {
   computed: {
     loggedin() {
       return this.$store.state.loggedin;
+    },
+    header() {
+      return this.$store.state.header;
+    },
+    footer() {
+      return this.$store.state.footer;
     },
     username() {},
   },

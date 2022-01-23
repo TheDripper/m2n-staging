@@ -210,12 +210,6 @@ export const actions = {
     commit("home", home.content.rendered);
     let subscribe = "";
     commit("subscribe", subscribe);
-    // const header = await wp.pages().id(1015).get();
-    // let header = slugs.header;
-    // commit("header", header);
-    // const footer = await wp.pages().id(1017).get();
-    // let footer = slugs.footer;
-    // commit("footer", footer);
     const users = await wp.users().perPage(100).get();
     let ids = [];
     for (let user of users) {
@@ -242,6 +236,10 @@ export const actions = {
     commit("restDash", restDash);
     const posts = await wp.posts().get();
     commit("posts", posts);
+    const header = await  wp.pages().id(96).get();
+    commit("header",header.content.rendered);
+    const footer = await wp.pages().id(99).get();
+    commit("footer", footer.content.rendered);
     // if (process.env.NODE_ENV == "development") {
     //   const posts = await this.$axios.$get("/wp-json/wp/v2/pages");
     //   commit("posts", posts);

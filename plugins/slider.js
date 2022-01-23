@@ -5,8 +5,24 @@ export default ({ app }, inject) => {
   function slickInit(slider) {
     console.log(slider);
     slider.slick({
-      prevArrow: '.left',
-      nextArrow: '.right',
+      prevArrow: ".left",
+      nextArrow: ".right",
+      mobileFirst: true,
+      slidesToShow: 1,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 3,
+          },
+        },
+        // {
+        //   breakpoint: 1440,
+        //   settings: {
+        //     slidesToShow: 3,
+        //   },
+        // },
+      ],
     });
   }
   inject("slider", slickInit);

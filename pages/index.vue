@@ -101,6 +101,16 @@ export default {
 };
 </script>
 <style lang="scss">
+.wp-block-latest-posts__list.slider {
+  @apply max-w-5xl overflow-hidden mx-auto p-0;
+  .slick-slide {
+    @apply mr-2;
+  }
+  li {
+    background: #272727;
+    @apply p-8 text-white;
+  }
+}
 .copy {
   color: #716960;
   letter-spacing: 1px;
