@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>image 1</title>
+<svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle</title>
     <defs>
-        <pattern id="pattern-1" width="2.4" height="2.5" x="-2.4" y="-2.5" patternUnits="userSpaceOnUse">
-            <use xlink:href="#image-2" transform="scale(0.1,0.1)"></use>
+        <pattern id="pattern-1" patternUnits="objectBoundingBox" x="0%" width="100%" height="100%">
+            <use xlink:href="#image-2"></use>
         </pattern>
-        <image id="image-2" width="24" height="25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAGKADAAQAAAABAAAAGQAAAADfVVwdAAACTElEQVRIDdWVK3PbQBDH5dfEz7HNzCJWQ7GWJSzQMLAfoZ8p0NAwrGEJM3SZysqs+jWe8au/v6pTTxdVSkFBbuZ0e/v4797u3snz3vuo5B1guVwOqtXqB2YzT+7yzufznvltOBxGruyVg81mc3e5XD65im/ZVyqV5263+2jrZhys1+t7hGMUI5zMj8fjd1v5b3S9Xr/GJsBmgM6i1+tNjW7qgLQEKE5QDDudzpR1b5TKVqWUsd9ut/c48QlsRrrmsqsaY8A/ij4cDrN/AVdKsf2yWq0C2QrDYMW0PskYARzlFUpyovQxvBbNGrZarTh9SVo8GuKq3+9HOFR6R9LTqP9e0u+rLsBghMEEjdSIFHhEHJ5OpxlFnUVR9EJgYYIiDNUiHmmKDMNeAW7Sfp/hCXzBfqopmtP6RC2ZZ4FrmxnuCTLC3W53B5Duwlc648kSLui4GxzcUtgb+JnWtPT+FNlmGppofebeAY/F4klGmsZGP28tS5Fu9I88Q/EkY6b5ztMrdKCuogZpcV0AyaTj8u19mYNQNVC+bSPR4klGmuauzN4XFrndbj9SRNXhFkC1awwGcABI/KRw619sQJcudADQngv20Gg0JoALMC0odPiWW59xQEcM3AiSm/1g32Q9ggW9n8GwHagjRnq4EtCMrwQwzDCdjWw5qRyknZcWmajiXNZqNaWj6diWbmXDG6Xn3jNYotPnWhsKGf8PaL+I08z1qIlfNgD0sQmSO5H/PzAg//WPZpwol0QzZl4ZXtHKCX4iD/NqV2T3PmS/AOV9IntEjhDpAAAAAElFTkSuQmCC"></image>
+        <image id="image-2" width="24" height="25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAGKADAAQAAAABAAAAGQAAAADfVVwdAAABzklEQVRIDe1UK0/DUBReuyY02dvhqJys2xw4cEgkP4HfNImcxIEDxxxysm7tHkmTvfi+ZOfm3rO7sWBAbMlyXt95n9tK5fz76wkEvy1gMpkkURRdbTabstlsjoIgKCXWdruNRXYSFEXRb7Va7wL0UTrPZrMHBEjEDl2J/yvlarXardfrA7GFwpCGYXg7nU7vbZ3mF4uFE5x2JIvhe4fg/eVyOZrP55fiZxKIEuAUSR4xgraAhBKDShORNYWtjbH1arVaLjaTAG1lbJUGtg/gE7uRxNSjupj00A9+OccDavYR2WAYOP8b0UFOkTTFbnLwrMpUJhhFiTPBaTMJOBIY4/V6nWOeznh2sqNTgUXMhBFqRtTpdHKcXKqDC/AUiuIKjTMJaEAHR09UO2sZVzTWOidBo9F4QxcvsmwN/kHOeCga4yQQ426hIp5EV6vVhw+4lwAdfPGefeBDOhQ0xg4/ffa9BFw2Fj2gk89B6zhOPKxnrRfZ+RaJkhSOMT4L16B9W2/zDM5ifLMXnEnAF4sruOBrhVPCk0UXsQA1ZYfADtmxttmyeWgAl3Dqwdhl9eBtnM1nXOihmdtA8t4o8q23wQjKR8RlHq3Y9jnz/2MC3yjixJyaQ5/nAAAAAElFTkSuQmCC"></image>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="image-1" fill="url(#pattern-1)" fill-rule="nonzero">
+        <g id="image-2-(1)" transform="translate(-2.000000, -4.000000)" fill="url(#pattern-1)" fill-rule="nonzero">
             <rect id="Rectangle" x="0" y="0" width="24" height="25"></rect>
         </g>
     </g>

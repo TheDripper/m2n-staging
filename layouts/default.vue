@@ -14,6 +14,38 @@
 </template>
 
 <style lang="scss">
+#footer {
+  .icons {
+    .wp-block-group__inner-container {
+      color: #716960;
+      @apply flex items-center;
+      figure {
+        width: 24px !important;
+        height: 34px !important;
+      }
+      img {
+        @apply mx-2;
+      }
+    }
+  }
+  .foot {
+    @apply flex flex-col;
+    figure {
+      @apply mb-6;
+    }
+  }
+  ul, p {
+    @apply text-white list-none p-0;
+    li {
+      @apply mb-6;
+    }
+  }
+  .terms {
+    @apply flex flex-col;
+  }
+  background: black;
+  @apply flex items-center justify-between p-6 w-full;
+}
 #header {
   background: #181818;
   @apply flex items-center justify-between p-6 w-full;
@@ -33,9 +65,9 @@
     }
   }
   .user {
-    color: 99b4c7;
     li {
       @apply m-0;
+      color: #99b4c7;
     }
     li:first-child {
       @apply border-r pr-2;

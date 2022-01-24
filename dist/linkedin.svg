@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>image 3</title>
+    <title>image 4</title>
     <defs>
-        <pattern id="pattern-1" width="2.4" height="2.5" x="-2.4" y="-2.5" patternUnits="userSpaceOnUse">
-            <use xlink:href="#image-2" transform="scale(0.1,0.1)"></use>
+        <pattern id="pattern-1" patternUnits="objectBoundingBox" x="0%" width="100%" height="100%">
+            <use xlink:href="#image-2"></use>
         </pattern>
         <image id="image-2" width="24" height="25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAZCAYAAAArK+5dAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAGKADAAQAAAABAAAAGQAAAADfVVwdAAABPElEQVRIDe1UO26DQBCFBcmRQMKcIO6SznTxDexb+FwufQR3cZfWXUqnczp3QEER8fMbi0GzkGCHyHIKRkL75vdmd3ZYwxjkQgfMpj8Mw4lt24+maX64rnts+n+rawUq8iWToMjqr0UUk9FKO5d6WZZPUu+DtQJZln1KkqYufddirUWUxHdA5L7vH64lultc6wRxHM+UUiPakZykpj1N0wfLsqYIG+OLkLP7biBsIpKCwDnruGSC51GV9jzPAwwEEdeC2ACbePU8b1cbAbRLlo4ujGIaOcfCvqA7ZJ3WXgXOiUq9YxDWwG+ks+BkL4xpbbVIOjvw3nGcTeU/JEkyLooiqPRnmdf3BNoTAvJIkkrct4Dk6MRDgc72kPPmLWqNKSZiix+mfip4iz/ZyU9PSvXXG4j74pxh/R8dOAHOkWLuNLDktAAAAABJRU5ErkJggg=="></image>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="image-3" fill="url(#pattern-1)" fill-rule="nonzero">
+        <g id="image-4" fill="url(#pattern-1)" fill-rule="nonzero">
             <rect id="Rectangle" x="0" y="0" width="24" height="25"></rect>
         </g>
     </g>
