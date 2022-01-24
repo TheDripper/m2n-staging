@@ -25,5 +25,15 @@ export default ({ app }, inject) => {
       ],
     });
   }
+  function reviewsInit(slider) {
+    console.log(slider);
+    slider.slick({
+      prevArrow: ".left",
+      nextArrow: ".right",
+      // mobileFirst: true,
+      slidesToShow: 1,
+    });
+  }
   inject("slider", slickInit);
+  inject("reviews", reviewsInit);
 };

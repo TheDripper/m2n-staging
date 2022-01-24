@@ -80,6 +80,9 @@ export default {
     $(".slider").each(function () {
       instance.$slider($(this));
     });
+    $(".reviews").each(function () {
+      instance.$reviews($(this).find('.wp-block-group__inner-container'));
+    });
   },
   computed: {
     pages() {
