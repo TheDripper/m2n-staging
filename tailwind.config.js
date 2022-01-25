@@ -61,7 +61,9 @@ module.exports = {
         grey: "#2B3034",
         "h5-grey": "#979797",
         green: "#13C9B1",
-        "body-grey": "#333333"
+        "body-grey": "#333333",
+        "sand": "#8F7F6D",
+        "slate": "#859DAD"
       },
       backgroundColor: (theme) => ({
         ...theme("colors"),
@@ -69,6 +71,7 @@ module.exports = {
         "quote-grey": "#f2f2f2",
         pink: "#ef4300",
         "back-grey": "#181818",
+        "black":"#000000"
       }),
       borderColor: (theme) => ({
         ...theme("colors"),

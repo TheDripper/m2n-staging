@@ -101,6 +101,39 @@ export default {
 };
 </script>
 <style lang="scss">
+.module {
+ h2 {
+   font-size: 24px;
+   @apply font-bold;
+   @screen xl {
+    font-size: 40px;
+   }
+ } 
+}
+.logobg {
+  width: 100vw;
+  min-height: 0 !important;
+  .wp-block-cover__image-background {
+    object-position: 50% 0% !important
+  }
+  // @screen md {
+  //   .wp-block-cover__image-background {
+  //   }
+  // }
+}
+.wp-block-column {
+  @apply p-8;
+}
+.flip {
+  @screen md {
+    .wp-block-column:first-child {
+      order: 2;
+    }
+    .wp-block-column:last-child {
+      order: 1;
+    }
+  }
+}
 .hero {
   min-height: 732px;
   .field {
@@ -110,7 +143,7 @@ export default {
     .leveling {
       @apply relative;
       &:after {
-        content: '';
+        content: "";
         width: 205px;
         height: 6px;
         background: #716960;
