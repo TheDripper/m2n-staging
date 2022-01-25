@@ -14,6 +14,9 @@
 </template>
 
 <style lang="scss">
+html, body {
+  overflow-x: hidden !important;
+}
 #footer {
   .icons {
     .wp-block-group__inner-container {
@@ -48,7 +51,13 @@
 }
 #header {
   background: #181818;
-  @apply flex items-center justify-between p-6 w-full;
+  @apply flex items-center justify-between p-6;
+  .burger {
+    @apply m-0;
+    @screen md {
+      @apply hidden;
+    }
+  }
   .nav {
     figure {
       @apply m-0;
@@ -58,8 +67,10 @@
     }
   }
   ul {
-    @apply flex text-white list-none;
-
+    @apply hidden flex text-white list-none;
+    @screen md {
+      @apply flex;
+    }
     li {
       @apply mx-6;
     }

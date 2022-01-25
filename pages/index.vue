@@ -101,6 +101,31 @@ export default {
 };
 </script>
 <style lang="scss">
+.hero {
+  min-height: 732px;
+  .field {
+    .wp-block-group__inner-container {
+      @apply flex flex-col items-center justify-center text-center;
+    }
+    .leveling {
+      @apply relative;
+      &:after {
+        content: '';
+        width: 205px;
+        height: 6px;
+        background: #716960;
+        @apply absolute;
+        bottom: 16px;
+        left: -10px;
+      }
+    }
+  }
+  h2 {
+    font-size: 42px;
+    letter-spacing: 0px;
+    @apply uppercase font-bold mr-2 text-center;
+  }
+}
 .slick-dots {
   display: flex;
   justify-content: center;
@@ -133,6 +158,7 @@ export default {
 }
 .reviews {
   .wp-block-cover {
+    min-height: 732px;
     display: flex !important;
     @apply items-center justify-center;
   }
@@ -221,6 +247,7 @@ export default {
   &.slate {
     .wp-block-button__link {
       background: #728694;
+      border: none;
     }
   }
   &.hollow {
@@ -238,7 +265,7 @@ export default {
   }
 }
 .full-screen {
-  @apply h-screen w-screen p-0;
+  @apply p-0;
   background: #181818;
   img {
     width: 100% !important;
@@ -368,15 +395,15 @@ ul {
     height: auto;
   }
 }
-#header {
-  position: absolute;
-  z-index: 99;
-  width: 100vw;
-  margin-bottom: 80px;
-  .logo {
-    width: 77px;
-  }
-}
+// #header {
+//   position: absolute;
+//   z-index: 99;
+//   width: 100vw;
+//   margin-bottom: 80px;
+//   .logo {
+//     width: 77px;
+//   }
+// }
 .slider {
   @apply relative;
   .prev {
