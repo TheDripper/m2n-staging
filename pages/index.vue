@@ -1,8 +1,5 @@
 <template>
-  <div
-    id="root"
-    class="bg-back-grey"
-  >
+  <div id="root" class="bg-back-grey">
     <div :class="classes"></div>
     <div class="w-full" v-html="page"></div>
   </div>
@@ -81,7 +78,7 @@ export default {
       instance.$slider($(this));
     });
     $(".reviews").each(function () {
-      instance.$reviews($(this).find('.wp-block-group__inner-container'));
+      instance.$reviews($(this).find(".wp-block-group__inner-container"));
     });
   },
   computed: {
@@ -104,6 +101,45 @@ export default {
 };
 </script>
 <style lang="scss">
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  @apply absolute pb-8;
+  left: 50%;
+  transform: translateY(-100%);
+  li {
+    @apply list-none;
+    button {
+      font-size: 0;
+      width: 8px;
+      height: 8px;
+      background: white;
+      opacity: 0.3;
+      @apply rounded-full mx-1;
+    }
+    &.slick-active {
+      button {
+        opacity: 1;
+      }
+    }
+  }
+}
+.slider-head {
+  @apply absolute z-10 border-b;
+  left: 50%;
+  transform: translate(-50%, 2rem);
+}
+.reviews {
+  .wp-block-cover {
+    display: flex !important;
+    @apply items-center justify-center;
+  }
+  p {
+    @apply relative text-white text-2xl font-bold;
+  }
+}
 .wp-block-latest-posts__list.slider {
   @apply max-w-5xl overflow-hidden mx-auto p-0;
   .slick-slide {

@@ -32,6 +32,7 @@ export default ({ app }, inject) => {
       nextArrow: ".right",
       // mobileFirst: true,
       slidesToShow: 1,
+      dots: true
     });
   }
   inject("slider", slickInit);
