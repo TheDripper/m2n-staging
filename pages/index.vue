@@ -102,19 +102,19 @@ export default {
 </script>
 <style lang="scss">
 .module {
- h2 {
-   font-size: 24px;
-   @apply font-bold;
-   @screen xl {
-    font-size: 40px;
-   }
- } 
+  h2 {
+    font-size: 24px;
+    @apply font-bold;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
 }
 .logobg {
   width: 100vw;
   min-height: 0 !important;
   .wp-block-cover__image-background {
-    object-position: 50% 0% !important
+    object-position: 50% 0% !important;
   }
   // @screen md {
   //   .wp-block-cover__image-background {
@@ -137,8 +137,12 @@ export default {
 .hero {
   min-height: 732px;
   .field {
+    @apply mb-14;
     .wp-block-group__inner-container {
       @apply flex flex-col items-center justify-center text-center;
+    }
+    .redrawing {
+      color: #716960;
     }
     .leveling {
       @apply relative;
@@ -150,6 +154,19 @@ export default {
         @apply absolute;
         bottom: 16px;
         left: -10px;
+      }
+    }
+    .oneline {
+      .wp-block-group__inner-container {
+        @screen md {
+          @apply flex flex-row;
+        }
+      }
+    }
+    .playing {
+      @apply uppercase max-w-xs;
+      @screen md {
+        @apply max-w-full;
       }
     }
   }
@@ -191,12 +208,31 @@ export default {
 }
 .reviews {
   .wp-block-cover {
-    min-height: 732px;
     display: flex !important;
+    min-height: 390px;
     @apply items-center justify-center;
+    @screen md {
+      min-height: 372px;
+    }
+    @screen xl {
+      min-height: 633px;
+    }
+  }
+  h4 {
+    font-size: 18px;
+    @screen xl {
+      font-size: 22px;
+    }
   }
   p {
-    @apply relative text-white text-2xl font-bold;
+    @apply relative text-white font-bold max-w-5xl mx-auto px-4;
+    font-size: 24px;
+    @screen md {
+      @apply px-0;
+    }
+    @screen xl {
+      font-size: 54px;
+    }
   }
 }
 .wp-block-latest-posts__list.slider {
@@ -271,11 +307,33 @@ export default {
     color: white;
   }
 }
+.no-md-break {
+  @screen md {
+    @apply flex-col;
+  }
+  .wp-block-column {
+    @apply m-0 p-0;
+    &:first-child {
+      @apply pb-5;
+    }
+  }
+  @screen xl {
+    @apply flex-row;
+    &:first-child {
+      @apply pb-0;
+    }
+  }
+}
 .wp-block-button {
   letter-spacing: 1px;
   height: 44px;
+  display: flex !important;
+  width: 255px;
+  @apply justify-center items-center;
   .wp-block-button__link {
-    @apply text-white rounded-full;
+    flex-shrink: 0;
+    max-width: none !important;
+    @apply text-white rounded-full w-full;
   }
   &.slate {
     .wp-block-button__link {
