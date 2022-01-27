@@ -9,6 +9,7 @@ export default ({ app }, inject) => {
       nextArrow: ".right",
       mobileFirst: true,
       slidesToShow: 1,
+      autoplay: true,
       responsive: [
         {
           breakpoint: 768,
