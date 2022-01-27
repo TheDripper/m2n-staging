@@ -110,9 +110,22 @@ export default {
     }
   }
 }
+.approach {
+  font-size: 40px;
+  color: #333333;
+  @screen md {
+    font-size: 50px;
+  }
+  @screen xl {
+    font-size: 90px;
+  }
+}
 .logobg {
   width: 100vw;
   min-height: 0 !important;
+  @screen xl {
+    min-height: 1024px !important;
+  }
   .wp-block-cover__image-background {
     object-position: 50% 0% !important;
   }
@@ -312,12 +325,6 @@ export default {
   p,
   a {
     letter-spacing: 1px;
-  }
-}
-.icons {
-  color: #716960;
-  img {
-    @apply mx-2;
   }
 }
 .splash {

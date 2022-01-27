@@ -2,7 +2,9 @@
   <div>
     <div id="header" v-html="header"></div>
     <Nuxt />
-    <div id="footer" v-html="footer"></div>
+    <div id="footer">
+      <div class="max-w-5xl w-full mx-auto flex justify-between items-between" v-html="footer"></div>
+    </div>
     <script
       type="text/javascript"
       id="hs-script-loader"
@@ -21,13 +23,10 @@ html, body {
   .icons {
     .wp-block-group__inner-container {
       color: #716960;
-      @apply flex items-center;
-      figure {
-        width: 24px !important;
-        height: 34px !important;
-      }
+      @apply w-full flex justify-end items-center;
       img {
-        @apply mx-2;
+        width: 20px;
+        @apply ml-4;
       }
     }
   }
@@ -40,11 +39,27 @@ html, body {
   ul, p {
     @apply text-white list-none p-0;
     li {
-      @apply mb-6;
+      @apply mt-6;
     }
   }
   .terms {
     @apply flex flex-col;
+    ul {
+      @apply flex justify-end;
+      li {
+        &:first-child {
+        @apply pr-2 border-r;
+        } 
+        &:last-child {
+        @apply pl-2;
+        } 
+      }
+    }
+    li, p {
+      @apply text-right mb-2;
+      font-size: 11px;
+      color: #797979;
+    }
   }
   background: black;
   @apply flex items-center justify-between p-6 w-full;
