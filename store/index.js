@@ -14,6 +14,7 @@ export const state = () => ({
   users: [],
   loggedin: 0,
   home: null,
+  howitworks: null,
   subscribe: null,
   whatWeveDone: null,
   whoWeAre: null,
@@ -65,6 +66,9 @@ export const mutations = {
   },
   home(state, home) {
     state.home = home;
+  },
+  howitworks(state, howitworks) {
+    state.howitworks = howitworks;
   },
   restLog(state, restLog) {
     state.restLog = restLog;
@@ -123,7 +127,6 @@ export const actions = {
     commit("myPage", myPage);
   },
   async nuxtServerInit({ commit }) {
-    console.log("init");
     function IsJsonString(str) {
       try {
         JSON.parse(str);
@@ -132,7 +135,6 @@ export const actions = {
       }
       return true;
     }
-    console.log("wp");
     let wp = new wpapi({
       endpoint: "https://m2n.nfshost.com/wp-json/",
       username: "tylerhillwebdev@gmail.com",
@@ -141,30 +143,31 @@ export const actions = {
     });
 
     const pages = await wp.pages().perPage(100).get();
+    // console.log('pages',pages);
     let slugs = {};
     let urls = [];
     let authors = {};
     for (let page of pages) {
       let slugfix = page.slug.replace(/-/g, "");
-      let feat = page.featured_media;
-      if (feat) {
-        let featSrc = await wp.media().id(feat).get();
-        featSrc = featSrc.guid;
-        slugs[slugfix] = { content: page.content.rendered, media: featSrc };
-      } else {
-        slugs[slugfix] = { content: page.content.rendered, media: "" };
-      }
-      // console.log("page content", page.content);
-      var jstr = $("<div/>").html(page.content.rendered).text();
-      if (IsJsonString(page.content.rendered)) {
-        var obj = JSON.parse(jstr);
-        slugs[slugfix] = obj;
-        if (page.author !== 1) {
-          authors[page.author] = slugfix;
-        }
-      } else {
-        slugs[slugfix] = page.content.rendered;
-      }
+      // let feat = page.featured_media;
+      // if (feat) {
+      //   let featSrc = await wp.media().id(feat).get();
+      //   featSrc = featSrc.guid;
+      //   slugs[slugfix] = { content: page.content.rendered, media: featSrc };
+      // } else {
+      //   slugs[slugfix] = { content: page.content.rendered, media: "" };
+      // }
+      // var jstr = $("<div/>").html(page.content.rendered).text();
+      // if (IsJsonString(page.content.rendered)) {
+      //   var obj = JSON.parse(jstr);
+      //   slugs[slugfix] = obj;
+      //   if (page.author !== 1) {
+      //     authors[page.author] = slugfix;
+      //   }
+      // } else {
+      //   slugs[slugfix] = page.content.rendered;
+      // }
+      slugs[slugfix] = page.content.rendered;
       if (page.author !== 1) {
         let slugLink = "/spots/" + page.slug;
         urls.push({ link: slugLink, title: page.title.rendered });
@@ -175,69 +178,71 @@ export const actions = {
     }
     slugs["urls"] = urls;
     slugs["authors"] = authors;
+    console.log("slugs", slugs);
     commit("pages", slugs);
 
     const home = await wp.pages().id(38).get();
-    const news = await wp.posts().perPage(100).get();
-    let newsSearch = [];
-    let featNews = [];
-    for (let post of news) {
-      var jstr = $("<div/>").html(post.content.rendered).text();
-      let slugfix = post.slug.replace("-", "");
-      console.log("newspost", post);
-      if (IsJsonString(post.content.rendered)) {
-        var obj = JSON.parse(jstr);
-        let slugLink = "/posts/" + post.slug;
-        obj.link = slugLink;
-        newsSearch.push(obj);
-        if (post.categories.includes(227)) {
-          featNews.push(obj);
-        }
-        slugs[slugfix] = obj;
-        if (post.author !== 1) {
-          authors[post.author] = slugfix;
-        }
-      } else {
-        slugs[slugfix] = jstr;
-      }
-      let slugLink = "/posts/" + post.slug;
-      urls.push({ link: slugLink, title: post.title.rendered });
-    }
+    const howitworks = await wp.pages().id(286).get();
+    // const news = await wp.posts().perPage(100).get();
+    // let newsSearch = [];
+    // let featNews = [];
+    // for (let post of news) {
+    //   var jstr = $("<div/>").html(post.content.rendered).text();
+    //   let slugfix = post.slug.replace("-", "");
+    //   if (IsJsonString(post.content.rendered)) {
+    //     var obj = JSON.parse(jstr);
+    //     let slugLink = "/posts/" + post.slug;
+    //     obj.link = slugLink;
+    //     newsSearch.push(obj);
+    //     if (post.categories.includes(227)) {
+    //       featNews.push(obj);
+    //     }
+    //     slugs[slugfix] = obj;
+    //     if (post.author !== 1) {
+    //       authors[post.author] = slugfix;
+    //     }
+    //   } else {
+    //     slugs[slugfix] = jstr;
+    //   }
+    //   let slugLink = "/posts/" + post.slug;
+    //   urls.push({ link: slugLink, title: post.title.rendered });
+    // }
 
-    commit("featNews", featNews);
-    commit("news", newsSearch);
+    // commit("featNews", featNews);
+    // commit("news", newsSearch);
     // let home = slugs.home;
     commit("home", home.content.rendered);
-    let subscribe = "";
-    commit("subscribe", subscribe);
-    const users = await wp.users().perPage(100).get();
-    let ids = [];
-    for (let user of users) {
-      ids.push({
-        id: user.id,
-        username: user.name,
-      });
-    }
-    commit("users", ids);
+    commit("howitworks", howitworks.content.rendered);
+    // let subscribe = "";
+    // commit("subscribe", subscribe);
+    // const users = await wp.users().perPage(100).get();
+    // let ids = [];
+    // for (let user of users) {
+    //   ids.push({
+    //     id: user.id,
+    //     username: user.name,
+    //   });
+    // }
+    // commit("users", ids);
     // const restLog = await this.$axios.$get(
     //   "https://m2n.nfshost.com/wp-json/wp/v2/pages/405"
     // );
     // commit("restLog", restLog);
     // const restReg = await wp.pages().id(244).get();
-    let restReg = "";
-    commit("restReg", restReg);
-    const restCreate = slugs.restaurantcreated;
-    commit("restCreate", restCreate);
+    // let restReg = "";
+    // commit("restReg", restReg);
+    // const restCreate = slugs.restaurantcreated;
+    // commit("restCreate", restCreate);
     // const restSubmit = await wp.pages().id(461).get();
-    let restSubmit = "";
-    commit("restSubmit", restSubmit);
+    // let restSubmit = "";
+    // commit("restSubmit", restSubmit);
     // const restDash = await wp.pages().id(546).get();
-    let restDash = "";
-    commit("restDash", restDash);
-    const posts = await wp.posts().get();
-    commit("posts", posts);
-    const header = await  wp.pages().id(96).get();
-    commit("header",header.content.rendered);
+    // let restDash = "";
+    // commit("restDash", restDash);
+    // const posts = await wp.posts().get();
+    // commit("posts", posts);
+    const header = await wp.pages().id(96).get();
+    commit("header", header.content.rendered);
     const footer = await wp.pages().id(99).get();
     commit("footer", footer.content.rendered);
     // if (process.env.NODE_ENV == "development") {
