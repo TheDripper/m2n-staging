@@ -18,14 +18,12 @@ export default {
   methods: {
     clear(event) {
       let clicked = event.target.dataset.clicked;
-      console.log(clicked);
       if (clicked == "false") {
         event.target.value = "";
         event.target.dataset.clicked = "true";
       }
     },
     async send() {
-      console.log("send");
       let form = document.getElementById("splashform");
       let formData = new FormData(form);
       let contact = {
@@ -44,7 +42,6 @@ export default {
         "https://forms.hubspot.com/uploads/form/v2/20008151/f379a28f-402a-46d3-b660-e86a8d1e19cb",
         formData
       );
-      console.log("contact", posted);
     },
   },
   created() {},
@@ -52,10 +49,22 @@ export default {
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
+    $(window).on('scroll',function(e){
+	    let hero = $('.hero').outerHeight();
+	    let header = $('#header').outerHeight();
+	    let height = hero + header;
+	    console.log('height',height);
+	    let scrolly = $(document).scrollTop();
+	    console.log("scroll",scrolly);
+	    if(scrolly > height) {
+		    $('.scroller').addClass('scrolling');
+	    } else {
+		    $('.scroller').removeClass('scrolling');
+	    }
+    });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
       const hash = $(this).attr("href");
-      console.log(hash);
       // const headerHeight = $header.outerHeight() + 500;
       const offset = $(hash).offset().top;
       $("html,body").animate({ scrollTop: offset }, 500);
