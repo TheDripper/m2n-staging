@@ -2,9 +2,9 @@
   <div id="root" class="testtttt">
     <div :class="classes"></div>
     <div class="flex bg-back-grey">
-      <div id="page" class="w-full p-8 text-white">
+      <div id="page" class="w-full text-white">
         <div class="frame">
-          <div id="content" v-html="page" class="max-w-5xl mx-auto"></div>
+          <div id="content" v-html="page" class=""></div>
         </div>
       </div>
     </div>
@@ -85,3 +85,48 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.hero {
+  h1 {
+    font-size: 52px;
+    @apply uppercase mb-4;
+    line-height: 1;
+  }
+  p {
+    @apply mb-12;
+  }
+  .wp-block-button__link {
+    background: #728694;
+    @apply rounded-full;
+    width: 250px;
+  }
+}
+.wp-block-columns {
+  @apply pt-48 px-0 max-w-5xl mx-auto;
+  h4 {
+    @apply text-sand font-bold uppercase mb-4;
+    font-size: 14px;
+    @screen xl {
+      font-size: 18px;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    @apply uppercase font-light mb-4;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
+  p {
+	  @apply mb-6;
+  }
+  .wp-block-column {
+    &:first-child {
+      @apply flex flex-col items-start justify-center;
+    }
+    &:last-child {
+      @apply flex items-center justify-center;
+    }
+  }
+}
+</style>
