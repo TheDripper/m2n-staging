@@ -95,10 +95,24 @@ export default {
 };
 </script>
 <style lang="scss">
+.logobg {
+  width: 100vw;
+  min-height: 0 !important;
+  @screen xl {
+    min-height: 1024px !important;
+  }
+  .wp-block-cover__image-background {
+    object-position: 50% 0% !important;
+  }
+  // @screen md {
+  //   .wp-block-cover__image-background {
+  //   }
+  // }
+}
 .grey-button {
-	.wp-block-button__link {
-		background: #4C4741;
-	}
+  .wp-block-button__link {
+    background: #4c4741;
+  }
 }
 .tri-top {
   @apply relative;
@@ -112,10 +126,10 @@ export default {
     font-size: 28px !important;
   }
   .wp-block-column {
-	  @apply flex flex-col items-center justify-start;
-	  p {
-		  @apply text-center;
-	  }
+    @apply flex flex-col items-center justify-start;
+    p {
+      @apply text-center;
+    }
   }
   &:after {
     content: "";
@@ -127,13 +141,13 @@ export default {
     @apply absolute bottom-0 left-0;
   }
   .wp-block-buttons {
-	  @apply flex items-center justify-center;
-	  .wp-block-button__link {
-		  background: none;
-		  border: 2px solid white;
-		  width: 250px;
-		  letter-spacing: 1px;
-	  }
+    @apply flex items-center justify-center;
+    .wp-block-button__link {
+      background: none;
+      border: 2px solid white;
+      width: 250px;
+      letter-spacing: 1px;
+    }
   }
 }
 .scrolling {
