@@ -49,18 +49,18 @@ export default {
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
-    $(window).on('scroll',function(e){
-	    let hero = $('.hero').outerHeight();
-	    let header = $('#header').outerHeight();
-	    let height = hero + header;
-	    console.log('height',height);
-	    let scrolly = $(document).scrollTop();
-	    console.log("scroll",scrolly);
-	    if(scrolly > height) {
-		    $('.scroller').addClass('scrolling');
-	    } else {
-		    $('.scroller').removeClass('scrolling');
-	    }
+    $(window).on("scroll", function (e) {
+      let hero = $(".hero").outerHeight();
+      let header = $("#header").outerHeight();
+      let height = hero + header + 192;
+      console.log("height", height);
+      let scrolly = $(document).scrollTop();
+      console.log("scroll", scrolly);
+      if (scrolly > height) {
+        $(".scroller").addClass("scrolling");
+      } else {
+        $(".scroller").removeClass("scrolling");
+      }
     });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
@@ -95,6 +95,38 @@ export default {
 };
 </script>
 <style lang="scss">
+.tri-top {
+  @apply relative;
+  min-height: 512px;
+  h2 {
+    @apply text-center font-thin uppercase;
+    font-size: 40px;
+  }
+  .wp-block-column {
+	  @apply flex flex-col items-center justify-center;
+  }
+  &:after {
+    content: "";
+    background: url("/tri-top.svg");
+    background-size: cover;
+    background-position: center bottom;
+    width: 100vw;
+    height: 512px;
+    @apply absolute bottom-0 left-0;
+  }
+  .wp-block-buttons {
+	  @apply flex items-center justify-center;
+	  .wp-block-button__link {
+		  background: none;
+		  border: 2px solid white;
+		  width: 250px;
+		  letter-spacing: 1px;
+	  }
+  }
+}
+.scrolling {
+  @apply fixed top-0;
+}
 .hero {
   h1 {
     font-size: 52px;
@@ -127,8 +159,10 @@ export default {
     }
   }
   p {
-	  @apply mb-6;
+    @apply mb-6;
   }
+}
+.text-img {
   .wp-block-column {
     &:first-child {
       @apply flex flex-col items-start justify-center;
