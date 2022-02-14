@@ -95,6 +95,38 @@ export default {
 };
 </script>
 <style lang="scss">
+.blue-hollow {
+	.wp-block-button__link {
+		background: none;
+		border: 2px solid #ADCCE0;
+		width: 250px;
+		letter-spacing: 1px;
+		color: #ADCCE0;
+	}
+}
+.behind {
+	min-height: 1024px;
+	h2 {
+		font-size: 40px;
+		@apply font-thin uppercase;
+	}
+	h4 {
+		@apply font-bold;
+	}
+	p {
+		@apply mb-6;
+	}
+	ul {
+		@apply list-disc pl-8 mb-8;
+	}
+}
+.story {
+	height: 750px;
+	h1 {
+		font-size: 52px;
+		@apply uppercase font-thin;
+	}
+}
 .logobg {
   width: 100vw;
   min-height: 0 !important;
