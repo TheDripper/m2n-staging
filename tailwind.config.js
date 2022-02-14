@@ -45,6 +45,8 @@ module.exports = {
         "sub-head": "30px",
         "blog-head": "64px",
         body: "18px",
+        "head-40": "40px",
+        "body-28": "28px"
       },
       // fontFamily: {
       //   // head: ["freight-big-pro"],

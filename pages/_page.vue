@@ -95,15 +95,27 @@ export default {
 };
 </script>
 <style lang="scss">
+.grey-button {
+	.wp-block-button__link {
+		background: #4C4741;
+	}
+}
 .tri-top {
   @apply relative;
-  min-height: 512px;
-  h2 {
+  min-height: 1013px;
+  h1 {
     @apply text-center font-thin uppercase;
     font-size: 40px;
   }
+  h2 {
+    @apply text-center font-thin;
+    font-size: 28px !important;
+  }
   .wp-block-column {
-	  @apply flex flex-col items-center justify-center;
+	  @apply flex flex-col items-center justify-start;
+	  p {
+		  @apply text-center;
+	  }
   }
   &:after {
     content: "";
@@ -153,7 +165,7 @@ export default {
   }
   h2 {
     font-size: 24px;
-    @apply uppercase font-light mb-4;
+    @apply font-light mb-4;
     @screen xl {
       font-size: 40px;
     }
