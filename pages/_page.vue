@@ -124,6 +124,9 @@ export default {
     color: #adcce0;
   }
 }
+.partner {
+  height: 750px;
+}
 .team {
   @apply py-32;
   h2 {
@@ -154,7 +157,7 @@ export default {
   }
 }
 .behind {
-  min-height: 1024px;
+  min-height: 439px;
   h2 {
     font-size: 40px;
     @apply font-thin uppercase;
