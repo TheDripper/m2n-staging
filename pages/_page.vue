@@ -95,37 +95,86 @@ export default {
 };
 </script>
 <style lang="scss">
+.wp-block-columns {
+  @apply pt-48 px-0 max-w-5xl mx-auto;
+  h4 {
+    @apply text-sand font-bold uppercase mb-4;
+    font-size: 14px;
+    @screen xl {
+      font-size: 18px;
+    }
+  }
+  h2 {
+    font-size: 24px;
+    @apply font-light mb-4;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
+  p {
+    @apply mb-6;
+  }
+}
 .blue-hollow {
-	.wp-block-button__link {
-		background: none;
-		border: 2px solid #ADCCE0;
-		width: 250px;
-		letter-spacing: 1px;
-		color: #ADCCE0;
-	}
+  .wp-block-button__link {
+    background: none;
+    border: 2px solid #adcce0;
+    width: 250px;
+    letter-spacing: 1px;
+    color: #adcce0;
+  }
+}
+.team {
+  @apply py-32;
+  h2 {
+    @apply uppercase font-thin mb-8;
+  }
+  h5 {
+    font-size: 24px;
+    @apply font-light mb-6;
+  }
+  h3 {
+    font-size: 18px;
+    @apply uppercase mb-2;
+  }
+  p {
+    font-size: 14px;
+  }
+  .wp-block-columns {
+    @apply p-0;
+  }
+}
+.mission {
+  h2 {
+    @apply text-head-40 uppercase font-thin mb-16;
+  }
+  p {
+    font-size: 22px;
+    @apply mb-6 font-light;
+  }
 }
 .behind {
-	min-height: 1024px;
-	h2 {
-		font-size: 40px;
-		@apply font-thin uppercase;
-	}
-	h4 {
-		@apply font-bold;
-	}
-	p {
-		@apply mb-6;
-	}
-	ul {
-		@apply list-disc pl-8 mb-8;
-	}
+  min-height: 1024px;
+  h2 {
+    font-size: 40px;
+    @apply font-thin uppercase;
+  }
+  h4 {
+    @apply font-bold;
+  }
+  p {
+    @apply mb-6;
+  }
+  ul {
+    @apply list-disc pl-8 mb-8;
+  }
 }
 .story {
-	height: 750px;
-	h1 {
-		font-size: 52px;
-		@apply uppercase font-thin;
-	}
+  height: 750px;
+  h1 {
+    font-size: 52px;
+    @apply uppercase font-thin;
+  }
 }
 .logobg {
   width: 100vw;
@@ -200,26 +249,7 @@ export default {
     width: 250px;
   }
 }
-.wp-block-columns {
-  @apply pt-48 px-0 max-w-5xl mx-auto;
-  h4 {
-    @apply text-sand font-bold uppercase mb-4;
-    font-size: 14px;
-    @screen xl {
-      font-size: 18px;
-    }
-  }
-  h2 {
-    font-size: 24px;
-    @apply font-light mb-4;
-    @screen xl {
-      font-size: 40px;
-    }
-  }
-  p {
-    @apply mb-6;
-  }
-}
+
 .text-img {
   .wp-block-column {
     &:first-child {
