@@ -95,6 +95,20 @@ export default {
 };
 </script>
 <style lang="scss">
+html, body {
+  font-family: "Roboto";
+}
+input,
+select,
+textarea {
+  background: none;
+  appearance: none;
+  border-bottom: 2px solid #57514A;
+  font-size: 14px;
+  color: #999999;
+  letter-spacing: 1px;
+  @apply p-4;
+}
 .wp-block-columns {
   @apply pt-48 px-0 max-w-5xl mx-auto;
   h4 {
