@@ -103,11 +103,29 @@ select,
 textarea {
   background: none;
   appearance: none;
-  border-bottom: 2px solid #57514A;
+  border: 2px solid #57514A;
   font-size: 14px;
   color: #999999;
   letter-spacing: 1px;
-  @apply p-4;
+  @apply p-4 mb-4;
+}
+select {
+  @apply uppercase;
+}
+textarea {
+  height: 244px;
+  background: rgba(24,24,24,0.7);
+  @apply mt-8;
+}
+form {
+  button {
+    background: #728694;
+    width: 250px;
+    letter-spacing: 1px;
+    height: 44px;
+    @apply flex items-center justify-center uppercase rounded-full mx-auto mt-16 mb-48;
+    font-size: 14px;
+  }
 }
 .wp-block-columns {
   @apply pt-48 px-0 max-w-5xl mx-auto;
