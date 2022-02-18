@@ -62,6 +62,10 @@ export default {
   },
   created() {},
   mounted() {
+    $('.down').on('click',function(e){
+      const offset = $('.community').offset().top;
+      $("html,body").animate({ scrollTop: offset }, 500);
+    });
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
@@ -101,6 +105,12 @@ export default {
 };
 </script>
 <style lang="scss">
+.down {
+  @apply absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translate(-50%);
+}
 .module {
   h2 {
     font-size: 24px;
@@ -165,7 +175,7 @@ export default {
         height: 6px;
         background: #716960;
         @apply absolute;
-        bottom: 16px;
+        bottom: 19px;
         left: -10px;
       }
     }
