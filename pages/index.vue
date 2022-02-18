@@ -437,7 +437,7 @@ h6,
 input,
 button {
   @apply leading-snug;
-  font-family: "Open Sans";
+  font-family: "Roboto";
 }
 h1 {
   @apply text-6xl font-bold;

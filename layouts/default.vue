@@ -72,19 +72,25 @@ body {
 }
 #header {
   background: #181818;
+  max-height: 80px;
+  height: 80px;
+  transition: all 0.2s ease;
   @apply flex flex-col items-start justify-between p-6;
   @screen md {
     @apply flex-row items-center;
   }
   .burger {
-    @apply hidden m-0;
+    @apply m-0 absolute;
+    cursor: pointer;
+    top: 32px;
+    right: 35px;
     @screen md {
       @apply hidden;
     }
   }
   .nav {
     figure {
-      @apply mb-8;
+      @apply m-0;
       @screen md {
         @apply m-0;
       }
@@ -97,9 +103,9 @@ body {
     }
   }
   ul {
-    @apply flex flex-col text-white list-none;
+    @apply flex flex-col text-white list-none hidden;
     @screen md {
-      @apply flex-row;
+      @apply flex flex-row;
     }
     li {
       font-size: 12px;
@@ -111,11 +117,12 @@ body {
     }
   }
   .user {
+    @apply p-0;
     li {
       @apply mb-8;
       color: #99b4c7;
       @screen md {
-        @apply mb-0;
+        @apply m-0;
       }
     }
     li:first-child {
@@ -129,10 +136,34 @@ body {
       }
     }
   }
+  &.open {
+    height: auto;
+    // max-height: 9999px;
+    .nav {
+      img {
+        @apply mb-8;
+      }
+    }
+    ul {
+      @apply flex;
+    }
+  }
 }
 </style>
 <script>
+
+import $ from "jquery";
 export default {
+  mounted() {
+    $('.burger').on('click',function(){
+      if($('#header').hasClass('open')) {
+        $('#header').css('maxHeight','80px');
+      } else {
+        $('#header').css('maxHeight','422px');
+      }
+      $('#header').toggleClass('open');
+    });
+  },
   computed: {
     loggedin() {
       return this.$store.state.loggedin;
