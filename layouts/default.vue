@@ -19,6 +19,10 @@
 </template>
 
 <style lang="scss">
+h2 {
+  font-weight: 500;
+  letter-spacing:0.5px;
+}
 html,
 body {
   overflow-x: hidden !important;

@@ -124,7 +124,6 @@ export default {
 .module {
   h2 {
     font-size: 24px;
-    @apply font-bold;
     @screen xl {
       font-size: 40px;
     }
@@ -240,6 +239,8 @@ export default {
   transform: translate(-50%, 2rem);
 }
 .reviews {
+  p {
+  }
   .wp-block-cover {
     display: flex !important;
     min-height: 390px;
@@ -258,8 +259,10 @@ export default {
     }
   }
   p {
-    @apply relative text-white font-bold max-w-5xl mx-auto px-4;
-    font-size: 24px;
+    @apply relative text-white font-medium max-w-5xl mx-auto px-4;
+    letter-spacing: 2%;
+    font-size: 32px;
+    line-height: 130%;
     @screen md {
       @apply px-0;
     }
@@ -268,10 +271,13 @@ export default {
     }
   }
 }
+.end {
+  padding-bottom: 99px;
+}
 .newsroom {
   @apply flex justify-center items-center pt-16;
   .wp-block-group__inner-container {
-    @apply flex;
+    @apply flex flex-col;
   }
   h2 {
     color: #333333;
