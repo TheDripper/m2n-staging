@@ -62,6 +62,10 @@ export default {
   },
   created() {},
   mounted() {
+    $(".to-top").on("click", function (e) {
+      // const offset = $(".community").offset().top;
+      $("html,body").animate({ scrollTop: 0 }, 500);
+    });
     $(".down").on("click", function (e) {
       const offset = $(".community").offset().top;
       $("html,body").animate({ scrollTop: offset }, 500);
@@ -295,9 +299,21 @@ export default {
   }
 }
 .load {
-  font-size: 14px;
-  color: #859dad;
-  @apply w-full flex justify-center bg-back-grey pt-6 pb-24 m-0;
+  .wp-block-group__inner-container {
+    @apply w-full;
+  }
+  h4 {
+    font-size: 14px;
+    color: #859dad;
+  }
+  @apply w-full flex justify-center bg-back-grey pt-6 pb-24 m-0 relative;
+}
+.to-top {
+  width: 40px;
+  height: 40px;
+  @apply absolute cursor-pointer;
+  right: 2rem;
+  bottom: 0;
 }
 .news-post {
   @apply max-w-6xl overflow-hidden mx-auto p-0 mb-0;
