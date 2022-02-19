@@ -109,6 +109,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.community {
+  @apply flex-col;
+}
 .blue-hollow {
   @apply flex justify-center items-center w-full;
   .wp-block-button__link {
