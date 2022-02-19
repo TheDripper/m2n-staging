@@ -4,7 +4,15 @@
     <Nuxt />
     <div id="footer">
       <div
-        class="max-w-5xl w-full mx-auto flex justify-between items-between"
+        class="
+          max-w-5xl
+          w-full
+          mx-auto
+          flex flex-col
+          md:flex-row
+          justify-between
+          items-between
+        "
         v-html="footer"
       ></div>
     </div>
@@ -21,7 +29,7 @@
 <style lang="scss">
 h2 {
   font-weight: 500;
-  letter-spacing:0.5px;
+  letter-spacing: 0.5px;
 }
 html,
 body {
@@ -39,9 +47,18 @@ body {
     }
   }
   .foot {
-    @apply flex flex-col;
+    @apply flex flex-col items-center justify-center;
     figure {
       @apply mb-6;
+      img {
+        @apply mx-auto;
+      }
+    }
+    li {
+      @apply text-center md:text-left;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #999999
     }
   }
   ul,
@@ -54,7 +71,7 @@ body {
   .terms {
     @apply flex flex-col;
     ul {
-      @apply flex justify-end;
+      @apply flex justify-center items-center mb-6;
       li {
         &:first-child {
           @apply pr-2 border-r;
@@ -66,7 +83,7 @@ body {
     }
     li,
     p {
-      @apply text-right mb-2;
+      @apply text-center md:text-right md:mb-2;
       font-size: 11px;
       color: #797979;
     }
@@ -155,17 +172,16 @@ body {
 }
 </style>
 <script>
-
 import $ from "jquery";
 export default {
   mounted() {
-    $('.burger').on('click',function(){
-      if($('#header').hasClass('open')) {
-        $('#header').css('maxHeight','80px');
+    $(".burger").on("click", function () {
+      if ($("#header").hasClass("open")) {
+        $("#header").css("maxHeight", "80px");
       } else {
-        $('#header').css('maxHeight','422px');
+        $("#header").css("maxHeight", "422px");
       }
-      $('#header').toggleClass('open');
+      $("#header").toggleClass("open");
     });
   },
   computed: {
