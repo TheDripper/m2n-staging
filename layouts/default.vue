@@ -58,7 +58,7 @@ body {
       @apply text-center md:text-left;
       font-size: 11px;
       letter-spacing: 1px;
-      color: #999999
+      color: #999999;
     }
   }
   ul,
@@ -97,63 +97,85 @@ body {
   height: 80px;
   transition: all 0.2s ease;
   @apply flex flex-col items-start justify-between p-6;
-  @screen md {
+  @screen lg {
     @apply flex-row items-center;
+    height: 60px;
   }
   .burger {
     @apply m-0 absolute;
     cursor: pointer;
     top: 32px;
     right: 35px;
-    @screen md {
+    @screen lg {
       @apply hidden;
     }
   }
   .nav {
     figure {
       @apply m-0;
-      @screen md {
-        @apply m-0;
+      @screen lg {
+        margin-right: 10px;
       }
     }
     .wp-block-group__inner-container {
       @apply flex flex-col items-start justify-start;
-      @screen md {
+      @screen lg {
         @apply flex-row items-center justify-center;
       }
     }
   }
   ul {
     @apply flex flex-col text-white list-none hidden;
-    @screen md {
+    @screen lg {
       @apply flex flex-row;
     }
     li {
       font-size: 12px;
       letter-spacing: 1px;
       @apply mb-8;
-      @screen md {
-        @apply mx-6 mb-0;
+      @screen lg {
+        margin: 0 10px;
       }
     }
   }
   .user {
-    @apply p-0;
+    @apply p-0 overflow-hidden;
+    width: 270px;
+    @screen lg {
+      @apply absolute;
+      top: 0;
+      right: 0;
+    }
     li {
       @apply mb-8;
       color: #99b4c7;
-      @screen md {
+      @screen lg {
         @apply m-0;
+        font-size: 12px;
+        letter-spacing: 1px;
       }
     }
     li:first-child {
-      @screen md {
-        @apply border-r pr-2;
+      @screen lg {
+        @apply pr-2 flex items-center justify-center text-white uppercase font-bold absolute;
+        right: 40px;
+        top: 0;
+        background: url("/sign-bg.svg");
+        height: 60px;
+        background-size: 270px;
+        background-position: 50% 50%;
+        width: 230px;
       }
     }
     li:last-child {
-      @screen md {
-        @apply pl-2;
+      @screen lg {
+        @apply pl-2 flex items-center justify-center text-white uppercase font-bold;
+        transform: translate(110px);
+        background: url("/log-bg.svg");
+        height: 60px;
+        background-size: 270px;
+        background-position: 50% 50%;
+        width: 230px;
       }
     }
   }
