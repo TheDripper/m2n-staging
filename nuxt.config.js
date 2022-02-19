@@ -21,7 +21,9 @@ export default {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: "https://use.typekit.net/izu0ugl.css" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" },
     ],
   },
 
@@ -43,16 +45,16 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/google-fonts",
+    // "@nuxtjs/google-fonts",
     "~/modules/class-purge.js",
   ],
-  googleFonts: {
-    families: {
-      Nunito: true,
-      Roboto: true,
-      "Open Sans": true,
-    },
-  },
+  // googleFonts: {
+  //   families: {
+  //     Nunito: true,
+  //     Roboto: true,
+  //     "Open Sans": true,
+  //   },
+  // },
 
   // modules: https://go.nuxtjs.dev/config-modules
   modules: [

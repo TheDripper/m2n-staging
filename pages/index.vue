@@ -62,8 +62,8 @@ export default {
   },
   created() {},
   mounted() {
-    $('.down').on('click',function(e){
-      const offset = $('.community').offset().top;
+    $(".down").on("click", function (e) {
+      const offset = $(".community").offset().top;
       $("html,body").animate({ scrollTop: offset }, 500);
     });
     // $("a").each(function () {
@@ -105,6 +105,16 @@ export default {
 };
 </script>
 <style lang="scss">
+.blue-hollow {
+  @apply flex justify-center items-center w-full;
+  .wp-block-button__link {
+    background: none;
+    border: 2px solid #adcce0;
+    width: 250px;
+    letter-spacing: 1px;
+    color: #adcce0 !important;
+  }
+}
 .down {
   @apply absolute;
   left: 50%;
@@ -389,7 +399,6 @@ export default {
   }
 }
 .wp-block-button {
-  letter-spacing: 1px;
   height: 44px;
   display: flex !important;
   width: 255px;
@@ -397,6 +406,7 @@ export default {
   .wp-block-button__link {
     flex-shrink: 0;
     max-width: none !important;
+    font-weight: 500;
     @apply text-white rounded-full w-full;
   }
   &.slate {
@@ -464,8 +474,7 @@ h4 {
 p,
 a,
 li {
-  @apply font-light;
-  font-family: "Open Sans";
+  font-family: "Roboto";
 }
 ul {
   list-style: circle;
