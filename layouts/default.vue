@@ -30,6 +30,7 @@
 h2 {
   font-weight: 500;
   letter-spacing: 0.5px;
+  line-height: 110% !important;
 }
 html,
 body {
@@ -135,6 +136,9 @@ body {
       @apply mb-8;
       @screen lg {
         margin: 0 10px;
+      }
+      a {
+        color: #999999;
       }
     }
   }

@@ -114,6 +114,9 @@ export default {
 }
 .blue-hollow {
   @apply flex justify-center items-center w-full;
+  @screen md {
+    @apply justify-start;
+  }
   .wp-block-button__link {
     background: none;
     border: 2px solid #adcce0;
@@ -133,6 +136,18 @@ export default {
     font-size: 24px;
     @screen xl {
       font-size: 40px;
+    }
+  }
+}
+.video {
+  @screen md {
+    img {
+      max-width: 596px;
+    }
+  }
+  @screen xl {
+    img {
+      max-width: 1126px;
     }
   }
 }
@@ -290,6 +305,7 @@ export default {
     color: #333333;
     font-weight: 300;
     font-size: 40px;
+    line-height: 100%;
     @screen md {
       font-size: 50px;
     }
