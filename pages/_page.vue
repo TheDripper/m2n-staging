@@ -50,9 +50,7 @@ export default {
     //   $(this).attr("target", "_blank");
     // });
     $(window).on("scroll", function (e) {
-      let hero = $(".hero").outerHeight();
-      let header = $("#header").outerHeight();
-      let height = hero + header + 192;
+      let height = $('.scroller').offset().top; 
       console.log("height", height);
       let scrolly = $(document).scrollTop();
       console.log("scroll", scrolly);
@@ -268,6 +266,17 @@ form {
 }
 .scrolling {
   @apply fixed top-0;
+}
+.scroll-start {
+ width: 453px;
+ height: 734px; 
+ background: url('/bridge.png');
+ background-size: 315px;
+ background-repeat: no-repeat;
+ background-position: 0 71px;
+ img {
+   transform: translate(138px);
+ }
 }
 .hero {
   h1 {
