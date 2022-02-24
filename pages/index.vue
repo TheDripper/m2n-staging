@@ -111,6 +111,23 @@ export default {
 <style lang="scss">
 .community {
   @apply flex-col;
+  @screen lg {
+    @apply flex-row;
+    max-width: 1126px;
+    padding-top: 157px !important;
+    .wp-block-column {
+      @apply p-0;
+      &:first-child {
+        @apply pr-4;
+      }
+      &:last-child {
+        @apply pl-4;
+      }
+    }
+    img {
+      max-width: 484px;
+    }
+  }
 }
 .blue-hollow {
   @apply flex justify-center items-center w-full;
@@ -148,6 +165,7 @@ export default {
   @screen xl {
     img {
       max-width: 1126px;
+      width: 1126px;
     }
   }
 }
@@ -159,6 +177,7 @@ export default {
   }
   @screen xl {
     font-size: 90px;
+    transform: translateY(100%);
   }
 }
 .logobg {
@@ -261,8 +280,6 @@ export default {
   transform: translate(-50%, 2rem);
 }
 .reviews {
-  p {
-  }
   .wp-block-cover {
     display: flex !important;
     min-height: 390px;
@@ -288,18 +305,33 @@ export default {
     @screen md {
       @apply px-0;
     }
+    @screen lg {
+      max-width: 588px;
+    }
     @screen xl {
       font-size: 54px;
+      max-width: 1012px;
     }
+  }
+}
+.top {
+  @screen md {
+    padding-top: 93px;
   }
 }
 .end {
   padding-bottom: 99px;
+  @screen lg {
+    padding-bottom: 150px;
+  }
 }
 .newsroom {
   @apply flex justify-center items-center pt-16;
   .wp-block-group__inner-container {
     @apply flex flex-col;
+    @screen lg {
+      @apply flex-row mb-8;
+    }
   }
   h2 {
     color: #333333;
@@ -325,7 +357,7 @@ export default {
     font-size: 14px;
     color: #859dad;
   }
-  @apply w-full flex justify-center bg-back-grey pt-6 pb-24 m-0 relative;
+  @apply w-full flex justify-center bg-back-grey pt-12 pb-24 m-0 relative;
 }
 .to-top {
   width: 40px;
@@ -339,13 +371,28 @@ export default {
   @screen md {
     @apply px-2;
   }
+  @screen lg {
+    flex-wrap: nowrap !important;
+    padding: 0 70px;
+  }
   @screen xl {
     @apply pt-6 pb-24;
   }
   .wp-block-column {
-    @apply m-8;
+    background: #272727;
+    display: flex !important;
+    @apply p-8 text-white flex flex-col;
     @screen md {
-      @apply m-4;
+      @apply m-0;
+    }
+    @screen lg {
+      @apply p-6;
+    }
+    &:first-child {
+      @apply mr-3;
+    }
+    &:last-child {
+      @apply ml-3;
     }
   }
   .post-author {
@@ -368,9 +415,6 @@ export default {
     @apply mb-6;
   }
   .wp-block-column {
-    background: #272727;
-    display: flex !important;
-    @apply p-8 text-white flex flex-col;
   }
   h5 {
     color: #716960;

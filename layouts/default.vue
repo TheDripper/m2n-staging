@@ -5,7 +5,6 @@
     <div id="footer">
       <div
         class="
-          max-w-5xl
           w-full
           mx-auto
           flex flex-col
@@ -53,6 +52,9 @@ body {
       @apply mb-6;
       img {
         @apply mx-auto;
+        @screen lg {
+          @apply m-0;
+        }
       }
     }
     li {
@@ -73,6 +75,9 @@ body {
     @apply flex flex-col;
     ul {
       @apply flex justify-center items-center mb-6;
+      @screen lg {
+        @apply justify-end items-end mb-2;
+      }
       li {
         &:first-child {
           @apply pr-2 border-r;
@@ -88,9 +93,17 @@ body {
       font-size: 11px;
       color: #797979;
     }
+    p {
+      @screen lg {
+        @apply m-0;
+      }
+    }
   }
   background: black;
   @apply flex items-center justify-between p-6 w-full;
+  @screen lg {
+    @apply pb-12;
+  }
 }
 #header {
   background: #181818;
