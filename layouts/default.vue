@@ -174,7 +174,7 @@ body {
     }
     li:first-child {
       @screen lg {
-        @apply pr-2 flex items-center justify-center text-white uppercase font-bold absolute;
+        @apply flex items-center justify-center text-white uppercase font-bold absolute;
         right: 40px;
         top: 0;
         background: url("/sign-bg.svg");

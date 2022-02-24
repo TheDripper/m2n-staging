@@ -112,6 +112,15 @@ export default {
 .community {
   @apply flex-col;
   @screen lg {
+    @apply items-center;
+    .wp-block-column {
+      &:first-child {
+        padding: 0 86px;
+        margin-bottom: 100px;
+      }
+    }
+  }
+  @screen xl {
     @apply flex-row;
     max-width: 1126px;
     padding-top: 157px !important;
@@ -157,6 +166,7 @@ export default {
   }
 }
 .video {
+  @apply mb-20;
   @screen md {
     img {
       max-width: 596px;
@@ -376,23 +386,23 @@ export default {
     padding: 0 70px;
   }
   @screen xl {
-    @apply pt-6 pb-24;
+    @apply pt-6 pb-0;
   }
   .wp-block-column {
     background: #272727;
     display: flex !important;
-    @apply p-8 text-white flex flex-col;
+    @apply p-8 text-white flex flex-col m-8;
     @screen md {
       @apply m-0;
     }
     @screen lg {
       @apply p-6;
-    }
-    &:first-child {
-      @apply mr-3;
-    }
-    &:last-child {
-      @apply ml-3;
+      &:first-child {
+        @apply mr-3;
+      }
+      &:last-child {
+        @apply ml-3;
+      }
     }
   }
   .post-author {
@@ -412,7 +422,7 @@ export default {
   }
   p {
     font-size: 12px;
-    @apply mb-6;
+    @apply mb-12;
   }
   .wp-block-column {
   }
