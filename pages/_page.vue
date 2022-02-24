@@ -49,6 +49,7 @@ export default {
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
+    let master = $(".scroller").find("img").attr("src");
     $(window).on("scroll", function (e) {
       let height = $(".scroll-start").offset().top;
       let phone = $(".scroller").outerHeight();
@@ -56,7 +57,10 @@ export default {
       let bottom = tri - phone;
       let one = $("#one").offset().top;
       let two = $("#two").offset().top;
-      // let master = $(".scroller").find("img").attr("src");
+      let three = $("#three").offset().top;
+      let four = $("#four").offset().top;
+      let five = $("#five").offset().top;
+      let six = $("#six").offset().top;
       // let masterImg = $('img').attr('src',master);
       $(".scroller").find("img").attr("srcset", null);
       let scrolly = $(document).scrollTop();
@@ -64,16 +68,56 @@ export default {
         $(".scroller").addClass("scrolling");
       } else {
         $(".scroller").removeClass("scrolling");
+        console.log("master", master);
+        $(".scroller").find("img").attr("src", master);
       }
-      if(scrolly > one) {
-        let target = $('#one').find('img').attr('src');
-        console.log('one',target);
-        $('.scroller').find('img').attr('src',target);
+      if (scrolly > one) {
+        let target = $("#one").find("img").attr("src");
+        console.log("one", target);
+        $(".scroller").find("img").attr("src", target);
       }
-      if(scrolly > two) {
-        let target = $('#two').find('img').attr('src');
-        console.log('two',target);
-        $('.scroller').find('img').attr('src',target);
+      if (scrolly > two) {
+        let target = $("#two").find("img").attr("src");
+        console.log("two", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+      if (scrolly > three) {
+        let target = $("#three").find("img").attr("src");
+        console.log("three", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+
+      if (scrolly > three) {
+        let target = $("#three").find("img").attr("src");
+        console.log("three", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+
+      if (scrolly > four) {
+        let target = $("#four").find("img").attr("src");
+        console.log("four", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+
+      if (scrolly > five) {
+        let target = $("#five").find("img").attr("src");
+        console.log("five", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+
+      if (scrolly > six) {
+        let target = $("#six").find("img").attr("src");
+        console.log("six", target);
+        $(".scroller").find("img").attr("src", target);
+      }
+      if (scrolly > bottom) {
+        // let target = $('#six').find('img').attr('src');
+        // console.log('six',target);
+        $(".scroller").addClass("done");
+        $(".done-img").addClass("open");
+      } else {
+        $(".scroller").removeClass("done");
+        $(".done-img").removeClass("open");
       }
       // if(scrolly < height) {
       //   console.log('top',master);
@@ -121,13 +165,25 @@ export default {
 };
 </script>
 <style lang="scss">
+.done {
+  opacity: 0;
+}
+.done-img {
+  &.open {
+    img {
+      opacity: 1 !important;
+      width: 315px;
+      transform: translate(47px,208px);
+    }
+  }
+}
 .scroll-pane {
   @apply flex items-center justify-center;
   img {
     width: 315px;
     transform: translate(47px);
     opacity: 0;
-    transition: all 0.2s ease;
+    // transition: all 0.2s ease;
   }
 }
 html,
