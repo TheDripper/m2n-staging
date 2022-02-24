@@ -50,15 +50,43 @@ export default {
     //   $(this).attr("target", "_blank");
     // });
     $(window).on("scroll", function (e) {
-      let height = $('.scroller').offset().top; 
-      console.log("height", height);
+      let height = $(".scroll-start").offset().top;
+      let phone = $(".scroller").outerHeight();
+      let tri = $(".tri-top").offset().top;
+      let bottom = tri - phone;
+      let one = $("#one").offset().top;
+      let two = $("#two").offset().top;
+      // let master = $(".scroller").find("img").attr("src");
+      // let masterImg = $('img').attr('src',master);
+      $(".scroller").find("img").attr("srcset", null);
       let scrolly = $(document).scrollTop();
-      console.log("scroll", scrolly);
       if (scrolly > height) {
         $(".scroller").addClass("scrolling");
       } else {
         $(".scroller").removeClass("scrolling");
       }
+      if(scrolly > one) {
+        let target = $('#one').find('img').attr('src');
+        console.log('one',target);
+        $('.scroller').find('img').attr('src',target);
+      }
+      if(scrolly > two) {
+        let target = $('#two').find('img').attr('src');
+        console.log('two',target);
+        $('.scroller').find('img').attr('src',target);
+      }
+      // if(scrolly < height) {
+      //   console.log('top',master);
+      //   $(".scroller").removeClass("scrolling");
+      //   $(".scroller").find("img").fadeOut(200).remove();
+      // }
+      // if (scrolly > two) {
+      //   let src = $('#two').attr('src');
+      //   $('.scroller').attr('src',src);
+      // }
+      // if (scrolly > bottom) {
+      //   $(".scroller").addClass("done");
+      // }
     });
     $(".scroll a").on("click", function (e) {
       e.preventDefault();
@@ -93,7 +121,17 @@ export default {
 };
 </script>
 <style lang="scss">
-html, body {
+.scroll-pane {
+  @apply flex items-center justify-center;
+  img {
+    width: 315px;
+    transform: translate(47px);
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+}
+html,
+body {
   font-family: "Roboto";
 }
 input,
@@ -101,7 +139,7 @@ select,
 textarea {
   background: none;
   appearance: none;
-  border: 2px solid #57514A;
+  border: 2px solid #57514a;
   font-size: 14px;
   color: #999999;
   letter-spacing: 1px;
@@ -112,7 +150,7 @@ select {
 }
 textarea {
   height: 244px;
-  background: rgba(24,24,24,0.7);
+  background: rgba(24, 24, 24, 0.7);
   @apply mt-8;
 }
 form {
@@ -266,17 +304,20 @@ form {
 }
 .scrolling {
   @apply fixed top-0;
+  img {
+    opacity: 1 !important;
+  }
 }
 .scroll-start {
- width: 453px;
- height: 734px; 
- background: url('/bridge.png');
- background-size: 315px;
- background-repeat: no-repeat;
- background-position: 0 71px;
- img {
-   transform: translate(138px);
- }
+  width: 453px;
+  height: 734px;
+  background: url("/bridge.png");
+  background-size: 315px;
+  background-repeat: no-repeat;
+  background-position: 0 71px;
+  img {
+    transform: translate(138px);
+  }
 }
 .hero {
   h1 {
