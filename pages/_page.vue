@@ -51,80 +51,77 @@ export default {
     // });
     let master = $(".scroller").find("img").attr("src");
     $(window).on("scroll", function (e) {
-      let height = $(".scroll-start").offset().top;
-      let phone = $(".scroller").outerHeight();
-      let tri = $(".tri-top").offset().top;
-      let bottom = tri - phone;
-      let one = $("#one-copy").offset().top;
-      let winHeight = $(window).innerHeight();
-      one = one - winHeight;
-      let two = $("#two-copy").offset().top;
-      two = two - winHeight;
-      let three = $("#three-copy").offset().top;
-      three = three - winHeight;
-      let four = $("#four-copy").offset().top;
-      four = four - winHeight;
-      let five = $("#five-copy").offset().top;
-      five = five - winHeight;
-      let six = $("#six-copy").offset().top;
-      six = six - winHeight;
-      // let masterImg = $('img').attr('src',master);
-      $(".scroller").find("img").attr("srcset", null);
-      let scrolly = $(document).scrollTop();
-      if (scrolly > height) {
-        $(".scroller").addClass("scrolling");
-      } else {
-        $(".scroller").removeClass("scrolling");
-        console.log("master", master);
-        $(".scroller").find("img").attr("src", master);
-      }
-      if (scrolly > one) {
-        let target = $("#one").find("img").attr("src");
-        console.log("one", target);
-        $(".scroller").find("img").attr("src", target);
-      }
-      if (scrolly > two) {
-        let target = $("#two").find("img").attr("src");
-        console.log("two", target);
-        $(".scroller").find("img").attr("src", target);
-      }
-      if (scrolly > three) {
-        let target = $("#three").find("img").attr("src");
-        console.log("three", target);
-        $(".scroller").find("img").attr("src", target);
-      }
+      if ($(window).innerWidth() > 767) {
+        console.log($(window).innerWidth());
+        let height = $(".scroll-start").offset().top;
+        let phone = $(".scroller").outerHeight();
+        let tri = $(".tri-top").offset().top;
+        let bottom = tri - phone;
+        let one = $("#one-copy").offset().top;
+        let winHeight = $(window).innerHeight();
+        one = one - winHeight;
+        let two = $("#two-copy").offset().top;
+        two = two - winHeight;
+        let three = $("#three-copy").offset().top;
+        three = three - winHeight;
+        let four = $("#four-copy").offset().top;
+        four = four - winHeight;
+        let five = $("#five-copy").offset().top;
+        five = five - winHeight;
+        let six = $("#six-copy").offset().top;
+        six = six - winHeight;
+        // let masterImg = $('img').attr('src',master);
+        $(".scroller").find("img").attr("srcset", null);
+        let scrolly = $(document).scrollTop();
+        if (scrolly > height) {
+          $(".scroller").addClass("scrolling");
+        } else {
+          $(".scroller").removeClass("scrolling");
+          console.log("master", master);
+          $(".scroller").find("img").attr("src", master);
+        }
+        if (scrolly > one) {
+          let target = $("#one").find("img").attr("src");
+          console.log("one", target);
+          $(".scroller").find("img").attr("src", target);
+        }
+        if (scrolly > two) {
+          let target = $("#two").find("img").attr("src");
+          console.log("two", target);
+          $(".scroller").find("img").attr("src", target);
+        }
+        if (scrolly > three) {
+          let target = $("#three").find("img").attr("src");
+          console.log("three", target);
+          $(".scroller").find("img").attr("src", target);
+        }
 
-      if (scrolly > three) {
-        let target = $("#three").find("img").attr("src");
-        console.log("three", target);
-        $(".scroller").find("img").attr("src", target);
-      }
+        if (scrolly > four) {
+          let target = $("#four").find("img").attr("src");
+          console.log("four", target);
+          $(".scroller").find("img").attr("src", target);
+        }
 
-      if (scrolly > four) {
-        let target = $("#four").find("img").attr("src");
-        console.log("four", target);
-        $(".scroller").find("img").attr("src", target);
-      }
+        if (scrolly > five) {
+          let target = $("#five").find("img").attr("src");
+          console.log("five", target);
+          $(".scroller").find("img").attr("src", target);
+        }
 
-      if (scrolly > five) {
-        let target = $("#five").find("img").attr("src");
-        console.log("five", target);
-        $(".scroller").find("img").attr("src", target);
-      }
-
-      if (scrolly > six) {
-        let target = $("#six").find("img").attr("src");
-        console.log("six", target);
-        $(".scroller").find("img").attr("src", target);
-      }
-      if (scrolly > bottom) {
-        // let target = $('#six').find('img').attr('src');
-        // console.log('six',target);
-        $(".scroller").addClass("done");
-        $(".done-img").addClass("open");
-      } else {
-        $(".scroller").removeClass("done");
-        $(".done-img").removeClass("open");
+        if (scrolly > six) {
+          let target = $("#six").find("img").attr("src");
+          console.log("six", target);
+          $(".scroller").find("img").attr("src", target);
+        }
+        if (scrolly > bottom) {
+          // let target = $('#six').find('img').attr('src');
+          // console.log('six',target);
+          $(".scroller").addClass("done");
+          $(".done-img").addClass("open");
+        } else {
+          $(".scroller").removeClass("done");
+          $(".done-img").removeClass("open");
+        }
       }
       // if(scrolly < height) {
       //   console.log('top',master);
@@ -180,7 +177,7 @@ export default {
     img {
       opacity: 1 !important;
       width: 315px;
-      transform: translate(47px,208px);
+      transform: translate(47px, 208px);
     }
   }
 }
@@ -366,23 +363,50 @@ form {
   }
 }
 .scrolling {
-  @apply fixed top-0;
-  img {
-    opacity: 1 !important;
+  @screen lg {
+    @apply fixed top-0;
+    img {
+      opacity: 1 !important;
+    }
   }
 }
 .scroll-start {
-  width: 453px;
-  height: 734px;
+  margin: 0 !important;
+  width: 225px;
+  height: 544px;
   background: url("/bridge.png");
-  background-size: 315px;
+  background-size: 225px;
   background-repeat: no-repeat;
   background-position: 0 71px;
+  transform: translate(50%);
+  figure {
+    @apply m-0;
+  }
   img {
-    transform: translate(138px);
+    transform: translate(98px);
+    width: 225px;
+    height: 473px;
+    margin-bottom: 71px;
+  }
+  @screen scroll {
+    width: 453px;
+    height: 734px;
+    background-size: 315px;
+    background-position: 0 71px;
+    transform: none;
+    img {
+      width: 315px;
+      transform: translate(138px);
+    }
   }
 }
 .hero {
+  .wp-block-columns {
+    @apply flex-col items-center;
+    @screen scroll {
+      @apply flex-row;
+    }
+  }
   h1 {
     font-size: 52px;
     @apply uppercase mb-4;
