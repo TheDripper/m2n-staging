@@ -362,23 +362,16 @@ form {
     }
   }
 }
-.scrolling {
-  @screen lg {
-    @apply fixed top-0;
-    img {
-      opacity: 1 !important;
-    }
-  }
-}
+  
 .scroll-start {
   margin: 0 !important;
   width: 225px;
   height: 544px;
+  min-height: 544px;
   background: url("/bridge.png");
   background-size: 225px;
   background-repeat: no-repeat;
   background-position: 0 71px;
-  transform: translate(50%);
   figure {
     @apply m-0;
   }
@@ -400,7 +393,17 @@ form {
     }
   }
 }
+.scrolling {
+  @screen lg {
+    @apply fixed top-0;
+    img {
+      opacity: 1 !important;
+      // transform: none;
+    }
+  }
+}
 .hero {
+  min-height: 750px;
   .wp-block-columns {
     @apply flex-col items-center;
     @screen scroll {
