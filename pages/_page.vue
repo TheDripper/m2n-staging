@@ -183,6 +183,14 @@ export default {
   min-height: 490px !important;
   padding: 0 !important;
   @apply mb-0;
+  @screen lg {
+    @apply justify-start;
+    .wp-block-column:first-child {
+      flex-basis: 50%;
+      width: 50%;
+      max-width: 50%;
+    }
+  }
 }
 .done-img {
   &.open {
@@ -191,16 +199,16 @@ export default {
     height: 473px;
     bottom: 0;
     top: auto;
-    right: 82px;
+    right: 0px;
     // transform: translate(-86px, 0) !important;
-    @screen xl {
+    @screen 2xl {
       width: 315px;
       height: 663px;
     }
     img {
       opacity: 1 !important;
       width: 225px;
-      @screen xl {
+      @screen 2xl {
         width: 315px;
       }
     }
@@ -406,27 +414,29 @@ form {
     transform: translate(98px, -71px);
     width: 225px;
     height: 473px;
-    margin-bottom: 71px;
+    // margin-bottom: 71px;
   }
   @screen scroll {
     left: unset;
   }
   @screen xl {
-    width: 453px;
+    right: 338px;
+    width: 315px;
     height: 734px;
     background-size: 315px;
-    background-position: 0 71px;
+    // background-position: 0 71px;
     // transform: none;
     figure {
+      transform: translate(138px, -71px);
       width: 315px;
       height: 663px;
     }
-    img {
-      width: 315px;
-      height: 663px;
-      transform: translate(98px);
-      margin: 0;
-    }
+    // img {
+    //   width: 315px;
+    //   height: 663px;
+    //   transform: translate(98px);
+    //   margin: 0;
+    // }
   }
 }
 .scrolling {
@@ -439,6 +449,10 @@ form {
       opacity: 1 !important;
       // transform: none;
     }
+  }
+  @screen 2xl {
+    transform: translate(0px, -71px) !important;
+    right: 200px;
   }
 }
 .hero {
