@@ -279,6 +279,7 @@ form {
 }
 .blue-hollow {
   .wp-block-button__link {
+    font-size: 14px;
     background: none;
     border: 2px solid #adcce0;
     width: 250px;
@@ -290,44 +291,82 @@ form {
   height: 750px;
 }
 .team {
-  @apply py-32;
+  min-height: 0;
+  @apply flex flex-col items-center text-center;
   h2 {
-    @apply uppercase font-thin mb-8;
+    @apply uppercase font-thin;
+    margin-top: 60px;
+    font-size: 40px;
   }
   h5 {
     font-size: 24px;
-    @apply font-light mb-6;
+    @apply font-thin mb-6;
   }
   h3 {
     font-size: 18px;
-    @apply uppercase mb-2;
+    @apply uppercase mb-1 mt-3;
+    line-height: 110%;
+    color: #A89B8C !important;
+    letter-spacing: 0.7px;
   }
   p {
     font-size: 14px;
+    @apply font-light;
+    color: #A89B8C !important;
   }
   .wp-block-columns {
     @apply p-0;
   }
+  .heads {
+    .wp-block-columns {
+      @apply flex flex-row justify-between;
+      max-width: 232px;
+      .wp-block-column {
+        flex-basis: 50% !important;
+        max-width: 100px;
+        @apply text-left;
+      }
+      figure {
+        @apply m-0;
+        img {
+          @apply m-0;
+          width: 100px;
+        }
+      }
+    }
+  }
 }
 .mission {
+  padding-bottom: 54px;
   h2 {
-    @apply text-head-40 uppercase font-thin mb-16;
+    @apply text-head-40 uppercase font-thin mt-12 mb-6;
   }
   p {
-    font-size: 22px;
+    font-size: 14px;
     @apply mb-6 font-light;
+    @screen lg {
+      font-size: 22px;
+    }
   }
 }
 .behind {
-  min-height: 439px;
+  @apply p-8;
+  @screen lg {
+    min-height: 439px;
+  }
+  padding-bottom: 157px;
   h2 {
-    font-size: 40px;
+    font-size: 24px;
+    @screen lg {
+      font-size: 40px;
+    }
     @apply font-thin uppercase;
   }
   h4 {
     @apply font-bold;
   }
   p {
+    font-size: 14px;
     @apply mb-6;
   }
   ul {
