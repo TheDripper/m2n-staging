@@ -3,7 +3,7 @@
     <div :class="classes"></div>
     <div class="flex bg-back-grey">
       <div id="page" class="w-full text-white">
-        <div class="frame">
+        <div :id="slug" class="frame">
           <div id="content" v-html="page" class=""></div>
         </div>
       </div>
@@ -51,9 +51,13 @@ export default {
     // });
     let master = $(".scroller").find("img").attr("src");
     $(window).on("scroll", function (e) {
-      if ($(window).innerWidth() > 767) {
+      console.log($(window).innerWidth());
+      if ($(window).innerWidth() >= 753) {
         console.log($(window).innerWidth());
         let height = $(".scroll-start").offset().top;
+        if ($(window).innerWidth() < 1152) {
+          height = height - 75;
+        }
         let phone = $(".scroller").outerHeight();
         let tri = $(".tri-top").offset().top;
         let bottom = tri - phone;
@@ -156,6 +160,9 @@ export default {
       let slug = this.$route.params.page.replace(/-/g, "");
       return this.$store.state.pages[slug];
     },
+    slug() {
+      return this.$route.params.page;
+    },
     header() {
       return this.$store.state.header;
     },
@@ -172,20 +179,39 @@ export default {
 .done {
   opacity: 0;
 }
+.done-min {
+  min-height: 490px !important;
+  padding: 0 !important;
+  @apply mb-0;
+}
 .done-img {
   &.open {
+    @apply absolute;
+    width: 225px;
+    height: 473px;
+    bottom: 0;
+    top: auto;
+    right: 82px;
+    // transform: translate(-86px, 0) !important;
+    @screen xl {
+      width: 315px;
+      height: 663px;
+    }
     img {
       opacity: 1 !important;
-      width: 315px;
-      transform: translate(47px, 208px);
+      width: 225px;
+      @screen xl {
+        width: 315px;
+      }
     }
   }
 }
 .scroll-pane {
   @apply flex items-center justify-center;
   img {
-    width: 315px;
-    transform: translate(47px);
+    // width: 315px;
+    width: 225px;
+    // transform: translate(47px);
     opacity: 0;
     // transition: all 0.2s ease;
   }
@@ -362,40 +388,53 @@ form {
     }
   }
 }
-  
+
 .scroll-start {
+  @apply absolute;
+  right: 133px;
+  overflow: visible;
   margin: 0 !important;
-  width: 225px;
+  width: 272px;
   height: 544px;
   min-height: 544px;
   background: url("/bridge.png");
   background-size: 225px;
   background-repeat: no-repeat;
-  background-position: 0 71px;
+  background-position: 0 0;
   figure {
     @apply m-0;
-  }
-  img {
-    transform: translate(98px);
+    transform: translate(98px, -71px);
     width: 225px;
     height: 473px;
     margin-bottom: 71px;
   }
   @screen scroll {
+    left: unset;
+  }
+  @screen xl {
     width: 453px;
     height: 734px;
     background-size: 315px;
     background-position: 0 71px;
-    transform: none;
+    // transform: none;
+    figure {
+      width: 315px;
+      height: 663px;
+    }
     img {
       width: 315px;
-      transform: translate(138px);
+      height: 663px;
+      transform: translate(98px);
+      margin: 0;
     }
   }
 }
 .scrolling {
   @screen lg {
-    @apply fixed top-0;
+    @apply fixed;
+    top: 71px;
+    right: 180px;
+    transform: translate(98px, -71px) !important;
     img {
       opacity: 1 !important;
       // transform: none;
@@ -405,7 +444,7 @@ form {
 .hero {
   min-height: 750px;
   .wp-block-columns {
-    @apply flex-col items-center;
+    @apply flex-col items-start;
     @screen scroll {
       @apply flex-row;
     }
