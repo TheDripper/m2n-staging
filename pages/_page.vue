@@ -306,16 +306,20 @@ form {
     font-size: 18px;
     @apply uppercase mb-1 mt-3;
     line-height: 110%;
-    color: #A89B8C !important;
+    color: #a89b8c !important;
     letter-spacing: 0.7px;
   }
   p {
     font-size: 14px;
     @apply font-light;
-    color: #A89B8C !important;
+    color: #a89b8c !important;
   }
   .wp-block-columns {
     @apply p-0;
+  }
+
+  .team-head {
+    margin-bottom: 60px;
   }
   .heads {
     .wp-block-columns {
@@ -337,22 +341,53 @@ form {
   }
 }
 .mission {
-  padding-bottom: 54px;
+  max-height: 375px;
+  height: 375px;
+  min-height: 0;
+  @apply p-0;
+  @screen lg {
+    max-height: 330px;
+    height: 330px;
+  }
+  @screen xl {
+    max-height: 620px;
+    height: 620px;
+  }
   h2 {
-    @apply text-head-40 uppercase font-thin mt-12 mb-6;
+    @apply text-head-40 uppercase font-thin mt-12 mb-8;
+  }
+  .wp-block-group {
+    @apply mx-auto flex items-center justify-center text-center;
   }
   p {
     font-size: 14px;
-    @apply mb-6 font-light;
+    line-height: 150%;
+    max-width: 311px;
+    @apply mb-6 font-light mx-auto;
+    &:last-child {
+      margin-bottom: 54px;
+    }
     @screen lg {
+      max-width: 614px;
+    }
+    @screen 2xl {
       font-size: 22px;
     }
   }
 }
 .behind {
-  @apply p-8;
+  margin-top: 100px;
+  .wp-block-group {
+    @apply mx-auto;
+    max-width: 311px;
+  }
   @screen lg {
-    min-height: 439px;
+    // min-height: 439px;
+    min-height: 1010px;
+    .wp-block-group {
+      max-width: 596px;
+      @apply mx-auto;
+    }
   }
   padding-bottom: 157px;
   h2 {
