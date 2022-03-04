@@ -287,6 +287,16 @@ form {
     color: #adcce0;
   }
 }
+.white-hollow {
+  .wp-block-button__link {
+    font-size: 14px;
+    background: none;
+    border: 2px solid white;
+    width: 250px;
+    letter-spacing: 1px;
+    color: white;
+  }
+}
 .partner {
   height: 750px;
 }
@@ -322,6 +332,10 @@ form {
     margin-bottom: 60px;
   }
   .heads {
+    @apply mx-auto;
+    @screen lg {
+      padding-left: 10px;
+    }
     .wp-block-columns {
       @apply flex flex-row justify-between;
       max-width: 232px;
@@ -329,6 +343,8 @@ form {
         flex-basis: 50% !important;
         max-width: 100px;
         @apply text-left;
+        &:first-child {
+        }
       }
       figure {
         @apply m-0;
@@ -336,6 +352,9 @@ form {
           @apply m-0;
           width: 100px;
         }
+      }
+      @screen xl {
+        max-width: 496px;
       }
     }
   }
@@ -550,8 +569,30 @@ form {
     @apply rounded-full;
     width: 250px;
   }
+  &.building {
+    h1 {
+      font-size: 42px;
+      @apply font-thin text-center;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
 }
-
+.dark-head {
+  font-size: 40px;
+  color: #333333;
+  @apply font-thin uppercase
+}
+.soon {
+  margin-top: 40px;
+  margin-bottom: 28px;
+}
+#for-employers {
+  .end {
+    margin-bottom: 100px;
+  }
+}
 .text-img {
   .wp-block-column {
     &:first-child {
