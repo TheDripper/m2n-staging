@@ -176,6 +176,12 @@ export default {
 };
 </script>
 <style lang="scss">
+#how-it-works {
+  .wp-block-columns {
+    max-width: 596px;
+    @apply mx-auto;
+  }
+}
 .done {
   opacity: 0;
 }
@@ -201,6 +207,7 @@ export default {
     top: auto;
     right: 0px;
     // transform: translate(-86px, 0) !important;
+    margin: 0 !important;
     @screen 2xl {
       width: 315px;
       height: 663px;
@@ -208,6 +215,7 @@ export default {
     img {
       opacity: 1 !important;
       width: 225px;
+      transform: translate(26px);
       @screen 2xl {
         width: 315px;
       }
@@ -219,7 +227,7 @@ export default {
   img {
     // width: 315px;
     width: 225px;
-    // transform: translate(47px);
+    transform: translate(47px);
     opacity: 0;
     // transition: all 0.2s ease;
   }
@@ -285,6 +293,16 @@ form {
     width: 250px;
     letter-spacing: 1px;
     color: #adcce0;
+  }
+}
+.flip {
+  @screen md {
+    .wp-block-column:first-child {
+      order: 2;
+    }
+    .wp-block-column:last-child {
+      order: 1;
+    }
   }
 }
 .white-hollow {
@@ -492,7 +510,7 @@ form {
 
 .scroll-start {
   @apply absolute;
-  right: 133px;
+    right: calc(50% - 272px);
   overflow: visible;
   margin: 0 !important;
   width: 272px;
@@ -536,7 +554,7 @@ form {
   @screen lg {
     @apply fixed;
     top: 71px;
-    right: 180px;
+    right: calc(50% - 225px);
     transform: translate(98px, -71px) !important;
     img {
       opacity: 1 !important;
