@@ -198,12 +198,16 @@ export default {
         @apply flex-col;
       }
       @screen xl {
-        @apply flex-row;
+        @apply flex-row items-start;
+        padding-top: 206px !important;
       }
     }
     h1 {
       @apply mb-4;
       margin-top: 62px;
+      @screen xl {
+        margin-top: 0;
+      }
     }
     h1,
     p {
@@ -223,11 +227,11 @@ export default {
     max-width: 311px;
     @apply mx-auto flex flex-col items-center justify-center pt-0;
     @screen lg {
-      @apply flex-row;
+      @apply flex-row justify-start;
       max-width: 596px;
     }
     @screen xl {
-      max-width: 596px;
+      max-width: 1010px;
     }
   }
 }
@@ -246,6 +250,9 @@ export default {
       max-width: 50%;
     }
   }
+  @screen xl {
+    min-height: 590px !important;
+  }
 }
 .done-img {
   margin-bottom: 120px;
@@ -258,16 +265,17 @@ export default {
     right: 0px;
     // transform: translate(-86px, 0) !important;
     margin: 0 !important;
-    @screen 2xl {
-      width: 315px;
-      height: 663px;
-    }
     img {
       opacity: 1 !important;
       width: 225px;
       transform: translate(26px);
-      @screen 2xl {
+    }
+    @screen xl {
+      width: 315px;
+      height: 663px;
+      img {
         width: 315px;
+        transform: translate(-51px);
       }
     }
   }
@@ -606,19 +614,10 @@ form {
 
 #scroll-start {
   @apply m-0;
-  // bottom: 290px;
-  // right: 50%;
-  // transform: translateY(100px);
   @screen lg {
     @apply justify-start;
-    // right: auto;
-    // left: 50%;
-    // left: 50%;
-    // right: 50%;
     overflow: visible;
-    // margin: 0 !important;
     margin-left: auto !important;
-    // width: 272px;
     width: 50%;
     height: 544px;
     min-height: 544px;
@@ -672,9 +671,11 @@ form {
       // transform: none;
     }
   }
+  @screen xl {
+    right: calc(50% - 315px);
+  }
   @screen 2xl {
-    transform: translate(0px, -71px) !important;
-    right: 200px;
+    // transform: translate(0px, -71px) !important;
   }
 }
 .hero {
