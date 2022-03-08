@@ -54,7 +54,7 @@ export default {
       console.log($(window).innerWidth());
       if ($(window).innerWidth() >= 753) {
         console.log($(window).innerWidth());
-        let height = $(".scroll-start").offset().top;
+        let height = $("#scroll-start").offset().top;
         if ($(window).innerWidth() < 1152) {
           height = height - 75;
         }
@@ -177,9 +177,58 @@ export default {
 </script>
 <style lang="scss">
 #how-it-works {
+  .wp-block-buttons {
+    @apply flex justify-center items-center w-full;
+  }
+  .why {
+    @apply mb-20 p-0;
+  }
+  .blue-hollow {
+    @apply mt-12 mb-20;
+  }
+  .knowledge {
+    padding-top: 160px !important;
+    .wp-block-column:first-child {
+    }
+  }
+  .hero {
+    @apply p-0 relative items-start;
+    .wp-block-columns {
+      @screen lg {
+        @apply flex-col;
+      }
+      @screen xl {
+        @apply flex-row;
+      }
+    }
+    h1 {
+      @apply mb-4;
+      margin-top: 62px;
+    }
+    h1,
+    p {
+      max-width: 311px;
+      @apply mx-auto;
+      @screen lg {
+        max-width: 382px;
+        width: 382px;
+      }
+    }
+    min-height: 750px;
+    @screen lg {
+      min-height: 850px;
+    }
+  }
   .wp-block-columns {
-    max-width: 596px;
-    @apply mx-auto;
+    max-width: 311px;
+    @apply mx-auto flex flex-col items-center justify-center pt-0;
+    @screen lg {
+      @apply flex-row;
+      max-width: 596px;
+    }
+    @screen xl {
+      max-width: 596px;
+    }
   }
 }
 .done {
@@ -199,6 +248,7 @@ export default {
   }
 }
 .done-img {
+  margin-bottom: 120px;
   &.open {
     @apply absolute;
     width: 225px;
@@ -223,13 +273,17 @@ export default {
   }
 }
 .scroll-pane {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-center m-0;
   img {
-    // width: 315px;
     width: 225px;
-    transform: translate(47px);
-    opacity: 0;
-    // transition: all 0.2s ease;
+  }
+  @screen lg {
+    img {
+      // width: 315px;
+      transform: translate(47px);
+      opacity: 0;
+      // transition: all 0.2s ease;
+    }
   }
 }
 html,
@@ -471,21 +525,63 @@ form {
     background: #4c4741;
   }
 }
+.future {
+  @apply p-0 items-start;
+  min-height: 330px;
+  height: 330px;
+  h2 {
+    font-size: 24px;
+    max-width: 271px;
+    margin-top: 60px;
+    @apply mx-auto mb-6;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
+}
+.everyone {
+  @apply p-0 pt-12;
+  padding-bottom: 152px;
+  .wp-block-group {
+    @apply mx-auto;
+    max-width: 311px !important;
+  }
+}
 .tri-top {
-  @apply relative;
-  min-height: 1013px;
+  @apply relative items-start p-0;
+  min-height: 1156px;
+  height: 1156px;
+  h1,
+  h2,
+  p {
+    @apply mx-auto;
+    max-width: 182px;
+  }
+  figure {
+    @apply mt-12;
+  }
   h1 {
-    @apply text-center font-thin uppercase;
-    font-size: 40px;
+    @apply text-center font-thin uppercase mt-12;
+    font-size: 24px;
+    @screen xl {
+      font-size: 40px;
+    }
   }
   h2 {
-    @apply text-center font-thin;
-    font-size: 28px !important;
+    @apply text-center font-thin uppercase;
+    font-size: 18px;
+    @screen xl {
+      font-size: 24px;
+    }
   }
   .wp-block-column {
     @apply flex flex-col items-center justify-start;
     p {
       @apply text-center;
+      font-size: 14px;
+      @screen xl {
+        font-size: 19px;
+      }
     }
   }
   &:after {
@@ -508,30 +604,44 @@ form {
   }
 }
 
-.scroll-start {
-  @apply absolute;
-    right: calc(50% - 272px);
-  overflow: visible;
-  margin: 0 !important;
-  width: 272px;
-  height: 544px;
-  min-height: 544px;
-  background: url("/bridge.png");
-  background-size: 225px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
+#scroll-start {
+  @apply m-0;
+  // bottom: 290px;
+  // right: 50%;
+  // transform: translateY(100px);
+  @screen lg {
+    @apply justify-start;
+    // right: auto;
+    // left: 50%;
+    // left: 50%;
+    // right: 50%;
+    overflow: visible;
+    // margin: 0 !important;
+    margin-left: auto !important;
+    // width: 272px;
+    width: 50%;
+    height: 544px;
+    min-height: 544px;
+    background: url("/bridge.png");
+    background-size: 225px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
   figure {
-    @apply m-0;
-    transform: translate(98px, -71px);
+    @apply mx-auto m-0;
     width: 225px;
     height: 473px;
+    @screen lg {
+      @apply m-0;
+      transform: translate(98px, -71px);
+    }
     // margin-bottom: 71px;
   }
   @screen scroll {
     left: unset;
   }
   @screen xl {
-    right: 338px;
+    right: calc(50% - 383px);
     width: 315px;
     height: 734px;
     background-size: 315px;
@@ -554,8 +664,9 @@ form {
   @screen lg {
     @apply fixed;
     top: 71px;
+    // right: calc(50% - 98px);
     right: calc(50% - 225px);
-    transform: translate(98px, -71px) !important;
+    // transform: translate(98px, -71px) !important;
     img {
       opacity: 1 !important;
       // transform: none;
@@ -600,7 +711,7 @@ form {
 .dark-head {
   font-size: 40px;
   color: #333333;
-  @apply font-thin uppercase
+  @apply font-thin uppercase;
 }
 .soon {
   margin-top: 40px;
@@ -611,14 +722,15 @@ form {
     margin-bottom: 100px;
   }
 }
-.text-img {
-  .wp-block-column {
-    &:first-child {
-      @apply flex flex-col items-start justify-center;
+.wp-block-column {
+  &:first-child {
+    @apply flex flex-col items-center justify-center text-center;
+    @screen lg {
+      @apply items-start text-left;
     }
-    &:last-child {
-      @apply flex items-center justify-center;
-    }
+  }
+  &:last-child {
+    @apply flex items-center justify-center;
   }
 }
 </style>
