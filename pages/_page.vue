@@ -179,20 +179,39 @@ export default {
 #how-it-works {
   .wp-block-buttons {
     @apply flex justify-center items-center w-full;
+    @screen lg {
+      @apply justify-start;
+    }
   }
+
   .why {
     @apply mb-20 p-0;
+    @screen lg {
+        flex-wrap: nowrap !important;
+      .wp-block-column {
+        flex-basis: 33% !important;
+        &:first-child {
+          align-items: center !important;
+        }
+      }
+    }
   }
   .blue-hollow {
     @apply mt-12 mb-20;
   }
   .knowledge {
-    padding-top: 160px !important;
+    padding-top: 256px !important;
     .wp-block-column:first-child {
     }
   }
   .hero {
     @apply p-0 relative items-start;
+    min-height: 750px;
+    @screen lg {
+      min-height: 0;
+      height: 750px;
+      max-height: 750px;
+    }
     .wp-block-columns {
       @screen lg {
         @apply flex-col;
@@ -216,11 +235,14 @@ export default {
       @screen lg {
         max-width: 382px;
         width: 382px;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
-    min-height: 750px;
+  }
+  .content-buffer {
     @screen lg {
-      min-height: 850px;
+      margin-top: 124px;
     }
   }
   .wp-block-columns {
@@ -537,11 +559,23 @@ form {
   @apply p-0 items-start;
   min-height: 330px;
   height: 330px;
+  @screen lg {
+    align-items: center !important;
+  }
+  .wp-block-buttons {
+    @screen lg {
+      justify-content:center !important;
+    }
+  }
   h2 {
     font-size: 24px;
     max-width: 271px;
     margin-top: 60px;
     @apply mx-auto mb-6;
+    @screen lg {
+      @apply mt-0;
+      max-width: 596px;
+    }
     @screen xl {
       font-size: 40px;
     }
@@ -553,6 +587,9 @@ form {
   .wp-block-group {
     @apply mx-auto;
     max-width: 311px !important;
+    @screen lg {
+      max-width: 596px !important;
+    }
   }
 }
 .tri-top {
@@ -584,6 +621,8 @@ form {
   }
   .wp-block-column {
     @apply flex flex-col items-center justify-start;
+    // align-items: center !important;
+    // justify-content: flex-start !important;
     p {
       @apply text-center;
       font-size: 14px;
@@ -603,6 +642,7 @@ form {
   }
   .wp-block-buttons {
     @apply flex items-center justify-center;
+    justify-content: center !important;
     .wp-block-button__link {
       background: none;
       border: 2px solid white;
@@ -611,11 +651,11 @@ form {
     }
   }
 }
-
 #scroll-start {
   @apply m-0;
   @screen lg {
     @apply justify-start;
+    margin-top: 160px;
     overflow: visible;
     margin-left: auto !important;
     width: 50%;
@@ -629,9 +669,12 @@ form {
   figure {
     @apply mx-auto m-0;
     width: 225px;
-    height: 473px;
+    // height: 473px;
+    height: 360px;
+    transform: translateY(96px);
     @screen lg {
       @apply m-0;
+      height: 473px;
       transform: translate(98px, -71px);
     }
     // margin-bottom: 71px;
@@ -727,7 +770,7 @@ form {
   &:first-child {
     @apply flex flex-col items-center justify-center text-center;
     @screen lg {
-      @apply items-start text-left;
+      @apply items-start justify-start text-left;
     }
   }
   &:last-child {
