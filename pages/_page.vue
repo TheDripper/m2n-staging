@@ -46,6 +46,11 @@ export default {
   },
   created() {},
   mounted() {
+    $(".play").on("click", function (e) {
+      $(this).parent().find(".vid").css('opacity','1');
+      $(this).fadeOut(200);
+      $(this).parent().find("video").get(0).play();
+    });
     // $("a").each(function () {
     //   $(this).attr("target", "_blank");
     // });
@@ -187,7 +192,7 @@ export default {
   .why {
     @apply mb-20 p-0;
     @screen lg {
-        flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
       .wp-block-column {
         flex-basis: 33% !important;
         &:first-child {
@@ -344,7 +349,7 @@ textarea {
 .video {
   @apply relative;
   &:after {
-    content: url('/play.svg');
+    content: url("/play.svg");
     @apply absolute;
     left: 50%;
     top: 50%;
@@ -368,8 +373,8 @@ form {
     @apply mx-auto;
     max-width: 311px;
     @screen lg {
-    max-width: 490px;
-    } 
+      max-width: 490px;
+    }
   }
 }
 .wp-block-columns {
@@ -554,6 +559,20 @@ form {
 }
 .story {
   height: 750px;
+  @apply relative;
+  .play {
+    @apply relative z-20;
+    cursor: pointer;
+  }
+  .vid {
+    opacity: 0;
+    @apply absolute z-10;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none !important;
+    width: 100vw !important;
+  }
   h1 {
     font-size: 52px;
     @apply uppercase font-thin;
@@ -587,7 +606,7 @@ form {
   }
   .wp-block-buttons {
     @screen lg {
-      justify-content:center !important;
+      justify-content: center !important;
     }
   }
   h2 {
