@@ -46,6 +46,16 @@ export default {
   },
   created() {},
   mounted() {
+    $('.phone-bio').on("click",function(e){
+      $('#bio-view').find('img').attr("srcset",'');
+      let person = $(this).attr("id");
+      console.log(person);
+      let slug = '#'+person+'phone';
+      console.log(slug);
+      let target = $('#'+person+'-phone').find('img').attr('src');
+      console.log(target);
+      $('#bio-view').find('img').attr('src',target);
+    });
     $(".play").on("click", function (e) {
       $(this).parent().find(".vid").css('opacity','1');
       $(this).fadeOut(200);
@@ -469,11 +479,15 @@ form {
     .wp-block-columns {
       @apply flex flex-row justify-between;
       max-width: 232px;
+      @screen lg {
+        max-width: 496px;
+      }
       .wp-block-column {
         flex-basis: 50% !important;
         max-width: 100px;
-        @apply text-left;
+        @apply text-left block;
         &:first-child {
+
         }
       }
       figure {
