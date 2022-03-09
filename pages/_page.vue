@@ -191,6 +191,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.phone-bio {
+  cursor: pointer;
+}
 #how-it-works {
   .wp-block-buttons {
     @apply flex justify-center items-center w-full;
