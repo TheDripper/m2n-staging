@@ -325,7 +325,7 @@ select,
 textarea {
   background: none;
   appearance: none;
-  border: 2px solid #57514a;
+  border-bottom: 2px solid #57514a;
   font-size: 14px;
   color: #999999;
   letter-spacing: 1px;
@@ -335,9 +335,11 @@ select {
   @apply uppercase;
 }
 textarea {
+  border: 2px solid #57514a;
   height: 244px;
   background: rgba(24, 24, 24, 0.7);
-  @apply mt-8;
+  margin-top: 46px;
+  @apply mb-0;
 }
 form {
   button {
@@ -345,8 +347,20 @@ form {
     width: 250px;
     letter-spacing: 1px;
     height: 44px;
-    @apply flex items-center justify-center uppercase rounded-full mx-auto mt-16 mb-48;
+    @apply flex items-center justify-center uppercase rounded-full mx-auto;
     font-size: 14px;
+    margin-top: 60px;
+    margin-bottom: 260px;
+  }
+}
+#contact-us {
+  .wp-block-group {
+    @apply mx-auto;
+    margin-bottom: 88px;
+    max-width: 311px;
+    @screen lg {
+    max-width: 490px;
+    } 
   }
 }
 .wp-block-columns {
