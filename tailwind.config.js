@@ -76,7 +76,7 @@ module.exports = {
         grey: "#2B3034",
         "quote-grey": "#f2f2f2",
         pink: "#ef4300",
-        "back-grey": "#181818",
+        "back-grey": "#ff00ff",
         "black":"#000000"
       }),
       borderColor: (theme) => ({

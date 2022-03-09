@@ -62,6 +62,11 @@ export default {
   },
   created() {},
   mounted() {
+    $('.play').on("click",function(e) {
+      $(this).parent().find('.thumb').fadeOut(200);
+      $(this).fadeOut(200);
+      $(this).parent().find('video').get(0).play();
+    });
     $(".to-top").on("click", function (e) {
       // const offset = $(".community").offset().top;
       $("html,body").animate({ scrollTop: 0 }, 500);
@@ -206,6 +211,30 @@ export default {
 }
 .wp-block-column {
   @apply p-8;
+}
+.player {
+  @apply relative;
+  .thumb {
+    @apply absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    img {
+      width: 100%;
+      max-width: none !important;
+    }
+  }
+  .play {
+    cursor: pointer;
+    content: url("/play.svg");
+    @apply absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.vid {
+  @apply relative;
 }
 .flip {
   @screen md {

@@ -341,6 +341,16 @@ textarea {
   margin-top: 46px;
   @apply mb-0;
 }
+.video {
+  @apply relative;
+  &:after {
+    content: url('/play.svg');
+    @apply absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
 form {
   button {
     background: #728694;
@@ -356,7 +366,6 @@ form {
 #contact-us {
   .wp-block-group {
     @apply mx-auto;
-    margin-bottom: 88px;
     max-width: 311px;
     @screen lg {
     max-width: 490px;
