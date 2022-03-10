@@ -191,6 +191,45 @@ export default {
 };
 </script>
 <style lang="scss">
+.ready {
+  @screen xl {
+    height: 620px;
+  }
+  h2 {
+    @apply uppercase mx-auto mb-4 font-thin;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
+  .wp-block-group {
+    max-width: 950px;
+    @apply mx-auto;
+  }
+  .wp-block-buttons {
+    @apply mt-6;
+  }
+}
+.module {
+  @apply text-white mx-auto;
+  .wp-block-column {
+    @apply p-0 m-0;
+    @screen xl {
+      max-width: 484px;
+    }
+  }
+  @screen xl {
+    max-width: 1126px !important;
+    width: 1126px !important;
+    margin-bottom: 158px;
+    @apply justify-between;
+  }
+  h2 {
+    font-size: 24px;
+    @screen xl {
+      font-size: 40px;
+    }
+  }
+}
 .phone-bio {
   cursor: pointer;
 }
@@ -802,6 +841,15 @@ form {
     width: 250px;
   }
   &.building {
+    .wp-block-cover__image-background {
+      width: auto;
+      left: auto;
+      right: -270px;
+      @screen xl {
+        left: 0;
+        right: 0;
+      }
+    }
     h1 {
       font-size: 42px;
       @apply font-thin text-center;
@@ -819,6 +867,9 @@ form {
 .soon {
   margin-top: 40px;
   margin-bottom: 28px;
+  @screen xl {
+    font-size: 90px;
+  }
 }
 #for-employers {
   .end {
