@@ -163,6 +163,19 @@ export default {
   transform: translate(-50%);
 }
 .module {
+  @apply text-white mx-auto;
+  .wp-block-column {
+    @apply p-0 m-0;
+    @screen xl {
+      max-width: 484px;
+    }
+  }
+  @screen xl {
+    max-width: 1126px;
+    width: 1126px;
+    margin-bottom: 158px;
+    @apply justify-between;
+  }
   h2 {
     font-size: 24px;
     @screen xl {
@@ -185,6 +198,7 @@ export default {
   }
 }
 .approach {
+  @apply mb-8;
   font-size: 40px;
   color: #333333;
   @screen md {
@@ -213,7 +227,10 @@ export default {
   @apply p-8;
 }
 .player {
-  @apply relative;
+  @apply relative mb-4 mx-auto;
+  @screen xl {
+    max-width: 1126px;
+  }
   .thumb {
     @apply absolute;
     top: 0;
@@ -231,6 +248,13 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    width: 38px;
+    @screen lg {
+      width: 60px;
+    }
+    @screen xl {
+      width: 113px;
+    }
   }
 }
 .vid {
@@ -284,6 +308,9 @@ export default {
   }
   h2 {
     font-size: 42px;
+    @screen xl {
+      font-size: 52px;
+    }
     letter-spacing: 0px;
     @apply uppercase font-bold mr-2 text-center;
   }

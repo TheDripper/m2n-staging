@@ -69,13 +69,13 @@ export default {
       console.log($(window).innerWidth());
       if ($(window).innerWidth() >= 753) {
         console.log($(window).innerWidth());
-        let height = $("#scroll-start").offset().top;
+        let height = $("#scroll-start").offset().top - 68;
         if ($(window).innerWidth() < 1152) {
           height = height - 75;
         }
         let phone = $(".scroller").outerHeight();
         let tri = $(".tri-top").offset().top;
-        let bottom = tri - phone;
+        let bottom = tri - phone - 78;
         let one = $("#one-copy").offset().top;
         let winHeight = $(window).innerHeight();
         one = one - winHeight;
@@ -300,7 +300,7 @@ export default {
     @apply absolute;
     width: 225px;
     height: 473px;
-    bottom: 0;
+    bottom: 78px;
     top: auto;
     right: 0px;
     // transform: translate(-86px, 0) !important;
@@ -764,7 +764,7 @@ form {
 .scrolling {
   @screen lg {
     @apply fixed;
-    top: 71px;
+    top: 139px;
     // right: calc(50% - 98px);
     right: calc(50% - 225px);
     // transform: translate(98px, -71px) !important;
