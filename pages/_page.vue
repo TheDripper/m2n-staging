@@ -353,7 +353,8 @@ export default {
   margin-bottom: 120px;
   &.open {
     @apply absolute;
-    width: 225px;
+    // width: 225px;
+    width: 295px !important;
     height: 473px;
     bottom: 78px;
     top: auto;
@@ -362,7 +363,8 @@ export default {
     margin: 0 !important;
     img {
       opacity: 1 !important;
-      width: 225px;
+      // width: 225px;
+      width: 295px !important;
       transform: translate(26px);
     }
     @screen xl {
@@ -784,7 +786,8 @@ form {
   }
   figure {
     @apply mx-auto m-0;
-    width: 225px;
+    // width: 225px;
+    width: 295px;
     // height: 473px;
     height: 360px;
     transform: translateY(96px);
@@ -823,16 +826,17 @@ form {
     @apply fixed;
     top: 139px;
     // right: calc(50% - 98px);
-    right: calc(50% - 524px);
     // transform: translate(98px, -71px) !important;
-    width: 524px !important;
     img {
       opacity: 1 !important;
-      width: 524px;
       // transform: none;
     }
   }
   @screen xl {
+    img {
+      width: 524px;
+    }
+    right: calc(50% - 524px);
     // right: calc(50% - 315px);
   }
   @screen 2xl {
