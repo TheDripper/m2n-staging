@@ -46,18 +46,20 @@ export default {
   },
   created() {},
   mounted() {
-    $('.phone-bio').on("click",function(e){
-      $('#bio-view').find('img').attr("srcset",'');
+    $(".phone-bio").on("click", function (e) {
+      $("#bio-view").find("img").attr("srcset", "");
       let person = $(this).attr("id");
       console.log(person);
-      let slug = '#'+person+'phone';
+      let slug = "#" + person + "phone";
       console.log(slug);
-      let target = $('#'+person+'-phone').find('img').attr('src');
+      let target = $("#" + person + "-phone")
+        .find("img")
+        .attr("src");
       console.log(target);
-      $('#bio-view').find('img').attr('src',target);
+      $("#bio-view").find("img").attr("src", target);
     });
     $(".play").on("click", function (e) {
-      $(this).parent().find(".vid").css('opacity','1');
+      $(this).parent().find(".vid").css("opacity", "1");
       $(this).fadeOut(200);
       $(this).parent().find("video").get(0).play();
     });
@@ -69,7 +71,7 @@ export default {
       console.log($(window).innerWidth());
       if ($(window).innerWidth() >= 753) {
         console.log($(window).innerWidth());
-        let height = $("#scroll-start").offset().top - 68;
+        let height = $("#scroll-start").offset().top;
         if ($(window).innerWidth() < 1152) {
           height = height - 75;
         }
@@ -100,6 +102,7 @@ export default {
           $(".scroller").find("img").attr("src", master);
         }
         if (scrolly > one) {
+          $(".scroller").addClass("scrolling");
           let target = $("#one").find("img").attr("src");
           console.log("one", target);
           $(".scroller").find("img").attr("src", target);
@@ -191,6 +194,19 @@ export default {
 };
 </script>
 <style lang="scss">
+.bar-scroll {
+  height: 1024px;
+  overflow: scroll;
+  @apply relative;
+  width: 100%;
+  .bar-bg {
+    @apply absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
 .ready {
   @screen xl {
     height: 620px;
@@ -529,7 +545,6 @@ form {
         max-width: 100px;
         @apply text-left block;
         &:first-child {
-
         }
       }
       figure {
@@ -782,14 +797,14 @@ form {
   }
   @screen xl {
     right: calc(50% - 383px);
-    width: 315px;
+    width: 315px;;
     height: 734px;
-    background-size: 315px;
+    background-size: 315px;;
     // background-position: 0 71px;
     // transform: none;
     figure {
       transform: translate(138px, -71px);
-      width: 315px;
+      width: 524px;
       height: 663px;
     }
     // img {
@@ -805,15 +820,17 @@ form {
     @apply fixed;
     top: 139px;
     // right: calc(50% - 98px);
-    right: calc(50% - 225px);
+    right: calc(50% - 524px);
     // transform: translate(98px, -71px) !important;
+    width: 524px !important;
     img {
       opacity: 1 !important;
+      width: 524px;
       // transform: none;
     }
   }
   @screen xl {
-    right: calc(50% - 315px);
+    // right: calc(50% - 315px);
   }
   @screen 2xl {
     // transform: translate(0px, -71px) !important;
