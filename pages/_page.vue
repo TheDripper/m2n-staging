@@ -366,11 +366,14 @@ export default {
       transform: translate(26px);
     }
     @screen xl {
-      width: 315px;
+      // width: 315px;
+      width: 524px !important;
       height: 663px;
+      right: calc(50% - 524px);
       img {
-        width: 315px;
-        transform: translate(-51px);
+        // width: 315px;
+        width: 524px !important;
+        transform: translate(131px);
       }
     }
   }
@@ -797,9 +800,9 @@ form {
   }
   @screen xl {
     right: calc(50% - 383px);
-    width: 315px;;
+    width: 315px;
     height: 734px;
-    background-size: 315px;;
+    background-size: 315px;
     // background-position: 0 71px;
     // transform: none;
     figure {
