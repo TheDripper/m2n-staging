@@ -194,6 +194,13 @@ export default {
 };
 </script>
 <style lang="scss">
+.sand-r {
+  border-bottom: solid 1px #716960;
+  @screen lg {
+    border-bottom: none;
+    border-right: solid 1px #716960;
+  }
+}
 .bar-scroll {
   height: 1024px;
   overflow: scroll;
@@ -555,10 +562,10 @@ form {
       figure {
         @apply m-0;
 
-          filter: grayscale(1);
-          &.on {
-            filter: grayscale(0);
-          }
+        filter: grayscale(1);
+        &.on {
+          filter: grayscale(0);
+        }
         img {
           @apply m-0;
           width: 100px;
