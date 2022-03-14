@@ -540,7 +540,7 @@ form {
       padding-left: 10px;
     }
     .wp-block-columns {
-      @apply flex flex-row justify-between;
+      @apply flex flex-row justify-start w-full;
       max-width: 232px;
       @screen lg {
         max-width: 496px;
@@ -554,6 +554,11 @@ form {
       }
       figure {
         @apply m-0;
+
+          filter: grayscale(1);
+          &.on {
+            filter: grayscale(0);
+          }
         img {
           @apply m-0;
           width: 100px;
