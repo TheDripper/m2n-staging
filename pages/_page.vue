@@ -372,16 +372,16 @@ export default {
       opacity: 1 !important;
       // width: 225px;
       width: 295px !important;
-      transform: translate(26px);
+      transform: translate(98px);
     }
     @screen xl {
       // width: 315px;
-      width: 524px !important;
+      width: 375px !important;
       height: 663px;
-      right: calc(50% - 524px);
+      right: calc(50% - 375px);
       img {
         // width: 315px;
-        width: 524px !important;
+        width: 375px !important;
         transform: translate(131px);
       }
     }
@@ -822,7 +822,7 @@ form {
     // transform: none;
     figure {
       transform: translate(138px, -71px);
-      width: 524px;
+      width: 375px;
       height: 663px;
     }
     // img {
@@ -846,9 +846,9 @@ form {
   }
   @screen xl {
     img {
-      width: 524px;
+      width: 375px;
     }
-    right: calc(50% - 524px);
+    right: calc(50% - 375px);
     // right: calc(50% - 315px);
   }
   @screen 2xl {
