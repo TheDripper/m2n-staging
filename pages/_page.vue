@@ -49,6 +49,9 @@ export default {
     $(".phone-bio").on("click", function (e) {
       $("#bio-view").find("img").attr("srcset", "");
       let person = $(this).attr("id");
+      let og = $(this).find('img').attr("src");
+      $(".on").removeClass("on");
+      $(this).find("figure").addClass("on");
       console.log(person);
       let slug = "#" + person + "phone";
       console.log(slug);
@@ -559,9 +562,19 @@ form {
         &:first-child {
         }
       }
+
       figure {
+        transition: all 0.4s ease;
         @apply m-0;
 
+        &.fake {
+          @apply absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+        }
         filter: grayscale(1);
         &.on {
           filter: grayscale(0);
